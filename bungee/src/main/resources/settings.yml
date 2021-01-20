@@ -1,0 +1,32 @@
+settings:
+  update-check: true
+  hexColors: true
+  checkAlphaUpdates: true
+  defaultUnknownUserName: UnknownPlayer
+  warn-external-modules: true
+  show-detailed-errors: false
+  toggle-dev-api: true
+  notify-for-external-modules: true
+  customExternalModulesFolder:
+    toggle: true
+    customFolder: ExternalModules
+hooks:
+  PlaceholderAPI: false
+events:
+  exampleEvent:
+    eventName: Example Event
+    eventDate: 12/21/20 23:59:00
+    TimeZone: ECT
+    format-Type: FIRST
+    endMessage: '&cThe event finished.'
+timings:
+  second: second
+  seconds: seconds
+  minute: minute
+  minutes: minutes
+  hour: hour
+  hours: hours
+  day: day
+  days: days
+  week: week
+  weeks: weeks

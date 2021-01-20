@@ -1,0 +1,41 @@
+whitelist:
+  exampleMotd1:
+    line1: '&8» &aPixelMOTD v%plugin_version% &7| &aSpigotMC'
+    line2: '&f&oThis server is in whitelist. (1.8-1.15 Motd)'
+    otherSettings:
+      customHover:
+        toggle: true
+        hover:
+        - '     &c&lPIXEL MOTD'
+        - '&7SpigotMC Plugin v%plugin_version%'
+        - ''
+        - '&c&lInformation:'
+        - '  &7Whitelist by: &f%whitelist_author%'
+        - '  &7Spigot ID: &f37177'
+        - '  &7Discord: &fMrUniverse#2556'
+        - '  &7Online: &f%online%'
+        - '  &frigox.club/discord/dev'
+        - ''
+      customIcon:
+        toggle: true
+        customFile: false
+      customProtocol:
+        toggle: true
+        changeProtocolVersion: false
+        protocol: PixelMotd Security
+      customHexMotd:
+        toggle: true
+        line1: '&8» &cPixelMOTD v%plugin_version% &7| &cSpigotMC'
+        line2: '&f&oWhitelist Mode (1.16+ Motd)'
+      customOnlinePlayers:
+        toggle: false
+        mode: HALF-ADD
+        values:
+        - 2021
+        - 2022
+      customMaxPlayers:
+        toggle: true
+        mode: HALF
+        values:
+        - 2021
+        - 2022

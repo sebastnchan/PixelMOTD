@@ -1,0 +1,41 @@
+normal:
+  exampleMotd1:
+    line1: '&b&lPixelMOTD v%plugin_version%'
+    line2: '&f&oThis motd only appear for 1.8 - 1.15'
+    otherSettings:
+      customHover:
+        toggle: true
+        hover:
+        - '     &9&lPIXEL MOTD'
+        - '&7SpigotMC Plugin v%plugin_version%'
+        - ''
+        - '&b&lInformation:'
+        - '  &7Version: &f%plugin_version%'
+        - '  &7Spigot ID: &f37177'
+        - '  &7Discord: &fMrUniverse#2556'
+        - '  &7Online: &f%online%&7/&f%max%'
+        - '  &frigox.club/discord/dev'
+        - ''
+      customIcon:
+        toggle: true
+        customFile: false
+      customProtocol:
+        toggle: true
+        changeProtocolVersion: false
+        protocol: PixelMotd System
+      customHexMotd:
+        toggle: true
+        line1: '&b&lPixelMOTD v%plugin_version%'
+        line2: '&f&oThis motd only appear for 1.16+'
+      customOnlinePlayers:
+        toggle: false
+        mode: HALF-ADD
+        values:
+        - 2021
+        - 2022
+      customMaxPlayers:
+        toggle: true
+        mode: HALF-ADD
+        values:
+        - 2021
+        - 2022

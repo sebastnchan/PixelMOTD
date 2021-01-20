@@ -1,0 +1,46 @@
+timers:
+  exampleMotd1:
+    enabled: false
+    line1: '&6&l%event_timeLeft%'
+    line2: '&f&oThis is a timer motd'
+    otherSettings:
+      customHover:
+        toggle: true
+        hover:
+        - '     &9&lPIXEL MOTD'
+        - '&7This is a timer motd'
+        - '&7When you enable 1 motd'
+        - '&7And you have 1 event with'
+        - '&7the same name it will be'
+        - '&7Sync. And when an event'
+        - '&7End, it will execute commands'
+        - '&7By the console automatically!'
+        - '&frigox.club/discord/dev'
+        - ''
+      customIcon:
+        toggle: true
+        customFile: false
+      customProtocol:
+        toggle: true
+        changeProtocolVersion: false
+        protocol: PixelMotd System
+      customHexMotd:
+        toggle: true
+        line1: '&6&l%event_timeLeft%'
+        line2: '&f&oThis motd only appear for 1.16+'
+      customOnlinePlayers:
+        toggle: false
+        mode: HALF-ADD
+        values:
+        - 2021
+        - 2022
+      customMaxPlayers:
+        toggle: true
+        mode: HALF-ADD
+        values:
+        - 2021
+        - 2022
+    timerSettings:
+      commandsToExecute:
+      - /pmotd whitelist off
+      - /alert Maintenance off automatically!

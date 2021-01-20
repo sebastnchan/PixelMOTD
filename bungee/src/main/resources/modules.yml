@@ -1,0 +1,62 @@
+modules:
+  block-users:
+    enabled: false
+    ignoreCase: true
+    blockedUsers:
+    - 0-0-0-0
+    - MyNameIsBlocked
+    - ImAHacker
+    kickMessage:
+    - '&b------------- &aPixelMOTD &b-------------'
+    - '&fYou has been kicked from the server'
+    - '&fYour name is in the blackList'
+    - '&b%blocked_name%'
+    - '&b------------- &aPixelMOTD &b-------------'
+  block-words-in-name:
+    enabled: false
+    ignoreCase: false
+    blockedWords:
+    - hacker
+    - '123456789'
+    - racist
+    - Stupid
+    kickMessage:
+    - '&b------------- &aPixelMOTD &b-------------'
+    - '&fYou has been kicked from the server'
+    - '&fYour name has a blocked word.'
+    - '&b%blocked_word%'
+    - '&b------------- &aPixelMOTD &b-------------'
+  server-whitelist:
+    toggle: false
+    kickMessage:
+    - '&b------------ &aPixelMotd &b------------'
+    - '&aThis %type% is currently in whitelist.'
+    - '&c%type%: &f%value%'
+    - '&cWhitelist by: &f%whitelist_author%'
+    - '&cReason: &f%whitelist_reason%'
+    - '&b------------ &aPixelMotd &b------------'
+    servers:
+      serverName:
+        whitelist-status: false
+        whitelist-author: RetiredUniverse44
+        whitelist-reason: This %type% is whitelisted!
+        players-name:
+        - md_5
+        players-uuid:
+        - 0-0-0-0
+  server-blacklist:
+    toggle: false
+    kickMessage:
+    - '&b------------ &aPixelMotd &b------------'
+    - '&aYou are in %type%''s blacklist.'
+    - '&c%type%: &f%value%'
+    - '&cReason: &f%blacklist_reason%'
+    - '&b------------ &aPixelMotd &b------------'
+    servers:
+      serverName:
+        blacklist-status: false
+        blacklist-reason: You're a bad player!
+        players-name:
+        - md_5
+        players-uuid:
+        - 0-0-0-0

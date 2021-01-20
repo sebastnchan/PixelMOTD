@@ -1,0 +1,102 @@
+command:
+  online-status:
+    online: Online &8(&7%server%&8)
+    offline: Offline
+  status:
+    'on': Enabled
+    'off': Disabled
+  list:
+  - pmotd
+  - bpmotd
+  - pixelmotd
+  - pixelM
+  help:
+  - '&b------------ &aPixelMotd &b------------'
+  - '&e/%cmd% &e- &fMain Command'
+  - '&e/%cmd% whitelist (global-serverName) [on-off]'
+  - '&e/%cmd% blacklist (global-serverName) [on-off]'
+  - '&e/%cmd% add (whitelist-blacklist) (Global-serverName) (playerName-playerUUID)
+    &e- &fadd a player to your list.'
+  - '&e/%cmd% remove (whitelist-blacklist) (Global-serverName) (playerName-playerUUID)
+    &e- &fremove a player from your list.'
+  - '&e/%cmd% reload (all-settings-edit-modules-cmd-motds)'
+  - '&e/%cmd% modules toggle (moduleName)'
+  - '&e/%cmd% modules info (moduleName)'
+  - '&e/%cmd% modules list'
+  - '&e/%cmd% externalModules toggle (moduleName)'
+  - '&e/%cmd% externalModules info (moduleName)'
+  - '&e/%cmd% externalModules list'
+  - '&b------------ &aPixelMotd &b------------'
+  whitelist:
+    list:
+      top:
+      - '&b------------ &aPixelMotd &b------------'
+      - '&e%whitelist% - Whitelist'
+      - '&fStatus: &7%status%'
+      - ' '
+      - '&fPlayers Name:'
+      playersNameFormat: '&e&l* &8[&7%online_status%&8] &7%player_name%'
+      mid:
+      - ' '
+      - '&fPlayers UUID:'
+      playersUuidFormat: '&e&l* &8[&7UUID&8] &7%player_uuid%'
+      bot:
+      - ' '
+      - '<isUser>&fYour UUID: &7%your_uuid%'
+      - '&b------------ &aPixelMotd &b------------'
+  blacklist:
+    list:
+      top:
+      - '&b------------ &aPixelMotd &b------------'
+      - '&e%blacklist% - Blacklist'
+      - '&fStatus: &7%status%'
+      - ' '
+      - '&fPlayers Name:'
+      playersNameFormat: '&e&l* &8[&7%online_status%&8] &7%player_name%'
+      mid:
+      - ' '
+      - '&fPlayers UUID:'
+      playersUuidFormat: '&e&l* &8[&7UUID&8] &7%player_uuid%'
+      bot:
+      - ' '
+      - '<isUser>&fYour UUID: &7%your_uuid%'
+      - '&b------------ &aPixelMotd &b------------'
+  modules:
+    list:
+      top:
+      - '&b------------ &aPixelMotd &b------------'
+      - '&6PixelMOTD - Module List'
+      - ' '
+      - '&fPlugin Modules:'
+      moduleNameFormat: '&e&l* &8[&7%status%&8] &7%module_name%'
+      bot:
+      - ' '
+      - '&b------------ &aPixelMotd &b------------'
+    info:
+    - '&b------------ &aPixelMotd &b------------'
+    - '&6%module_name% - Plugin Module'
+    - ' '
+    - '&fVersion: &e%module_version%'
+    - '&fStatus: &e%status%'
+    - ' '
+    - '&b------------ &aPixelMotd &b------------'
+  externalModules:
+    list:
+      top:
+      - '&b------------ &aPixelMotd &b------------'
+      - '&6PixelMOTD - External Module List'
+      - ' '
+      - '&fExternal Modules:'
+      moduleNameFormat: '&e&l* &8[&7%status%&8] &7%module_name%'
+      bot:
+      - ' '
+      - '&b------------ &aPixelMotd &b------------'
+    info:
+    - '&b------------ &aPixelMotd &b------------'
+    - '&6%module_name% - External Module'
+    - ' '
+    - '&fVersion: &e%module_version%'
+    - '&fAuthor: &e%module_author%'
+    - '&fStatus: &e%status%'
+    - ' '
+    - '&b------------ &aPixelMotd &b------------'
