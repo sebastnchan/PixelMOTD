@@ -18,7 +18,6 @@ public class FileManager {
     public FileManager (PixelMOTD plugin) {
         this.plugin = plugin;
     }
-
     /**
      * Creates a config File if it doesn't exists,
      * reloads if specified file exists.
