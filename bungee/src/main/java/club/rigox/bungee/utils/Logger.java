@@ -22,7 +22,7 @@ public class Logger {
      * @param message message to send.
      */
     public static void error(String message) {
-        sendMessage("&f[&cERROR &7| &fPixel MOTD] " + message);
+        sendMessage("&f[Pixel MOTD &7| &cERROR&f] " + message);
     }
 
     /**
@@ -30,7 +30,7 @@ public class Logger {
      * @param message message to send.
      */
     public static void warn(String message) {
-        sendMessage("&f[&eWARN &7| &fPixel MOTD] " + message);
+        sendMessage("&f[Pixel MOTD &7| &eWARN&f] " + message);
     }
 
     /**
@@ -38,7 +38,7 @@ public class Logger {
      * @param message message to send.
      */
     public static void debug(String message) {
-        sendMessage("&f[&9DEBUG &7| &fPixel MOTD] " + message);
+        sendMessage("&f[Pixel MOTD &7| &9DEBUG&f] " + message);
     }
 
     /**
@@ -46,7 +46,7 @@ public class Logger {
      * @param message message to send.
      */
     public static void info(String message) {
-        sendMessage("&f[&bINFO &7| &fPixel MOTD] " + message);
+        sendMessage("&f[Pixel MOTD &7| &bINFO&f] " + message);
     }
 
     /**

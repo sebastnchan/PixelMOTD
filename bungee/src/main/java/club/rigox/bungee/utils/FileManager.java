@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 
-import static club.rigox.bungee.utils.Logger.warn;
+import static club.rigox.bungee.utils.Logger.*;
 
 public class FileManager {
     private final PixelMOTD plugin;
@@ -18,12 +18,12 @@ public class FileManager {
     public FileManager (PixelMOTD plugin) {
         this.plugin = plugin;
     }
+
     /**
      * Creates a config File if it doesn't exists,
      * reloads if specified file exists.
      *
      * @param configName config to create/reload.
-     * @return created/reloaded config if exists.
      */
     public Configuration loadConfig(String configName) {
         File configFile = new File(plugin.getDataFolder().getPath(), configName + ".yml");
@@ -31,13 +31,14 @@ public class FileManager {
         if (!configFile.exists()) {
             plugin.getDataFolder().mkdirs();
             saveConfig(configName);
+            debug(configName + ".yml config was created!");
         }
 
         Configuration cnf = null;
         try {
             cnf = ConfigurationProvider.getProvider(YamlConfiguration.class).load(configFile);
         } catch (Exception e) {
-            warn(String.format("A error occurred while loading the settings file. Error: %s", e));
+            error(String.format("A error occurred while loading the settings file. Error: %s", e));
             e.printStackTrace();
         }
         return cnf;
