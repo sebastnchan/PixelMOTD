@@ -1,0 +1,4 @@
+name: PixelMOTD
+version: ${project.version}
+main: club.rigox.bungee.PixelMOTD
+description: MOTD plugin with RGB support and hover system.

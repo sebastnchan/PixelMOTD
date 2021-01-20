@@ -1,4 +1,4 @@
-package club.rigox.pixelmotd;
+ackage club.rigox.bukkit;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
