@@ -62,6 +62,7 @@
             <version>1.16.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <!-- BungeeCord -->
         <dependency>
             <groupId>net.md-5</groupId>
             <artifactId>bungeecord-api</artifactId>
@@ -69,6 +70,7 @@
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
+        <!-- BungeeCord JavaDocs -->
         <dependency>
             <groupId>net.md-5</groupId>
             <artifactId>bungeecord-api</artifactId>

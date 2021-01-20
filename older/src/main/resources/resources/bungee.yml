@@ -1,0 +1,5 @@
+main: dev.mruniverse.pixelmotd.init.bungeePixelMOTD
+name: PixelMOTD
+version: 8.8.6-Alpha3
+description: Motd Plugin with RGB Support and Hover System.
+author: MrUniverse44

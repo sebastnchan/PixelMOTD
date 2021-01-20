@@ -1,4 +1,4 @@
-ackage club.rigox.bukkit;
+package club.rigox.bukkit;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
