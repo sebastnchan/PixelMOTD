@@ -8,10 +8,10 @@ import net.md_5.bungee.event.EventHandler;
 
 import java.util.List;
 
-public class ProxyEvent implements Listener {
+public class WhitelistEvent implements Listener {
     private final PixelMOTD plugin;
 
-    public ProxyEvent (PixelMOTD plugin) {
+    public WhitelistEvent(PixelMOTD plugin) {
         this.plugin = plugin;
         plugin.getProxy().getPluginManager().registerListener(plugin, this);
     }
