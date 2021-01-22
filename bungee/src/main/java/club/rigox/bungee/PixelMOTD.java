@@ -2,6 +2,7 @@ package club.rigox.bungee;
 
 import club.rigox.bungee.utils.Converter;
 import club.rigox.bungee.utils.FileManager;
+import club.rigox.bungee.utils.Placeholders;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 
@@ -9,6 +10,8 @@ public final class PixelMOTD extends Plugin {
     public static PixelMOTD instance;
 
     private Converter converter;
+
+    private Placeholders placeholders;
 
     private Configuration commandFile;
     private Configuration editFile;
@@ -20,11 +23,12 @@ public final class PixelMOTD extends Plugin {
 
     @Override
     public void onEnable() {
-        instance = this;
+        instance     = this;
 
         loadConfigs();
 
-        new Converter();
+        converter    = new Converter();
+        placeholders = new Placeholders(this);
     }
 
     @Override
@@ -74,5 +78,9 @@ public final class PixelMOTD extends Plugin {
 
     public Converter getConverter() {
         return converter;
+    }
+
+    public Placeholders getPlaceholders() {
+        return placeholders;
     }
 }
