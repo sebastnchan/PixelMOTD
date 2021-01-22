@@ -1,6 +1,7 @@
 package club.rigox.bungee.utils;
 
 import club.rigox.bungee.PixelMOTD;
+import club.rigox.bungee.enums.ConfigType;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
@@ -9,6 +10,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.util.Arrays;
+import java.util.List;
 
 import static club.rigox.bungee.utils.Logger.*;
 
@@ -18,6 +21,7 @@ public class FileManager {
     public FileManager (PixelMOTD plugin) {
         this.plugin = plugin;
     }
+
     /**
      * Creates a config File if it doesn't exists,
      * reloads if specified file exists.
@@ -36,7 +40,7 @@ public class FileManager {
         Configuration cnf = null;
         try {
             cnf = ConfigurationProvider.getProvider(YamlConfiguration.class).load(configFile);
-        } catch (Exception e) {
+        } catch (IOException e) {
             error(String.format("A error occurred while loading the settings file. Error: %s", e));
             e.printStackTrace();
         }

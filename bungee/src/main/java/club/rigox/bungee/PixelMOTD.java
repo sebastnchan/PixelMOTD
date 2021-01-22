@@ -1,6 +1,7 @@
 package club.rigox.bungee;
 
 import club.rigox.bungee.enums.ConfigType;
+import club.rigox.bungee.utils.Converter;
 import club.rigox.bungee.utils.FileManager;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
@@ -11,6 +12,8 @@ import static club.rigox.bungee.utils.Logger.warn;
 
 public final class PixelMOTD extends Plugin {
     public static PixelMOTD instance;
+
+    private Converter converter;
 
     private Configuration commandFile;
     private Configuration editFile;
@@ -25,6 +28,8 @@ public final class PixelMOTD extends Plugin {
         instance = this;
 
         loadConfigs();
+
+        new Converter();
     }
 
     @Override
@@ -47,22 +52,33 @@ public final class PixelMOTD extends Plugin {
     public Configuration get(ConfigType configType) {
         switch (configType) {
             case COMMAND:
+                if (commandFile == null) loadConfigs();
                 return commandFile;
             case EDITABLE:
+                if (editFile == null) loadConfigs();
                 return editFile;
             case MODULES:
+                if (modulesFile == null) loadConfigs();
                 return modulesFile;
             case NORMAL_MOTD:
+                if (normalMotdFile == null) loadConfigs();
                 return normalMotdFile;
             case SETTINGS:
+                if (settingsFile == null) loadConfigs();
                 return settingsFile;
             case TIMER_MOTD:
+                if (timerMotdFile == null) loadConfigs();
                 return timerMotdFile;
             case WHITELIST_MOTD:
+                if (whitelistMotdFile == null) loadConfigs();
                 return whitelistMotdFile;
             default:
                 warn(String.format("ConfigType %s doesn't exists!", configType));
                 return null;
         }
+    }
+
+    public Converter getConverter() {
+        return converter;
     }
 }
