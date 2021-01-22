@@ -7,6 +7,7 @@ import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 
 import java.io.File;
+import java.util.Objects;
 
 import static club.rigox.bungee.utils.Logger.warn;
 
@@ -53,25 +54,25 @@ public final class PixelMOTD extends Plugin {
         switch (configType) {
             case COMMAND:
                 if (commandFile == null) loadConfigs();
-                return commandFile;
+                return Objects.requireNonNull(commandFile);
             case EDITABLE:
                 if (editFile == null) loadConfigs();
-                return editFile;
+                return Objects.requireNonNull(editFile);
             case MODULES:
                 if (modulesFile == null) loadConfigs();
-                return modulesFile;
+                return Objects.requireNonNull(modulesFile);
             case NORMAL_MOTD:
                 if (normalMotdFile == null) loadConfigs();
-                return normalMotdFile;
+                return Objects.requireNonNull(normalMotdFile);
             case SETTINGS:
                 if (settingsFile == null) loadConfigs();
-                return settingsFile;
+                return Objects.requireNonNull(settingsFile);
             case TIMER_MOTD:
                 if (timerMotdFile == null) loadConfigs();
-                return timerMotdFile;
+                return Objects.requireNonNull(timerMotdFile);
             case WHITELIST_MOTD:
                 if (whitelistMotdFile == null) loadConfigs();
-                return whitelistMotdFile;
+                return Objects.requireNonNull(whitelistMotdFile);
             default:
                 warn(String.format("ConfigType %s doesn't exists!", configType));
                 return null;
