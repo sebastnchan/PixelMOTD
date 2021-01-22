@@ -1,7 +1,6 @@
 package club.rigox.bungee.utils;
 
 import club.rigox.bungee.PixelMOTD;
-import club.rigox.bungee.enums.ConfigType;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
@@ -10,8 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
-import java.util.Arrays;
-import java.util.List;
 
 import static club.rigox.bungee.utils.Logger.*;
 

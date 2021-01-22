@@ -1,7 +1,6 @@
 package club.rigox.bungee.listeners;
 
 import club.rigox.bungee.PixelMOTD;
-import club.rigox.bungee.enums.ConfigType;
 import net.md_5.bungee.api.event.LoginEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
@@ -23,12 +22,12 @@ public class WhitelistEvent implements Listener {
         String connectionName        = e.getConnection().getName();
         String connectionUuid        = e.getConnection().getUniqueId().toString();
 
-        List<String> whitelistPlayer = plugin.get(ConfigType.EDITABLE).getStringList("whitelist.players-name");
-        List<String> whitelistUuid   = plugin.get(ConfigType.EDITABLE).getStringList("whitelist.players-uuid");
-        List<String> kickMessage     = plugin.get(ConfigType.EDITABLE).getStringList("whitelist.kick-message");
+        List<String> whitelistPlayer = plugin.getEditableFile().getStringList("whitelist.players-name");
+        List<String> whitelistUuid   = plugin.getEditableFile().getStringList("whitelist.players-uuid");
+        List<String> kickMessage     = plugin.getEditableFile().getStringList("whitelist.kick-message");
 
-        boolean whitelistCheck       = plugin.get(ConfigType.EDITABLE).getString("whitelist.check-mode").equalsIgnoreCase("LoginEvent");
-        boolean whitelistToggle      = plugin.get(ConfigType.EDITABLE).getBoolean("whitelist.toggle");
+        boolean whitelistCheck       = plugin.getEditableFile().getString("whitelist.check-mode").equalsIgnoreCase("LoginEvent");
+        boolean whitelistToggle      = plugin.getEditableFile()     .getBoolean("whitelist.toggle");
 
         if (whitelistCheck && whitelistToggle) {
             if (!whitelistPlayer.contains(connectionName) || !whitelistUuid.contains(connectionUuid)) {

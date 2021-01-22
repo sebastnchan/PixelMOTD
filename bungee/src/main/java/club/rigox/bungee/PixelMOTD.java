@@ -1,15 +1,9 @@
 package club.rigox.bungee;
 
-import club.rigox.bungee.enums.ConfigType;
 import club.rigox.bungee.utils.Converter;
 import club.rigox.bungee.utils.FileManager;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
-
-import java.io.File;
-import java.util.Objects;
-
-import static club.rigox.bungee.utils.Logger.warn;
 
 public final class PixelMOTD extends Plugin {
     public static PixelMOTD instance;
@@ -50,33 +44,32 @@ public final class PixelMOTD extends Plugin {
         whitelistMotdFile   = manager.loadConfig("whitelist-motd");
     }
 
-    public Configuration get(ConfigType configType) {
-        switch (configType) {
-            case COMMAND:
-                if (commandFile == null) loadConfigs();
-                return Objects.requireNonNull(commandFile);
-            case EDITABLE:
-                if (editFile == null) loadConfigs();
-                return Objects.requireNonNull(editFile);
-            case MODULES:
-                if (modulesFile == null) loadConfigs();
-                return Objects.requireNonNull(modulesFile);
-            case NORMAL_MOTD:
-                if (normalMotdFile == null) loadConfigs();
-                return Objects.requireNonNull(normalMotdFile);
-            case SETTINGS:
-                if (settingsFile == null) loadConfigs();
-                return Objects.requireNonNull(settingsFile);
-            case TIMER_MOTD:
-                if (timerMotdFile == null) loadConfigs();
-                return Objects.requireNonNull(timerMotdFile);
-            case WHITELIST_MOTD:
-                if (whitelistMotdFile == null) loadConfigs();
-                return Objects.requireNonNull(whitelistMotdFile);
-            default:
-                warn(String.format("ConfigType %s doesn't exists!", configType));
-                return null;
-        }
+    public Configuration getEditableFile() {
+        return editFile;
+    }
+
+    public Configuration getCommandFile() {
+        return commandFile;
+    }
+
+    public Configuration getModulesFile() {
+        return modulesFile;
+    }
+
+    public Configuration getNormalMotdFile() {
+        return normalMotdFile;
+    }
+
+    public Configuration getSettingsFile() {
+        return settingsFile;
+    }
+
+    public Configuration getTimerMotdFile() {
+        return timerMotdFile;
+    }
+
+    public Configuration getWhitelistMotdFile() {
+        return whitelistMotdFile;
     }
 
     public Converter getConverter() {
