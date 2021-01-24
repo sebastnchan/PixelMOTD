@@ -1,8 +1,10 @@
 package club.rigox.bungee;
 
+import club.rigox.bungee.commands.PixelCommand;
 import club.rigox.bungee.utils.Converter;
 import club.rigox.bungee.utils.FileManager;
 import club.rigox.bungee.utils.Placeholders;
+import co.aikar.commands.BungeeCommandManager;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 
@@ -26,6 +28,7 @@ public final class PixelMOTD extends Plugin {
         instance     = this;
 
         loadConfigs();
+        registerCommands();
 
         converter    = new Converter();
         placeholders = new Placeholders(this);
@@ -46,6 +49,12 @@ public final class PixelMOTD extends Plugin {
         settingsFile        = manager.loadConfig("settings");
         timerMotdFile       = manager.loadConfig("timer-motd");
         whitelistMotdFile   = manager.loadConfig("whitelist-motd");
+    }
+
+    public void registerCommands() {
+        BungeeCommandManager manager = new BungeeCommandManager(this);
+
+        manager.registerCommand(new PixelCommand(this));
     }
 
     public Configuration getEditableFile() {
