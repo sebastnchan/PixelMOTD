@@ -53,8 +53,8 @@ public class PixelCommand extends BaseCommand {
         if (toggle.equalsIgnoreCase("off")) {
             plugin.getEditableFile().set("whitelist.toggle", false);
 
-            plugin.loadConfigs();
-            plugin.reloadEditable();
+//            plugin.loadConfigs();
+            plugin.getManager().reloadConfig(ConfigType.EDITABLE);
 
             sender.sendMessage(new TextComponent(color("&cWhitelist disabled.")));
             return;
@@ -63,8 +63,8 @@ public class PixelCommand extends BaseCommand {
         if (toggle.equalsIgnoreCase("on")) {
             plugin.getEditableFile().set("whitelist.toggle", true);
 
-            plugin.loadConfigs();
-            plugin.reloadEditable();
+//            plugin.loadConfigs();
+            plugin.getManager().reloadConfig(ConfigType.EDITABLE);
 
             sender.sendMessage(new TextComponent(color("&aWhitelist enabled.")));
         }

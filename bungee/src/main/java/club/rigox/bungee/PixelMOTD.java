@@ -104,12 +104,6 @@ public final class PixelMOTD extends Plugin {
         return whitelistMotdFile;
     }
 
-    public void reloadEditable() throws IOException {
-        manager.loadConfig("edit");
-
-        ConfigurationProvider.getProvider(YamlConfiguration.class)
-                .save(editFile, new File(getDataFolder(), "settings.yml"));
-    }
     public Converter getConverter() {
         return converter;
     }
