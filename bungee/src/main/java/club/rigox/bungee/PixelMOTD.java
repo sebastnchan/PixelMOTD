@@ -1,33 +1,48 @@
 package club.rigox.bungee;
 
 import club.rigox.bungee.commands.PixelCommand;
+import club.rigox.bungee.listeners.WhitelistEvent;
 import club.rigox.bungee.utils.Converter;
 import club.rigox.bungee.utils.FileManager;
 import club.rigox.bungee.utils.Placeholders;
 import co.aikar.commands.BungeeCommandManager;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
+import net.md_5.bungee.config.ConfigurationProvider;
+import net.md_5.bungee.config.YamlConfiguration;
+
+import java.io.File;
+import java.io.IOException;
+
+import static club.rigox.bungee.utils.Logger.debug;
 
 public final class PixelMOTD extends Plugin {
     public static PixelMOTD instance;
 
     private Converter converter;
 
+    private FileManager manager;
+
     private Placeholders placeholders;
 
-    private Configuration commandFile;
-    private Configuration editFile;
-    private Configuration modulesFile;
-    private Configuration normalMotdFile;
-    private Configuration settingsFile;
-    private Configuration timerMotdFile;
-    private Configuration whitelistMotdFile;
+    public Configuration commandFile;
+    public Configuration editFile;
+    public Configuration modulesFile;
+    public Configuration normalMotdFile;
+    public Configuration settingsFile;
+    public Configuration timerMotdFile;
+    public Configuration whitelistMotdFile;
+
+
 
     @Override
     public void onEnable() {
         instance     = this;
 
+        manager = new FileManager(this);
+
         loadConfigs();
+        registerListeners();
         registerCommands();
 
         converter    = new Converter();
@@ -39,9 +54,11 @@ public final class PixelMOTD extends Plugin {
 
     }
 
-    public void loadConfigs() {
-        FileManager manager = new FileManager(this);
+    private void registerListeners() {
+        new WhitelistEvent(this);
+    }
 
+    public void loadConfigs() {
         commandFile         = manager.loadConfig("command");
         editFile            = manager.loadConfig("edit");
         modulesFile         = manager.loadConfig("modules");
@@ -49,6 +66,8 @@ public final class PixelMOTD extends Plugin {
         settingsFile        = manager.loadConfig("settings");
         timerMotdFile       = manager.loadConfig("timer-motd");
         whitelistMotdFile   = manager.loadConfig("whitelist-motd");
+
+        debug("Configs has been loaded!");
     }
 
     public void registerCommands() {
@@ -85,11 +104,21 @@ public final class PixelMOTD extends Plugin {
         return whitelistMotdFile;
     }
 
+    public void reloadEditable() throws IOException {
+        manager.loadConfig("edit");
+
+        ConfigurationProvider.getProvider(YamlConfiguration.class)
+                .save(editFile, new File(getDataFolder(), "settings.yml"));
+    }
     public Converter getConverter() {
         return converter;
     }
 
     public Placeholders getPlaceholders() {
         return placeholders;
+    }
+
+    public FileManager getManager() {
+        return manager;
     }
 }

@@ -1,6 +1,7 @@
 package club.rigox.bungee.utils;
 
 import club.rigox.bungee.PixelMOTD;
+import club.rigox.bungee.enums.ConfigType;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
@@ -30,8 +31,8 @@ public class FileManager {
 
         if (!configFile.exists()) {
             plugin.getDataFolder().mkdirs();
-            saveConfig(configName);
             debug(configName + ".yml config was created!");
+            saveConfig(configName);
         }
 
         Configuration cnf = null;
@@ -61,5 +62,33 @@ public class FileManager {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void reloadConfig(ConfigType type) throws IOException {
+        switch (type) {
+            case SETTINGS:
+                File settings = new File(plugin.getDataFolder(), "settings.yml");
+                ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.settingsFile, settings);
+            case WHITELIST_MOTD:
+                File whitelistMotd = new File(plugin.getDataFolder(), "whitelist-motd.yml");
+                ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.whitelistMotdFile, whitelistMotd);
+            case NORMAL_MOTD:
+                File normalMotd = new File(plugin.getDataFolder(), "normal-motd.yml");
+                ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.normalMotdFile, normalMotd);
+            case EDITABLE:
+                File editable = new File(plugin.getDataFolder(), "edit.yml");
+                ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.editFile, editable);
+            default:
+                error("Something went wrong. Please notify it to the plugin author.");
+        }
+
+//        commandFile         = manager.loadConfig("command");
+//        editFile            = manager.loadConfig("edit");
+//        modulesFile         = manager.loadConfig("modules");
+//        normalMotdFile      = manager.loadConfig("normal-motd");
+//        settingsFile        = manager.loadConfig("settings");
+//        timerMotdFile       = manager.loadConfig("timer-motd");
+//        whitelistMotdFile   = manager.loadConfig("whitelist-motd");
+
     }
 }
