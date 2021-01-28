@@ -28,13 +28,13 @@ public class FileManager {
      */
     public Configuration loadConfig(String configName) {
         File configFile = new File(plugin.getDataFolder().getPath(), configName + ".yml");
-
-        if (!configFile.exists()) {
-            plugin.getDataFolder().mkdirs();
-            debug(configName + ".yml config was created!");
-            saveConfig(configName);
+        if(!configFile.exists()) {
+            boolean created = plugin.getDataFolder().mkdirs();
+            if (created) {
+                debug(configName + ".yml config was created!");
+                saveConfig(configName);
+            }
         }
-
         Configuration cnf = null;
         try {
             cnf = ConfigurationProvider.getProvider(YamlConfiguration.class).load(configFile);
@@ -51,7 +51,10 @@ public class FileManager {
         File file      = new File(plugin.getDataFolder(), configName + ".yml");
 
         if (!folderDir.exists()) {
-            folderDir.mkdir();
+            boolean created = folderDir.mkdir();
+            if (created) {
+                debug(configName + ".yml config was created!");
+            }
         }
 
         if (!file.exists()) {
@@ -68,16 +71,21 @@ public class FileManager {
         switch (type) {
             case SETTINGS:
                 File settings = new File(plugin.getDataFolder(), "settings.yml");
-                ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.settingsFile, settings);
+                plugin.settingsFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(settings);
+                //ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.settingsFile, settings);
+                return;
             case WHITELIST_MOTD:
                 File whitelistMotd = new File(plugin.getDataFolder(), "whitelist-motd.yml");
-                ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.whitelistMotdFile, whitelistMotd);
+                plugin.whitelistMotdFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(whitelistMotd);
+                return;
             case NORMAL_MOTD:
                 File normalMotd = new File(plugin.getDataFolder(), "normal-motd.yml");
-                ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.normalMotdFile, normalMotd);
+                plugin.normalMotdFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(normalMotd);
+                return;
             case EDITABLE:
                 File editable = new File(plugin.getDataFolder(), "edit.yml");
-                ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.editFile, editable);
+                plugin.editFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(editable);
+                return;
             default:
                 error("Something went wrong. Please notify it to the plugin author.");
         }
