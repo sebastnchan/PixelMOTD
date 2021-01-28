@@ -10,6 +10,7 @@ import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
 import java.util.List;
+import java.util.UUID;
 
 import static club.rigox.bungee.utils.Logger.color;
 import static club.rigox.bungee.utils.Logger.debug;
@@ -24,10 +25,8 @@ public class WhitelistEvent implements Listener {
 
     @EventHandler
     public void onLogin(LoginEvent e) {
-        debug("asd");
         if (e.isCancelled()) return;
 
-        debug("Llegamos aki");
         String connectionName        = e.getConnection().getName();
         String connectionUuid        = e.getConnection().getUniqueId().toString();
 
@@ -38,9 +37,6 @@ public class WhitelistEvent implements Listener {
         boolean whitelistCheck       = plugin.getEditableFile().getString("whitelist.check-mode").equalsIgnoreCase("LoginEvent");
         boolean whitelistToggle      = plugin.getEditableFile().getBoolean("whitelist.toggle");
 
-        debug(String.valueOf(whitelistCheck));
-        debug(String.valueOf(whitelistToggle));
-
         if (whitelistCheck && whitelistToggle) {
             if (!whitelistPlayer.contains(connectionName) && !whitelistUuid.contains(connectionUuid)) {
                 String kickReason = plugin.getConverter().fromListToString(whitelistMsg);
@@ -48,7 +44,6 @@ public class WhitelistEvent implements Listener {
                 e.setCancelReason(new TextComponent(color(kickReason
                         .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor())
                         .replace("%type%", "Server"))));
-                debug("Toy aki");
             }
             return;
         }
@@ -73,13 +68,27 @@ public class WhitelistEvent implements Listener {
     }
 
     @EventHandler
-    public void onPostLoginEvent(PostLoginEvent event) {
-        if(plugin.getEditableFile().getString("whitelist.check-mode").equalsIgnoreCase("LoginEvent")) {
-            if(plugin.getEditableFile().getBoolean("whitelist.toggle")) {
-                if(!plugin.getEditableFile().getStringList("whitelist.players-name").contains(event.getPlayer().getName()) && !plugin.getEditableFile().getStringList("whitelist.players-uuid").contains(event.getPlayer().getUniqueId().toString())) {
-                    String kickReason = plugin.getConverter().fromListToString(plugin.getEditableFile().getStringList("whitelist.kick-message"));
-                    event.getPlayer().disconnect(new TextComponent(ChatColor.translateAlternateColorCodes('&', kickReason.replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor()).replace("%type%","Server"))));
-                }
+    public void onPostLoginEvent(PostLoginEvent e) {
+        UUID connectionUuid        = e.getPlayer().getUniqueId();
+
+        String connectionName        = e.getPlayer().getName();
+        String whitelistCheck   = plugin.getEditableFile().getString("whitelist.check-mode");
+
+        List<String> whitelistPlayer = plugin.getEditableFile().getStringList("whitelist.players-name");
+        List<String> whitelistUuid   = plugin.getEditableFile().getStringList("whitelist.players-uuid");
+        List<String> whitelistMsg    = plugin.getEditableFile().getStringList("whitelist.kick-message");
+
+        boolean whitelistToggle = plugin.getEditableFile().getBoolean("whitelist.toggle");
+
+
+        if (whitelistCheck.equalsIgnoreCase("LoginEvent") && whitelistToggle) {
+            if (!whitelistPlayer.contains(connectionName) && !whitelistUuid.contains(connectionUuid)) {
+                String kickReason = plugin.getConverter().fromListToString(whitelistMsg);
+                e.getPlayer().disconnect(
+                        new TextComponent(color(kickReason
+                                .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor())
+                                .replace("%type%","Server")))
+                );
             }
         }
     }

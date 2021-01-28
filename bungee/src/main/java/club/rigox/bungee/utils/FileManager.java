@@ -97,7 +97,6 @@ public class FileManager {
                     ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.editFile, editable);
                     plugin.editFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(editable);
 
-                    debug("Editable was reloaded!");
                     return;
                 default:
                     error("Something went wrong. Please notify it to the plugin author.");
