@@ -69,9 +69,9 @@ public class WhitelistEvent implements Listener {
 
     @EventHandler
     public void onPostLoginEvent(PostLoginEvent e) {
-        UUID connectionUuid        = e.getPlayer().getUniqueId();
-
         String connectionName        = e.getPlayer().getName();
+        String connectionUuid        = e.getPlayer().getUniqueId().toString();
+
         String whitelistCheck   = plugin.getEditableFile().getString("whitelist.check-mode");
 
         List<String> whitelistPlayer = plugin.getEditableFile().getStringList("whitelist.players-name");
