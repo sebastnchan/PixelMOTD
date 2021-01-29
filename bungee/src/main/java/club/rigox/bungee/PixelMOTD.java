@@ -2,6 +2,7 @@ package club.rigox.bungee;
 
 import club.rigox.bungee.commands.CommandUtils;
 import club.rigox.bungee.commands.PixelCommand;
+import club.rigox.bungee.commands.WhitelistCommand;
 import club.rigox.bungee.listeners.WhitelistEvent;
 import club.rigox.bungee.utils.Converter;
 import club.rigox.bungee.utils.FileManager;
@@ -73,6 +74,7 @@ public final class PixelMOTD extends Plugin {
         BungeeCommandManager manager = new BungeeCommandManager(this);
 
         manager.registerCommand(new PixelCommand(this));
+        manager.registerCommand(new WhitelistCommand(this));
     }
 
     public Configuration getEditableFile() {
