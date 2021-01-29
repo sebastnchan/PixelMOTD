@@ -91,5 +91,23 @@ public class WhitelistCommand extends BaseCommand {
         List<String> uuidList   = plugin.getEditableFile().getStringList("whitelist.players-uuid");
         List<String> playerList = plugin.getEditableFile().getStringList("whitelist.players-name");
 
+        if (isUuid(player)) {
+            if (!uuidList.contains(player)) {
+                sendMessage(sender, String.format("UUID %s isn't on the whitelist!", player));
+                return;
+            }
+
+            uuidList.remove(player);
+            sendMessage(sender, String.format("UUID %s was removed from the whitelist!", player));
+            return;
+        }
+
+        if (!uuidList.contains(player)) {
+            sendMessage(sender, String.format("Player %s isn't on the whitelist!", player));
+            return;
+        }
+
+        playerList.remove(player);
+        sendMessage(sender, String.format("Player %s was removed from the whitelist!", player));
     }
 }
