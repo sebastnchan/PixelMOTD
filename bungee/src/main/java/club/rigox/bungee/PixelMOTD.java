@@ -1,5 +1,6 @@
 package club.rigox.bungee;
 
+import club.rigox.bungee.commands.CommandUtils;
 import club.rigox.bungee.commands.PixelCommand;
 import club.rigox.bungee.listeners.WhitelistEvent;
 import club.rigox.bungee.utils.Converter;
@@ -8,11 +9,6 @@ import club.rigox.bungee.utils.Placeholders;
 import co.aikar.commands.BungeeCommandManager;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
-import net.md_5.bungee.config.ConfigurationProvider;
-import net.md_5.bungee.config.YamlConfiguration;
-
-import java.io.File;
-import java.io.IOException;
 
 import static club.rigox.bungee.utils.Logger.debug;
 
@@ -24,6 +20,8 @@ public final class PixelMOTD extends Plugin {
     private FileManager manager;
 
     private Placeholders placeholders;
+
+    private CommandUtils cmdUtils;
 
     public Configuration commandFile;
     public Configuration editFile;
@@ -39,7 +37,8 @@ public final class PixelMOTD extends Plugin {
     public void onEnable() {
         instance     = this;
 
-        manager = new FileManager(this);
+        manager      = new FileManager(this);
+        cmdUtils     = new CommandUtils(this);
 
         loadConfigs();
         registerListeners();
@@ -114,5 +113,9 @@ public final class PixelMOTD extends Plugin {
 
     public FileManager getManager() {
         return manager;
+    }
+
+    public CommandUtils getCmdUtils() {
+        return cmdUtils;
     }
 }

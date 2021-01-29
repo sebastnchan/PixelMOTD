@@ -2,6 +2,7 @@ package club.rigox.bungee.commands;
 
 import club.rigox.bungee.PixelMOTD;
 import club.rigox.bungee.enums.ConfigType;
+import club.rigox.bungee.enums.KickType;
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
 import net.md_5.bungee.api.CommandSender;
@@ -23,28 +24,6 @@ public class PixelCommand extends BaseCommand {
     public PixelCommand (PixelMOTD plugin) {
         this.plugin = plugin;
     }
-
-//    @Subcommand("whitelist")
-//    @CommandPermission("pixelmotd.command.whitelist.toggle")
-//    public void onWhitelist(CommandSender sender, @Optional String server, @Single @Optional String toggle) {
-//        if (server == null && toggle == null) {
-//            sender.sendMessage(new TextComponent(color("&aWhitelist command help.")));
-//            return;
-//        }
-//
-//        if (toggle == null) {
-//            sender.sendMessage(new TextComponent(color("Global whitelist status")));
-//            return;
-//        }
-//
-//        if (toggle.equalsIgnoreCase("on")) {
-//            return;
-//        }
-//
-//        if (toggle.equalsIgnoreCase("off")) {
-//            return;
-//        }
-//    }
 
     @Subcommand("whitelist")
     @CommandPermission("pixelmotd.command.whitelist.toggle")
@@ -76,16 +55,19 @@ public class PixelCommand extends BaseCommand {
     @CommandCompletion("whitelist|blacklist ")
     public void onAdd(CommandSender sender, String type, @Single String player) {
         if (type.equalsIgnoreCase("whitelist")) {
+            List<String> uuidList   = plugin.getEditableFile().getStringList("whitelist.players-uuid");
+            List<String> playerList = plugin.getEditableFile().getStringList("whitelist.players-name");
+
             if (isUuid(player)) {
-                List<String> uuidList = plugin.getEditableFile().getStringList("whitelist.players-uuid");
 
                 if (plugin.getEditableFile().get("whitelist.players-uuid") == null) {
-                    List<String> list = new ArrayList<>();
-                    list.add(player);
+//                    List<String> list = new ArrayList<>();
+//                    list.add(player);
+//
+//                    plugin.getEditableFile().set("whitelist.players-uuid", list);
+//                    plugin.getManager().reloadConfig(ConfigType.EDITABLE);
 
-                    plugin.getEditableFile().set("whitelist.players-uuid", list);
-                    plugin.getManager().reloadConfig(ConfigType.EDITABLE);
-
+                    plugin.getCmdUtils().initEditList(KickType.WHITELIST_UUID, player);
                     sendMessage(sender, String.format("UUID %s has been added to the whitelist!", player));
                     return;
                 }
@@ -100,13 +82,20 @@ public class PixelCommand extends BaseCommand {
                 plugin.getEditableFile().set("whitelist.players-uuid", uuidList);
                 plugin.getManager().reloadConfig(ConfigType.EDITABLE);
 
+                sendMessage(sender, String.format("UUID %s has been added to the whitelist!", player));
                 return;
             }
 
-            List<String> list = new ArrayList<>();
-            list.add(player);
+            if (plugin.getEditableFile().get("whitelist.players-name") == null) {
+                plugin.getCmdUtils().initEditList(KickType.WHITELIST_PLAYER, player);
+                sendMessage(sender, String.format("Player %s has been added to the whitelist!", player));
+                return;
+            }
 
-            plugin.getEditableFile().set("whitelist.players-name", list);
+
+            playerList.add(player);
+
+            plugin.getEditableFile().set("whitelist.players-name", playerList);
             plugin.getManager().reloadConfig(ConfigType.EDITABLE);
 
             sendMessage(sender, String.format("Player %s has been added to the whitelist!", player));
