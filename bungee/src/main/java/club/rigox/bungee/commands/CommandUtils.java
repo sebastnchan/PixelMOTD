@@ -3,14 +3,15 @@ package club.rigox.bungee.commands;
 import club.rigox.bungee.PixelMOTD;
 import club.rigox.bungee.enums.ConfigType;
 import club.rigox.bungee.enums.KickType;
+import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static club.rigox.bungee.utils.Logger.debug;
-import static club.rigox.bungee.utils.Logger.error;
+import static club.rigox.bungee.utils.Logger.*;
 
 public class CommandUtils {
     private final PixelMOTD plugin;
@@ -52,5 +53,24 @@ public class CommandUtils {
             default:
                 error("Something wrong happen. Please inform this to the author.");
         }
+    }
+
+    public void kickOnWhitelist() {
+        List<String> whitelistMsg       = plugin.getEditableFile().getStringList("whitelist.kick-message");
+
+        List<String> whitelistedPlayers = plugin.getEditableFile().getStringList("whitelist.players-name");
+        List<String> whitelistedUuids   = plugin.getEditableFile().getStringList("whitelist.players-uuid");
+
+        String kickReason               = plugin.getConverter().fromListToString(whitelistMsg);
+
+        for (ProxiedPlayer player : plugin.getProxy().getPlayers()) {
+
+            if (!whitelistedPlayers.contains(player.toString()) || !whitelistedUuids.contains(player.getUniqueId().toString())) {
+                player.disconnect(new TextComponent(color(kickReason
+                        .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor()))
+                        .replace("%type%", "Server")));
+            }
+        }
+
     }
 }

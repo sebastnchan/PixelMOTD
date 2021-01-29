@@ -28,6 +28,8 @@ public class WhitelistCommand extends BaseCommand {
     @Subcommand("whitelist on")
     @CommandPermission("pixelmotd.command.whitelist.toggle")
     public void onWhitelistEnable(CommandSender sender) {
+        plugin.getCmdUtils().kickOnWhitelist();
+
         plugin.getEditableFile().set("whitelist.toggle", true);
         plugin.getManager().reloadConfig(ConfigType.EDITABLE);
 
@@ -102,6 +104,8 @@ public class WhitelistCommand extends BaseCommand {
             plugin.getEditableFile().set("whitelist.players-uuid", playerList);
             plugin.getManager().reloadConfig(ConfigType.EDITABLE);
 
+            plugin.getCmdUtils().kickOnWhitelist();
+
             sendMessage(sender, String.format("UUID %s was removed from the whitelist!", player));
             return;
         }
@@ -115,6 +119,8 @@ public class WhitelistCommand extends BaseCommand {
 
         plugin.getEditableFile().set("whitelist.players-name", playerList);
         plugin.getManager().reloadConfig(ConfigType.EDITABLE);
+
+        plugin.getCmdUtils().kickOnWhitelist();
 
         sendMessage(sender, String.format("Player %s was removed from the whitelist!", player));
     }
