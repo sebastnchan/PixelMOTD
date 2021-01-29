@@ -4,10 +4,7 @@ import club.rigox.bungee.PixelMOTD;
 import club.rigox.bungee.enums.ConfigType;
 import club.rigox.bungee.enums.KickType;
 import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.CommandAlias;
-import co.aikar.commands.annotation.CommandPermission;
-import co.aikar.commands.annotation.Single;
-import co.aikar.commands.annotation.Subcommand;
+import co.aikar.commands.annotation.*;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
 
@@ -47,6 +44,7 @@ public class WhitelistCommand extends BaseCommand {
 
     @Subcommand("whitelist add")
     @CommandPermission("pixelmotd.command.add")
+    @CommandCompletion("@players")
     public void onAdd(CommandSender sender, @Single String player) {
         List<String> uuidList   = plugin.getEditableFile().getStringList("whitelist.players-uuid");
         List<String> playerList = plugin.getEditableFile().getStringList("whitelist.players-name");
@@ -79,6 +77,11 @@ public class WhitelistCommand extends BaseCommand {
             return;
         }
 
+        if (playerList.contains(player)) {
+            sendMessage(sender, String.format("Player %s is already on the whitelist!", player));
+            return;
+        }
+
         playerList.add(player);
 
         plugin.getEditableFile().set("whitelist.players-name", playerList);
@@ -89,6 +92,7 @@ public class WhitelistCommand extends BaseCommand {
 
     @Subcommand("whitelist remove")
     @CommandPermission("pixelmotd.command.remove")
+    @CommandCompletion("@players")
     public void onWhitelistRemove(CommandSender sender, String player) {
         List<String> uuidList   = plugin.getEditableFile().getStringList("whitelist.players-uuid");
         List<String> playerList = plugin.getEditableFile().getStringList("whitelist.players-name");

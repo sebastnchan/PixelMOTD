@@ -73,6 +73,8 @@ public final class PixelMOTD extends Plugin {
     public void registerCommands() {
         BungeeCommandManager manager = new BungeeCommandManager(this);
 
+        manager.enableUnstableAPI("brigadier");
+
         manager.registerCommand(new PixelCommand(this));
         manager.registerCommand(new WhitelistCommand(this));
     }
