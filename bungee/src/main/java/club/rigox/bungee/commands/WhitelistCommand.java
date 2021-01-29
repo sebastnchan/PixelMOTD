@@ -98,16 +98,24 @@ public class WhitelistCommand extends BaseCommand {
             }
 
             uuidList.remove(player);
+
+            plugin.getEditableFile().set("whitelist.players-uuid", playerList);
+            plugin.getManager().reloadConfig(ConfigType.EDITABLE);
+
             sendMessage(sender, String.format("UUID %s was removed from the whitelist!", player));
             return;
         }
 
-        if (!uuidList.contains(player)) {
+        if (!playerList.contains(player)) {
             sendMessage(sender, String.format("Player %s isn't on the whitelist!", player));
             return;
         }
 
         playerList.remove(player);
+
+        plugin.getEditableFile().set("whitelist.players-name", playerList);
+        plugin.getManager().reloadConfig(ConfigType.EDITABLE);
+
         sendMessage(sender, String.format("Player %s was removed from the whitelist!", player));
     }
 }
