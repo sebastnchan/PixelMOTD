@@ -55,7 +55,7 @@ public class CommandUtils {
         }
     }
 
-    public void kickOnWhitelist() {
+    public void kickOnWhitelist(KickType type) {
         List<String> whitelistMsg       = plugin.getEditableFile().getStringList("whitelist.kick-message");
 
         List<String> whitelistedPlayers = plugin.getEditableFile().getStringList("whitelist.players-name");
@@ -64,11 +64,30 @@ public class CommandUtils {
         String kickReason               = plugin.getConverter().fromListToString(whitelistMsg);
 
         for (ProxiedPlayer player : plugin.getProxy().getPlayers()) {
+            switch (type) {
+                case WHITELIST_UUID:
+                    if (!whitelistedUuids.contains(player.getUniqueId().toString())) {
+                        if (whitelistedPlayers.contains(player.toString())) {
+                            return;
+                        }
 
-            if (!whitelistedPlayers.contains(player.toString()) || !whitelistedUuids.contains(player.getUniqueId().toString())) {
-                player.disconnect(new TextComponent(color(kickReason
-                        .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor()))
-                        .replace("%type%", "Server")));
+                        player.disconnect(new TextComponent(color(kickReason
+                                .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor()))
+                                .replace("%type%", "Server")));
+                        return;
+                    }
+
+                case WHITELIST_PLAYER:
+                    if (!whitelistedPlayers.contains(player.toString())) {
+                        if (whitelistedUuids.contains(player.getUniqueId().toString())) {
+                            return;
+                        }
+
+                        player.disconnect(new TextComponent(color(kickReason
+                                .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor()))
+                                .replace("%type%", "Server")));
+                        return;
+                    }
             }
         }
 
