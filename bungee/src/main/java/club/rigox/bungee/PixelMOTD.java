@@ -3,6 +3,7 @@ package club.rigox.bungee;
 import club.rigox.bungee.commands.CommandUtils;
 import club.rigox.bungee.commands.PixelCommand;
 import club.rigox.bungee.commands.WhitelistCommand;
+import club.rigox.bungee.enums.ConfigType;
 import club.rigox.bungee.listeners.WhitelistEvent;
 import club.rigox.bungee.utils.Converter;
 import club.rigox.bungee.utils.FileManager;
@@ -68,6 +69,16 @@ public final class PixelMOTD extends Plugin {
         whitelistMotdFile   = manager.loadConfig("whitelist-motd");
 
         debug("Configs has been loaded!");
+    }
+
+    public void reloadConfigs() {
+        manager.reloadConfig(ConfigType.EDITABLE);
+        manager.reloadConfig(ConfigType.COMMAND);
+        manager.reloadConfig(ConfigType.MODULES);
+        manager.reloadConfig(ConfigType.NORMAL_MOTD);
+        manager.reloadConfig(ConfigType.SETTINGS);
+        manager.reloadConfig(ConfigType.TIMER_MOTD);
+        manager.reloadConfig(ConfigType.WHITELIST_MOTD);
     }
 
     public void registerCommands() {
