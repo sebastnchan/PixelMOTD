@@ -98,14 +98,14 @@ public final class PixelMOTD extends Plugin {
         manager.registerCommand(new PixelCommand(this));
         manager.registerCommand(new WhitelistCommand(this));
 
-        manager.addSupportedLanguage(Locale.ENGLISH);
-
-        try {
-            manager.getLocales().loadYamlLanguageFile("messages.yml", Locale.ENGLISH);
-        } catch (IOException e) {
-            warn(String.format("A error occurred while copying the config messages.yml to the plugin data folder. Error: %s", e));
-            e.printStackTrace();
-        }
+//        manager.addSupportedLanguage(Locale.ENGLISH);
+//
+//        try {
+//        manager.getLocales().loadYamlLanguageFile("messages.yml", Locale.ENGLISH);
+//        } catch (IOException e) {
+//            warn(String.format("A error occurred while copying the config messages.yml to the plugin data folder. Error: %s", e));
+//            e.printStackTrace();
+//        }
 
     }
 

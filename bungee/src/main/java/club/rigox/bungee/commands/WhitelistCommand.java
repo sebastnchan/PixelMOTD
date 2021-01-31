@@ -6,13 +6,11 @@ import club.rigox.bungee.enums.KickType;
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
 import net.md_5.bungee.api.CommandSender;
-import net.md_5.bungee.api.chat.TextComponent;
 
 import java.util.List;
 
 import static club.rigox.bungee.commands.CommandUtils.isUuid;
 import static club.rigox.bungee.utils.FileManager.getMessageString;
-import static club.rigox.bungee.utils.Logger.color;
 import static club.rigox.bungee.utils.Logger.sendMessage;
 
 @CommandAlias("bpmotd")
@@ -26,8 +24,9 @@ public class WhitelistCommand extends BaseCommand {
 
     @Subcommand("whitelist")
     public void sendWhitelistHelp(CommandSender sender) {
-        sendMessage(sender, "Mami ke tu kiereee aki llego tu tiburon");
+        sendMessage(sender, plugin.getMessagesConfig().getStringList("help.whitelist"));
     }
+
     @Subcommand("whitelist on")
     @CommandPermission("pixelmotd.whitelist.manage")
     public void onWhitelistEnable(CommandSender sender) {

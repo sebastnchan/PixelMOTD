@@ -56,7 +56,7 @@ public class CommandUtils {
     }
 
     public void kickOnWhitelist(KickType type) {
-        List<String> whitelistMsg       = plugin.getEditableFile().getStringList("whitelist.kick-message");
+        List<String> whitelistMsg       = plugin.getMessagesConfig().getStringList("whitelist.kick-message");
 
         List<String> whitelistedPlayers = plugin.getEditableFile().getStringList("whitelist.players-name");
         List<String> whitelistedUuids   = plugin.getEditableFile().getStringList("whitelist.players-uuid");
@@ -72,8 +72,7 @@ public class CommandUtils {
                         }
 
                         player.disconnect(new TextComponent(color(kickReason
-                                .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor()))
-                                .replace("%type%", "Server")));
+                                .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor()))));
                         return;
                     }
 
@@ -84,8 +83,7 @@ public class CommandUtils {
                         }
 
                         player.disconnect(new TextComponent(color(kickReason
-                                .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor()))
-                                .replace("%type%", "Server")));
+                                .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor()))));
                         return;
                     }
             }
