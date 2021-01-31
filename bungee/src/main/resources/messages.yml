@@ -19,14 +19,36 @@ acf-core:
   could_not_find_player: "&cCould not find a player by the name: {search}"
   no_command_matched_search: "No command matched {search}."
 
+help:
+  main:
+    - "&7&m------------------------------------------------"
+    - "&b&lPixel MOTD"
+    - "&7&oCommand Help."
+    - "&7&m------------------------------------------------"
+    - "&8&l* &b/bpmotd whitelist &f- Whitelist commands."
+    - "&8&l* &b/bpmotd reload &f- Reload plugin configurations."
+    - "&7&m------------------------------------------------"
+  whitelist:
+    - "&7&m------------------------------------------------"
+    - "&b&lPixel MOTD"
+    - "&7&oWhitelist Command Help."
+    - "&7&m------------------------------------------------"
+    - "&8&l* &b/bpmotd whitelist on &f- Enable whitelist"
+    - "&8&l* &b/bpmotd whitelist off &f- Disable whitelist"
+    - "&8&l* &b/bpmotd whitelist add (UUID/Player) &f- Add a player to whitelist"
+    - "&8&l* &b/bpmotd whitelist remove (UUID/Player) &f- Remove a player of whitelist"
+    - "&7&m------------------------------------------------"
 whitelist:
   enabled: "&cWhitelist has been enabled! All players not on whitelist has been kicked."
   disabled: "&aWhitelist has been disabled!"
   kick-message:
     - ""
-    - "&cYou were removed from the %type%!"
-    - "&cWhitelist status enabled by %whitelist_author%"
+    - "&b&lPixel MOTD"
     - ""
+    - "&fYou were removed from the server!"
+    - "&fWhitelist status has been enabled by %whitelist_author%"
+    - ""
+
   uuid:
     added: "&aUUID %s has been added to the whitelist!"
     already: "&cUUID %s is already on the whitelist!"

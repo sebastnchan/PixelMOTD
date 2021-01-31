@@ -5,6 +5,8 @@ import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 
+import java.util.List;
+
 public class Logger {
     /**
      * Colorize a string provided to method
@@ -57,6 +59,18 @@ public class Logger {
      */
     public static void sendMessage(CommandSender player, String message) {
         player.sendMessage(new ComponentBuilder(color(message)).create());
+    }
+
+    /**
+     * Sends a message list to a Proxied Player.
+     *
+     * @param player Proxied Player
+     * @param message Message list to send.
+     */
+    public static void sendMessage(CommandSender player, List<String> message) {
+        for (String list : message) {
+            player.sendMessage(new ComponentBuilder(color(list)).create());
+        }
     }
 
     /**

@@ -24,6 +24,10 @@ public class WhitelistCommand extends BaseCommand {
         this.plugin = plugin;
     }
 
+    @Subcommand("whitelist")
+    public void sendWhitelistHelp(CommandSender sender) {
+        sendMessage(sender, "Mami ke tu kiereee aki llego tu tiburon");
+    }
     @Subcommand("whitelist on")
     @CommandPermission("pixelmotd.whitelist.manage")
     public void onWhitelistEnable(CommandSender sender) {

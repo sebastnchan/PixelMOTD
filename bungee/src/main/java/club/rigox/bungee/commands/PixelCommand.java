@@ -4,6 +4,7 @@ import club.rigox.bungee.PixelMOTD;
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.CommandPermission;
+import co.aikar.commands.annotation.HelpCommand;
 import co.aikar.commands.annotation.Subcommand;
 import net.md_5.bungee.api.CommandSender;
 
@@ -19,6 +20,11 @@ public class PixelCommand extends BaseCommand {
         this.plugin = plugin;
     }
 
+    @HelpCommand
+    public void onHelp(CommandSender sender) {
+        sendMessage(sender, plugin.getMessagesConfig().getStringList("help.main"));
+    }
+
     @Subcommand("reload")
     public void onReload(CommandSender sender) {
         plugin.reloadConfigs();
@@ -26,5 +32,4 @@ public class PixelCommand extends BaseCommand {
         sendMessage(sender, "&aConfig has been reloaded!");
         sendMessage(sender, getMessageString("reloaded"));
     }
-
 }

@@ -12,9 +12,11 @@ import co.aikar.commands.BungeeCommandManager;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 
+import java.io.IOException;
 import java.util.Locale;
 
 import static club.rigox.bungee.utils.Logger.debug;
+import static club.rigox.bungee.utils.Logger.warn;
 
 public final class PixelMOTD extends Plugin {
     public static PixelMOTD instance;
@@ -96,7 +98,15 @@ public final class PixelMOTD extends Plugin {
         manager.registerCommand(new PixelCommand(this));
         manager.registerCommand(new WhitelistCommand(this));
 
-        manager.getLocales().loadLanguage(messagesConfig, Locale.ENGLISH);
+        manager.addSupportedLanguage(Locale.ENGLISH);
+
+        try {
+            manager.getLocales().loadYamlLanguageFile("messages.yml", Locale.ENGLISH);
+        } catch (IOException e) {
+            warn(String.format("A error occurred while copying the config messages.yml to the plugin data folder. Error: %s", e));
+            e.printStackTrace();
+        }
+
     }
 
     public Configuration getEditableFile() {
