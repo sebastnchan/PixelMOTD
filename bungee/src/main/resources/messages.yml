@@ -1,8 +1,32 @@
 reloaded: "&aConfiguration has been reloaded!"
 
+acf-core:
+  permission_denied: "&cYou don't have permission to perform this action!"
+  permission_denied_parameter: "&cYou don't have permission to perform this subcommand!"
+  error_generic_logged: "&cPlease inform this error to an administrator and let it know to review the console."
+  unknown_command: "&cPlease use &b/bpmotd help &cas the command you provided doesn't exists."
+  invalid_syntax: "&8&l* &fCommand usage: &b{command} {syntax}"
+  error_prefix: "{message}"
+  error_performing_command: "&cI'm sorry, but there was an error performing this command."
+  info_message: "{message}"
+  please_specify_one_of: "&cPlease specify one of &b{valid}"
+  must_be_a_number: "&7{num} must be a number."
+  must_be_min_length: "&7Must be at least {min} characters long."
+  must_be_max_length: "&7Must be at most {max} characters long."
+  please_specify_at_most: "&7Please specify a value at most {max}."
+  please_specify_at_least: "&7Please specify a value at least {min}."
+  not_allowed_on_console: "&cYou should be online to perform this command."
+  could_not_find_player: "&cCould not find a player by the name: {search}"
+  no_command_matched_search: "No command matched {search}."
+
 whitelist:
   enabled: "&cWhitelist has been enabled! All players not on whitelist has been kicked."
   disabled: "&aWhitelist has been disabled!"
+  kick-message:
+    - ""
+    - "&cYou were removed from the %type%!"
+    - "&cWhitelist status enabled by %whitelist_author%"
+    - ""
   uuid:
     added: "&aUUID %s has been added to the whitelist!"
     already: "&cUUID %s is already on the whitelist!"

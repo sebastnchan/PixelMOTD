@@ -12,6 +12,8 @@ import co.aikar.commands.BungeeCommandManager;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 
+import java.util.Locale;
+
 import static club.rigox.bungee.utils.Logger.debug;
 
 public final class PixelMOTD extends Plugin {
@@ -32,7 +34,6 @@ public final class PixelMOTD extends Plugin {
     public Configuration settingsFile;
     public Configuration timerMotdFile;
     public Configuration whitelistMotdFile;
-
 
     // NEW FILES
     public Configuration messagesConfig;
@@ -83,6 +84,8 @@ public final class PixelMOTD extends Plugin {
         manager.reloadConfig(ConfigType.SETTINGS);
         manager.reloadConfig(ConfigType.TIMER_MOTD);
         manager.reloadConfig(ConfigType.WHITELIST_MOTD);
+
+        manager.reloadConfig(ConfigType.MESSAGES);
     }
 
     public void registerCommands() {
@@ -92,6 +95,8 @@ public final class PixelMOTD extends Plugin {
 
         manager.registerCommand(new PixelCommand(this));
         manager.registerCommand(new WhitelistCommand(this));
+
+        manager.getLocales().loadLanguage(messagesConfig, Locale.ENGLISH);
     }
 
     public Configuration getEditableFile() {

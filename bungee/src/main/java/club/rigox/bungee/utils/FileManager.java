@@ -28,33 +28,28 @@ public class FileManager {
      */
     public Configuration loadConfig(String configName) {
         File configFile = new File(plugin.getDataFolder().getPath(), configName + ".yml");
-        if(!configFile.exists()) {
-            boolean created = plugin.getDataFolder().mkdirs();
-            if (created) {
-                debug(configName + ".yml config was created!");
-                saveConfig(configName);
-            }
+
+        if (!configFile.exists()) {
+            plugin.getDataFolder().mkdirs();
+            saveConfig(configName);
         }
+
         Configuration cnf = null;
         try {
             cnf = ConfigurationProvider.getProvider(YamlConfiguration.class).load(configFile);
-        } catch (IOException e) {
-            error(String.format("A error occurred while loading the settings file. Error: %s", e));
+        } catch (Exception e) {
+            warn(String.format("A error occurred while loading the settings file. Error: %s", e));
             e.printStackTrace();
         }
         return cnf;
     }
 
-
     public void saveConfig(String configName) {
         File folderDir = plugin.getDataFolder();
-        File file      = new File(plugin.getDataFolder(), configName + ".yml");
+        File file = new File(plugin.getDataFolder(), configName + ".yml");
 
         if (!folderDir.exists()) {
-            boolean created = folderDir.mkdir();
-            if (created) {
-                debug(configName + ".yml config was created!");
-            }
+            folderDir.mkdir();
         }
 
         if (!file.exists()) {
@@ -70,6 +65,7 @@ public class FileManager {
     public static String getMessageString(String path) {
         return PixelMOTD.instance.getMessagesConfig().getString(path);
     }
+
     public void reloadConfig(ConfigType type) {
         try {
             switch (type) {
