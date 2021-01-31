@@ -34,6 +34,8 @@ public final class PixelMOTD extends Plugin {
     public Configuration whitelistMotdFile;
 
 
+    // NEW FILES
+    public Configuration messagesConfig;
 
     @Override
     public void onEnable() {
@@ -67,6 +69,8 @@ public final class PixelMOTD extends Plugin {
         settingsFile        = manager.loadConfig("settings");
         timerMotdFile       = manager.loadConfig("timer-motd");
         whitelistMotdFile   = manager.loadConfig("whitelist-motd");
+
+        messagesConfig      = manager.loadConfig("messages");
 
         debug("Configs has been loaded!");
     }
@@ -116,6 +120,10 @@ public final class PixelMOTD extends Plugin {
 
     public Configuration getWhitelistMotdFile() {
         return whitelistMotdFile;
+    }
+
+    public Configuration getMessagesConfig() {
+        return messagesConfig;
     }
 
     public Converter getConverter() {

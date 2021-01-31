@@ -11,10 +11,12 @@ import net.md_5.bungee.api.chat.TextComponent;
 import java.util.List;
 
 import static club.rigox.bungee.commands.CommandUtils.isUuid;
+import static club.rigox.bungee.utils.FileManager.getMessageString;
 import static club.rigox.bungee.utils.Logger.color;
 import static club.rigox.bungee.utils.Logger.sendMessage;
 
 @CommandAlias("bpmotd")
+@CommandPermission("pixelmotd.whitelist.manage")
 public class WhitelistCommand extends BaseCommand {
     public PixelMOTD plugin;
 
@@ -31,20 +33,18 @@ public class WhitelistCommand extends BaseCommand {
         plugin.getEditableFile().set("whitelist.toggle", true);
         plugin.getManager().reloadConfig(ConfigType.EDITABLE);
 
-        sender.sendMessage(new TextComponent(color("&aWhitelist enabled.")));
+        sendMessage(sender, getMessageString("whitelist.enabled"));
     }
 
     @Subcommand("whitelist off")
-    @CommandPermission("pixelmotd.whitelist.manage")
     public void onWhitelistDisable(CommandSender sender) {
         plugin.getEditableFile().set("whitelist.toggle", false);
         plugin.getManager().reloadConfig(ConfigType.EDITABLE);
 
-        sender.sendMessage(new TextComponent(color("&cWhitelist disabled.")));
+        sendMessage(sender, getMessageString("whitelist.disabled"));
     }
 
     @Subcommand("whitelist add")
-    @CommandPermission("pixelmotd.whitelist.manage")
     @CommandCompletion("@players")
     public void onAdd(CommandSender sender, @Single String player) {
         List<String> uuidList   = plugin.getEditableFile().getStringList("whitelist.players-uuid");
@@ -54,12 +54,12 @@ public class WhitelistCommand extends BaseCommand {
             if (plugin.getEditableFile().get("whitelist.players-uuid") == null) {
 
                 plugin.getCmdUtils().initEditList(KickType.WHITELIST_UUID, player);
-                sendMessage(sender, String.format("UUID %s has been added to the whitelist!", player));
+                sendMessage(sender, String.format(getMessageString("whitelist.uuid.added"), player));
                 return;
             }
 
             if (uuidList.contains(player)) {
-                sendMessage(sender, String.format("%s uuid is already on the whitelist!", player));
+                sendMessage(sender, String.format(getMessageString("whitelist.uuid.already"), player));
                 return;
             }
 
@@ -68,18 +68,18 @@ public class WhitelistCommand extends BaseCommand {
             plugin.getEditableFile().set("whitelist.players-uuid", uuidList);
             plugin.getManager().reloadConfig(ConfigType.EDITABLE);
 
-            sendMessage(sender, String.format("UUID %s has been added to the whitelist!", player));
+            sendMessage(sender, String.format(getMessageString("whitelist.uuid.added"), player));
             return;
         }
 
         if (plugin.getEditableFile().get("whitelist.players-name") == null) {
             plugin.getCmdUtils().initEditList(KickType.WHITELIST_PLAYER, player);
-            sendMessage(sender, String.format("Player %s has been added to the whitelist!", player));
+            sendMessage(sender, String.format(getMessageString("whitelist.player.added"), player));
             return;
         }
 
         if (playerList.contains(player)) {
-            sendMessage(sender, String.format("Player %s is already on the whitelist!", player));
+            sendMessage(sender, String.format(getMessageString("whitelist.player.already"), player));
             return;
         }
 
@@ -88,11 +88,10 @@ public class WhitelistCommand extends BaseCommand {
         plugin.getEditableFile().set("whitelist.players-name", playerList);
         plugin.getManager().reloadConfig(ConfigType.EDITABLE);
 
-        sendMessage(sender, String.format("Player %s has been added to the whitelist!", player));
+        sendMessage(sender, String.format(getMessageString("whitelist.player.added"), player));
     }
 
     @Subcommand("whitelist remove")
-    @CommandPermission("pixelmotd.whitelist.manage")
     @CommandCompletion("@players")
     public void onWhitelistRemove(CommandSender sender, String player) {
         List<String> uuidList   = plugin.getEditableFile().getStringList("whitelist.players-uuid");
@@ -100,7 +99,7 @@ public class WhitelistCommand extends BaseCommand {
 
         if (isUuid(player)) {
             if (!uuidList.contains(player)) {
-                sendMessage(sender, String.format("UUID %s isn't on the whitelist!", player));
+                sendMessage(sender, String.format(getMessageString("whitelist.uuid.not-on"), player));
                 return;
             }
 
@@ -111,12 +110,13 @@ public class WhitelistCommand extends BaseCommand {
 
             plugin.getCmdUtils().kickOnWhitelist(KickType.WHITELIST_UUID);
 
-            sendMessage(sender, String.format("UUID %s was removed from the whitelist!", player));
+            sendMessage(sender, String.format(getMessageString("whitelist.uuid.removed"), player));
+
             return;
         }
 
         if (!playerList.contains(player)) {
-            sendMessage(sender, String.format("Player %s isn't on the whitelist!", player));
+            sendMessage(sender, String.format(getMessageString("whitelist.player.not-on"), player));
             return;
         }
 
@@ -127,6 +127,6 @@ public class WhitelistCommand extends BaseCommand {
 
         plugin.getCmdUtils().kickOnWhitelist(KickType.WHITELIST_PLAYER);
 
-        sendMessage(sender, String.format("Player %s was removed from the whitelist!", player));
+        sendMessage(sender, String.format(getMessageString("whitelist.player.removed"), player));
     }
 }

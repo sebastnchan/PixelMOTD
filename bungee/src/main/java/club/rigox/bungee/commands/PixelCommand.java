@@ -7,9 +7,11 @@ import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Subcommand;
 import net.md_5.bungee.api.CommandSender;
 
+import static club.rigox.bungee.utils.FileManager.getMessageString;
 import static club.rigox.bungee.utils.Logger.sendMessage;
 
 @CommandAlias("bpmotd")
+@CommandPermission("pixelmotd.admin")
 public class PixelCommand extends BaseCommand {
     public PixelMOTD plugin;
 
@@ -18,11 +20,11 @@ public class PixelCommand extends BaseCommand {
     }
 
     @Subcommand("reload")
-    @CommandPermission("pixelmotd.admin")
     public void onReload(CommandSender sender) {
         plugin.reloadConfigs();
 
         sendMessage(sender, "&aConfig has been reloaded!");
+        sendMessage(sender, getMessageString("reloaded"));
     }
 
 }

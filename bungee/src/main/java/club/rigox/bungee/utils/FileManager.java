@@ -67,9 +67,19 @@ public class FileManager {
         }
     }
 
+    public static String getMessageString(String path) {
+        return PixelMOTD.instance.getMessagesConfig().getString(path);
+    }
     public void reloadConfig(ConfigType type) {
         try {
             switch (type) {
+                case MESSAGES:
+                    File message = new File(plugin.getDataFolder(), "messages.yml");
+
+                    ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.messagesConfig, message);
+                    plugin.messagesConfig = ConfigurationProvider.getProvider(YamlConfiguration.class).load(message);
+                    return;
+
                 case COMMAND:
                     File command = new File(plugin.getDataFolder(), "command.yml");
 
@@ -127,13 +137,5 @@ public class FileManager {
             e.printStackTrace();
 
         }
-//        commandFile         = manager.loadConfig("command");
-//        editFile            = manager.loadConfig("edit");
-//        modulesFile         = manager.loadConfig("modules");
-//        normalMotdFile      = manager.loadConfig("normal-motd");
-//        settingsFile        = manager.loadConfig("settings");
-//        timerMotdFile       = manager.loadConfig("timer-motd");
-//        whitelistMotdFile   = manager.loadConfig("whitelist-motd");
-
     }
 }

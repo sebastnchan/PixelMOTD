@@ -1,0 +1,15 @@
+reloaded: "&aConfiguration has been reloaded!"
+
+whitelist:
+  enabled: "&cWhitelist has been enabled! All players not on whitelist has been kicked."
+  disabled: "&aWhitelist has been disabled!"
+  uuid:
+    added: "&aUUID %s has been added to the whitelist!"
+    already: "&cUUID %s is already on the whitelist!"
+    removed: "UUID %s was removed from the whitelist!"
+    not-on: "&cUUID %s isn't on the whitelist!"
+  player:
+    added: "&aPlayer %s has been added to the whitelist!"
+    already: "&aPlayer %s is already on the whitelist!"
+    removed: "Player %s was removed from the whitelist!"
+    not-on: "&cPlayer %s isn't on the whitelist!"
