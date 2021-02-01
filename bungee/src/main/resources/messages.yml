@@ -56,7 +56,6 @@ whitelist:
     - "&fYou were removed from the server!"
     - "&fWhitelist status has been enabled by %whitelist_author%"
     - ""
-
   uuid:
     added: "&aUUID %s has been added to the whitelist!"
     already: "&cUUID %s is already on the whitelist!"
@@ -67,3 +66,22 @@ whitelist:
     already: "&aPlayer %s is already on the whitelist!"
     removed: "Player %s was removed from the whitelist!"
     not-on: "&cPlayer %s isn't on the whitelist!"
+
+blacklist:
+  kick-message:
+    - ""
+    - "&b&lPixel MOTD"
+    - ""
+    - "&fYou were removed from the server!"
+    - "&fBlacklist contains your name."
+    - ""
+  uuid:
+    added: "&aUUID %s has been added to the blacklist!"
+    already: "&cUUID %s is already on the blacklist!"
+    removed: "UUID %s was removed from the blacklist!"
+    not-on: "&cUUID %s isn't on the blacklist!"
+  player:
+    added: "&aPlayer %s has been added to the blacklist!"
+    already: "&aPlayer %s is already on the blacklist!"
+    removed: "Player %s was removed from the blacklist!"
+    not-on: "&cPlayer %s isn't on the blacklist!"

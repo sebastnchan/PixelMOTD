@@ -21,16 +21,16 @@ public class WhitelistEvent implements Listener {
 
     @EventHandler
     public void onLogin(LoginEvent e) {
-        if (e.isCancelled()) return;
-
-        String connectionName        = e.getConnection().getName();
-        String connectionUuid        = e.getConnection().getUniqueId().toString();
-
-//        List<String> blacklistPlayer = plugin.getEditableFile().getStringList("blacklist.players-name");
-//        List<String> blacklistUuid   = plugin.getEditableFile().getStringList("blacklist.players-uuid");
-//        List<String> blacklistMsg    = plugin.getEditableFile().getStringList("blacklist.kick-message");
+//        if (e.isCancelled()) return;
 //
-//        boolean blacklistToggle      = plugin.getEditableFile().getBoolean("blacklist.toggle");
+//        String connectionName        = e.getConnection().getName();
+//        String connectionUuid        = e.getConnection().getUniqueId().toString();
+//
+//        List<String> blacklistPlayer = plugin.getPlayersConfig().getStringList("blacklist.players-name");
+//        List<String> blacklistUuid   = plugin.getPlayersConfig().getStringList("blacklist.players-uuid");
+//        List<String> blacklistMsg    = plugin.getMessagesConfig().getStringList("blacklist.kick-message");
+//
+//        boolean blacklistToggle      = plugin.getPlayersConfig().getBoolean("blacklist.toggle");
 //
 //        if (blacklistToggle) {
 //            if (blacklistPlayer.contains(connectionName) || blacklistUuid.contains(connectionUuid)) {
@@ -70,6 +70,20 @@ public class WhitelistEvent implements Listener {
                                 .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor())
                                 .replace("%type%","Server")))
                 );
+            }
+        }
+
+        List<String> blacklistPlayer = plugin.getPlayersConfig().getStringList("blacklist.players-name");
+        List<String> blacklistUuid   = plugin.getPlayersConfig().getStringList("blacklist.players-uuid");
+        List<String> blacklistMsg    = plugin.getMessagesConfig().getStringList("blacklist.kick-message");
+
+        boolean blacklistToggle      = plugin.getPlayersConfig().getBoolean("blacklist.toggle");
+
+        if (blacklistToggle) {
+            if (blacklistPlayer.contains(connectionName) || blacklistUuid.contains(connectionUuid)) {
+                String kickReason = plugin.getConverter().fromListToString(blacklistMsg);
+
+                e.getPlayer().disconnect(new TextComponent(color(kickReason)));
             }
         }
     }

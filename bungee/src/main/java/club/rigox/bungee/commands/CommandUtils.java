@@ -36,20 +36,42 @@ public class CommandUtils {
                 List<String> whitelistUuid = new ArrayList<>();
                 whitelistUuid.add(toAdd);
 
-                plugin.getEditableFile().set("whitelist.players-uuid", whitelistUuid);
-                plugin.getManager().reloadConfig(ConfigType.EDITABLE);
-                debug("Editable was reloaded (UUID)");
+                plugin.getPlayersConfig().set("whitelist.players-uuid", whitelistUuid);
+                plugin.getManager().reloadConfig(ConfigType.PLAYERS);
 
+                debug("Editable was reloaded (UUID - Whitelist)");
                 return;
+
             case WHITELIST_PLAYER:
                 List<String> whitelistPlayer = new ArrayList<>();
                 whitelistPlayer.add(toAdd);
 
-                plugin.getEditableFile().set("whitelist.players-name", whitelistPlayer);
-                plugin.getManager().reloadConfig(ConfigType.EDITABLE);
-                debug("Editable was reloaded (Player)");
+                plugin.getPlayersConfig().set("whitelist.players-name", whitelistPlayer);
+                plugin.getManager().reloadConfig(ConfigType.PLAYERS);
 
+                debug("Editable was reloaded (Player - Whitelist)");
                 return;
+
+            case BLACKLIST_PLAYER:
+                List<String> blacklistPlayer = new ArrayList<>();
+                blacklistPlayer.add(toAdd);
+
+                plugin.getPlayersConfig().set("blacklist.players-name", blacklistPlayer);
+                plugin.getManager().reloadConfig(ConfigType.PLAYERS);
+
+                debug("Editable was reloaded (Player - Blacklist)");
+                return;
+
+            case BLACKLIST_UUID:
+                List<String> blacklistUUID = new ArrayList<>();
+                blacklistUUID.add(toAdd);
+
+                plugin.getPlayersConfig().set("blacklist.players-uuid", blacklistUUID);
+                plugin.getManager().reloadConfig(ConfigType.PLAYERS);
+
+                debug("Editable was reloaded (UUID - Blacklist)");
+                return;
+
             default:
                 error("Something wrong happen. Please inform this to the author.");
         }
@@ -57,11 +79,16 @@ public class CommandUtils {
 
     public void kickOnWhitelist(KickType type) {
         List<String> whitelistMsg       = plugin.getMessagesConfig().getStringList("whitelist.kick-message");
+        List<String> blacklistMsg       = plugin.getMessagesConfig().getStringList("blacklist.kick-message");
 
-        List<String> whitelistedPlayers = plugin.getEditableFile().getStringList("whitelist.players-name");
-        List<String> whitelistedUuids   = plugin.getEditableFile().getStringList("whitelist.players-uuid");
+        List<String> whitelistedPlayers = plugin.getPlayersConfig().getStringList("whitelist.players-name");
+        List<String> whitelistedUuids   = plugin.getPlayersConfig().getStringList("whitelist.players-uuid");
 
-        String kickReason               = plugin.getConverter().fromListToString(whitelistMsg);
+        List<String> blacklistedPlayers = plugin.getPlayersConfig().getStringList("blacklist.players-name");
+        List<String> blacklistedUuids   = plugin.getPlayersConfig().getStringList("blacklist.players-uuid");
+
+        String whitelistReason               = plugin.getConverter().fromListToString(whitelistMsg);
+        String blacklistReason               = plugin.getConverter().fromListToString(blacklistMsg);
 
         for (ProxiedPlayer player : plugin.getProxy().getPlayers()) {
             switch (type) {
@@ -71,7 +98,7 @@ public class CommandUtils {
                             return;
                         }
 
-                        player.disconnect(new TextComponent(color(kickReason
+                        player.disconnect(new TextComponent(color(whitelistReason
                                 .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor()))));
                         return;
                     }
@@ -82,8 +109,16 @@ public class CommandUtils {
                             return;
                         }
 
-                        player.disconnect(new TextComponent(color(kickReason
+                        player.disconnect(new TextComponent(color(whitelistReason
                                 .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor()))));
+                        return;
+                    }
+
+                case BLACKLIST:
+                    if (blacklistedUuids.contains(player.getUniqueId().toString()) ||
+                        blacklistedPlayers.contains(player.toString())) {
+
+                        player.disconnect(new TextComponent(color(blacklistReason)));
                         return;
                     }
             }
