@@ -34,7 +34,7 @@ public class WhitelistCommand extends BaseCommand {
         plugin.getCmdUtils().kickOnWhitelist(KickType.WHITELIST_PLAYER);
 
         plugin.getPlayersConfig().set("whitelist.toggle", true);
-        plugin.getManager().reloadConfig(ConfigType.EDITABLE);
+        plugin.getManager().reloadConfig(ConfigType.PLAYERS);
 
         sendMessage(sender, getMessageString("whitelist.enabled"));
     }
@@ -42,7 +42,7 @@ public class WhitelistCommand extends BaseCommand {
     @Subcommand("whitelist off")
     public void onWhitelistDisable(CommandSender sender) {
         plugin.getPlayersConfig().set("whitelist.toggle", false);
-        plugin.getManager().reloadConfig(ConfigType.EDITABLE);
+        plugin.getManager().reloadConfig(ConfigType.PLAYERS);
 
         sendMessage(sender, getMessageString("whitelist.disabled"));
     }
@@ -69,7 +69,7 @@ public class WhitelistCommand extends BaseCommand {
             uuidList.add(player);
 
             plugin.getPlayersConfig().set("whitelist.players-uuid", uuidList);
-            plugin.getManager().reloadConfig(ConfigType.EDITABLE);
+            plugin.getManager().reloadConfig(ConfigType.PLAYERS);
 
             sendMessage(sender, String.format(getMessageString("whitelist.uuid.added"), player));
             return;
@@ -89,7 +89,7 @@ public class WhitelistCommand extends BaseCommand {
         playerList.add(player);
 
         plugin.getPlayersConfig().set("whitelist.players-name", playerList);
-        plugin.getManager().reloadConfig(ConfigType.EDITABLE);
+        plugin.getManager().reloadConfig(ConfigType.PLAYERS);
 
         sendMessage(sender, String.format(getMessageString("whitelist.player.added"), player));
     }
@@ -108,8 +108,8 @@ public class WhitelistCommand extends BaseCommand {
 
             uuidList.remove(player);
 
-            plugin.getPlayersConfig().set("whitelist.players-uuid", playerList);
-            plugin.getManager().reloadConfig(ConfigType.EDITABLE);
+            plugin.getPlayersConfig().set("whitelist.players-uuid", uuidList);
+            plugin.getManager().reloadConfig(ConfigType.PLAYERS);
 
             plugin.getCmdUtils().kickOnWhitelist(KickType.WHITELIST_UUID);
 
@@ -126,7 +126,7 @@ public class WhitelistCommand extends BaseCommand {
         playerList.remove(player);
 
         plugin.getPlayersConfig().set("whitelist.players-name", playerList);
-        plugin.getManager().reloadConfig(ConfigType.EDITABLE);
+        plugin.getManager().reloadConfig(ConfigType.PLAYERS);
 
         plugin.getCmdUtils().kickOnWhitelist(KickType.WHITELIST_PLAYER);
 

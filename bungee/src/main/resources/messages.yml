@@ -76,9 +76,9 @@ blacklist:
     - "&fBlacklist contains your name."
     - ""
   uuid:
-    added: "&aUUID %s has been added to the blacklist!"
+    added: "&cUUID %s has been added to the blacklist!"
     already: "&cUUID %s is already on the blacklist!"
-    removed: "UUID %s was removed from the blacklist!"
+    removed: "&aUUID %s was removed from the blacklist!"
     not-on: "&cUUID %s isn't on the blacklist!"
   player:
     added: "&aPlayer %s has been added to the blacklist!"

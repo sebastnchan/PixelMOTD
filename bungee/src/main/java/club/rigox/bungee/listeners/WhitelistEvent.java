@@ -77,14 +77,11 @@ public class WhitelistEvent implements Listener {
         List<String> blacklistUuid   = plugin.getPlayersConfig().getStringList("blacklist.players-uuid");
         List<String> blacklistMsg    = plugin.getMessagesConfig().getStringList("blacklist.kick-message");
 
-        boolean blacklistToggle      = plugin.getPlayersConfig().getBoolean("blacklist.toggle");
+        if (blacklistPlayer.contains(connectionName) || blacklistUuid.contains(connectionUuid)) {
+            String kickReason = plugin.getConverter().fromListToString(blacklistMsg);
 
-        if (blacklistToggle) {
-            if (blacklistPlayer.contains(connectionName) || blacklistUuid.contains(connectionUuid)) {
-                String kickReason = plugin.getConverter().fromListToString(blacklistMsg);
-
-                e.getPlayer().disconnect(new TextComponent(color(kickReason)));
-            }
+            e.getPlayer().disconnect(new TextComponent(color(kickReason)));
         }
+
     }
 }

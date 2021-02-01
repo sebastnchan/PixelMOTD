@@ -81,4 +81,39 @@ public class BlacklistCommand extends BaseCommand {
 
         sendMessage(sender, String.format(getMessageString("blacklist.player.added"), player));
     }
+
+    @Subcommand("blacklist remove")
+    @CommandCompletion("@players")
+    public void onBlacklistRemove(CommandSender sender, @Single String player) {
+        List<String> uuidList   = plugin.getPlayersConfig().getStringList("blacklist.players-uuid");
+        List<String> playerList = plugin.getPlayersConfig().getStringList("blacklist.players-name");
+
+        if (isUuid(player)) {
+            if (!uuidList.contains(player)) {
+                sendMessage(sender, String.format(getMessageString("blacklist.uuid.not-on"), player));
+                return;
+            }
+
+            uuidList.remove(player);
+
+            plugin.getPlayersConfig().set("blacklist.players-uuid", uuidList);
+            plugin.getManager().reloadConfig(ConfigType.PLAYERS);
+
+            sendMessage(sender, String.format(getMessageString("blacklist.uuid.removed"), player));
+
+            return;
+        }
+
+        if (!playerList.contains(player)) {
+            sendMessage(sender, String.format(getMessageString("blacklist.player.not-on"), player));
+            return;
+        }
+
+        playerList.remove(player);
+
+        plugin.getPlayersConfig().set("blacklist.players-name", playerList);
+        plugin.getManager().reloadConfig(ConfigType.PLAYERS);
+
+        sendMessage(sender, String.format(getMessageString("blacklist.player.removed"), player));
+    }
 }
