@@ -37,6 +37,7 @@ public final class PixelMOTD extends Plugin {
     // NEW FILES
     public Configuration messagesConfig;
     public Configuration playersConfig;
+    public Configuration motdConfig;
 
     @Override
     public void onEnable() {
@@ -73,6 +74,7 @@ public final class PixelMOTD extends Plugin {
 
         messagesConfig      = manager.loadConfig("messages");
         playersConfig       = manager.loadConfig("players");
+        motdConfig          = manager.loadConfig("motd");
 
         debug("Configs has been loaded!");
     }
@@ -88,6 +90,7 @@ public final class PixelMOTD extends Plugin {
 
         manager.reloadConfig(ConfigType.MESSAGES);
         manager.reloadConfig(ConfigType.PLAYERS);
+        manager.reloadConfig(ConfigType.MOTD);
     }
 
     public void registerCommands() {
@@ -144,6 +147,10 @@ public final class PixelMOTD extends Plugin {
 
     public Configuration getPlayersConfig() {
         return playersConfig;
+    }
+
+    public Configuration getMotdConfig() {
+        return motdConfig;
     }
 
     public Converter getConverter() {

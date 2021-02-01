@@ -8,6 +8,8 @@ public enum ConfigType {
     NORMAL_MOTD,
     WHITELIST_MOTD,
     TIMER_MOTD,
+    // NEW
     MESSAGES,
-    PLAYERS
+    PLAYERS,
+    MOTD
 }

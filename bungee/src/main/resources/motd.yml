@@ -1,0 +1,26 @@
+normal:
+  settings:
+    icon: true
+  motds:
+    first:
+      1: "Ya no tamos en matenimiento"
+      2: "papiiiiiiiiiiiiiiii"
+      with-hex:
+        1: "Vamo vamo dale boca"
+        2: "pipipi arriba arriba pipipi"
+    another:
+      1: "jejejeje"
+      2: "----"
+      with-hex:
+        1: "EMBOGUEEEEEEE"
+        2: "..."
+whitelist:
+  settings:
+    icon: true
+  motds:
+    first:
+      1: "First motd line"
+      2: "Second motd line"
+    another:
+      1: "DUKETO"
+      2: "ESKERE"
