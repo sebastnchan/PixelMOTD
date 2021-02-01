@@ -69,6 +69,13 @@ public class FileManager {
     public void reloadConfig(ConfigType type) {
         try {
             switch (type) {
+                case PLAYERS:
+                    File players = new File(plugin.getDataFolder(), "players.yml");
+
+                    ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.playersConfig, players);
+                    plugin.playersConfig = ConfigurationProvider.getProvider(YamlConfiguration.class).load(players);
+                    return;
+
                 case MESSAGES:
                     File message = new File(plugin.getDataFolder(), "messages.yml");
 

@@ -1,8 +1,9 @@
 package club.rigox.bungee;
 
+import club.rigox.bungee.commands.subcommands.BlacklistCommand;
 import club.rigox.bungee.commands.CommandUtils;
 import club.rigox.bungee.commands.PixelCommand;
-import club.rigox.bungee.commands.WhitelistCommand;
+import club.rigox.bungee.commands.subcommands.WhitelistCommand;
 import club.rigox.bungee.enums.ConfigType;
 import club.rigox.bungee.listeners.WhitelistEvent;
 import club.rigox.bungee.utils.Converter;
@@ -12,11 +13,7 @@ import co.aikar.commands.BungeeCommandManager;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 
-import java.io.IOException;
-import java.util.Locale;
-
 import static club.rigox.bungee.utils.Logger.debug;
-import static club.rigox.bungee.utils.Logger.warn;
 
 public final class PixelMOTD extends Plugin {
     public static PixelMOTD instance;
@@ -39,6 +36,7 @@ public final class PixelMOTD extends Plugin {
 
     // NEW FILES
     public Configuration messagesConfig;
+    public Configuration playersConfig;
 
     @Override
     public void onEnable() {
@@ -74,6 +72,7 @@ public final class PixelMOTD extends Plugin {
         whitelistMotdFile   = manager.loadConfig("whitelist-motd");
 
         messagesConfig      = manager.loadConfig("messages");
+        playersConfig       = manager.loadConfig("players");
 
         debug("Configs has been loaded!");
     }
@@ -88,6 +87,7 @@ public final class PixelMOTD extends Plugin {
         manager.reloadConfig(ConfigType.WHITELIST_MOTD);
 
         manager.reloadConfig(ConfigType.MESSAGES);
+        manager.reloadConfig(ConfigType.PLAYERS);
     }
 
     public void registerCommands() {
@@ -97,6 +97,7 @@ public final class PixelMOTD extends Plugin {
 
         manager.registerCommand(new PixelCommand(this));
         manager.registerCommand(new WhitelistCommand(this));
+        manager.registerCommand(new BlacklistCommand(this));
 
 //        manager.addSupportedLanguage(Locale.ENGLISH);
 //
@@ -139,6 +140,10 @@ public final class PixelMOTD extends Plugin {
 
     public Configuration getMessagesConfig() {
         return messagesConfig;
+    }
+
+    public Configuration getPlayersConfig() {
+        return playersConfig;
     }
 
     public Converter getConverter() {

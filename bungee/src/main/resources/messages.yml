@@ -38,6 +38,14 @@ help:
     - "&8&l* &b/bpmotd whitelist add (UUID/Player) &f- Add a player to whitelist"
     - "&8&l* &b/bpmotd whitelist remove (UUID/Player) &f- Remove a player of whitelist"
     - "&7&m------------------------------------------------"
+  blacklist:
+    - "&7&m------------------------------------------------"
+    - "&b&lPixel MOTD"
+    - "&7&oBlacklist Command Help."
+    - "&7&m------------------------------------------------"
+    - "&8&l* &b/bpmotd blacklist add (UUID/Player) &f- Add a player to whitelist"
+    - "&8&l* &b/bpmotd blacklist remove (UUID/Player) &f- Remove a player of whitelist"
+    - "&7&m------------------------------------------------"
 whitelist:
   enabled: "&cWhitelist has been enabled! All players not on whitelist has been kicked."
   disabled: "&aWhitelist has been disabled!"
