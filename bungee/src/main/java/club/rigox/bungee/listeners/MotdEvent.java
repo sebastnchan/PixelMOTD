@@ -1,36 +1,22 @@
 package club.rigox.bungee.listeners;
 
 import club.rigox.bungee.PixelMOTD;
+import club.rigox.bungee.enums.MotdType;
+import club.rigox.bungee.enums.ShowType;
 import net.md_5.bungee.api.Favicon;
 import net.md_5.bungee.api.ServerPing;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.PendingConnection;
 import net.md_5.bungee.api.event.ProxyPingEvent;
 import net.md_5.bungee.api.plugin.Cancellable;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
-import net.md_5.bungee.protocol.Protocol;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class MotdEvent implements Listener {
     private final PixelMOTD plugin;
 
     public MotdEvent(PixelMOTD plugin) {
         this.plugin = plugin;
-    }
-
-    public String getMotd(boolean isWhitelisted) {
-        List<String> getMotd = new ArrayList<>();
-
-        if (isWhitelisted) {
-            getMotd.addAll(plugin.getMotdConfig().getSection("whitelist.motds").getKeys());
-            return getMotd.get(new Random().nextInt(getMotd.size()));
-        }
-
-        getMotd.addAll(plugin.getMotdConfig().getSection("normal.motds").getKeys());
-        return getMotd.get(new Random().nextInt(getMotd.size()));
     }
 
     @EventHandler
@@ -42,7 +28,7 @@ public class MotdEvent implements Listener {
 
         // Server ping.
         Favicon                 favicon = null;
-        Protocol                protocol;
+        ServerPing.Protocol     protocol;
         ServerPing.Players      players;
         ServerPing.PlayerInfo[] motdHover;
 
@@ -50,15 +36,73 @@ public class MotdEvent implements Listener {
         PendingConnection connection = e.getConnection();
 
         // String & integers.
-        String line1, line2, motd;
+        String line1, line2, motd, showMotd;
+
+        MotdType showMode;
+        ShowType showType;
+
+        boolean mHover;
 
         int max    = response.getPlayers().getMax();
         int online = response.getPlayers().getOnline();
 
         boolean whitelistEnabled     = plugin.getPlayersConfig().getBoolean("whitelist-enabled");
 
-        getMotd(whitelistEnabled);
+        if (connection == null) return;
 
-        // TODO Motd HEX color compatibility
+        if (whitelistEnabled) {
+            showMotd = plugin.getMotdUtils().getMotd(true);
+            showMode = MotdType.WHITELIST_MOTD;
+        } else {
+            showMotd = plugin.getMotdUtils().getMotd(false);
+            showMode = MotdType.NORMAL_MOTD;
+        }
+
+        showType = ShowType.WITHOUT_HEX;
+
+        if (e.getConnection().getVersion() >= 735) {
+            if (plugin.getMotdUtils().getHexStatus(showMode, showMotd)) {
+                showType = ShowType.HEX;
+            }
+        }
+
+        // TODO HOVER
+        // TODO ICON STATUS
+        // TODO PLAYER STATUS
+
+        if (plugin.getMotdUtils().isCustomProtocolEnabled(showMode)) {
+            ServerPing.Protocol received = response.getVersion();
+
+            received.setName(plugin.getMotdUtils().getCustomProtocol(showMode));
+            received.setProtocol(-1);
+
+            protocol = received;
+        } else {
+            protocol = response.getVersion();
+        }
+
+        motdHover = plugin.getMotdUtils().getHover(showMode);
+        mHover    = plugin.getMotdUtils().isCustomHoverEnabled(showMode);
+
+        if (mHover) {
+            players = new ServerPing.Players(max, online, motdHover);
+        } else {
+            players = new ServerPing.Players(max, online, response.getPlayers().getSample());
+        }
+
+        line1 = plugin.getMotdUtils().getFirstLine(showMode, showMotd, showType);
+        line2 = plugin.getMotdUtils().getSecondLine(showMode, showMotd, showType);
+
+        motd = line1 + "\n" + line2;
+
+        ServerPing result;
+
+        if (showType == ShowType.HEX) {
+            result = new ServerPing(protocol, players, new TextComponent(motd), null);
+        } else {
+            result = new ServerPing(protocol, players, new TextComponent(TextComponent.fromLegacyText(motd)), null);
+        }
+
+        e.setResponse(result);
     }
 }

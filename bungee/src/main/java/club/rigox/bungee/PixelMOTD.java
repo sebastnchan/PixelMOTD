@@ -8,6 +8,7 @@ import club.rigox.bungee.enums.ConfigType;
 import club.rigox.bungee.listeners.WhitelistEvent;
 import club.rigox.bungee.utils.Converter;
 import club.rigox.bungee.utils.FileManager;
+import club.rigox.bungee.utils.Motd;
 import club.rigox.bungee.utils.Placeholders;
 import co.aikar.commands.BungeeCommandManager;
 import net.md_5.bungee.api.plugin.Plugin;
@@ -25,6 +26,8 @@ public final class PixelMOTD extends Plugin {
     private Placeholders placeholders;
 
     private CommandUtils cmdUtils;
+
+    private Motd motdUtils;
 
     public Configuration commandFile;
     public Configuration editFile;
@@ -45,6 +48,7 @@ public final class PixelMOTD extends Plugin {
 
         manager      = new FileManager(this);
         cmdUtils     = new CommandUtils(this);
+        motdUtils    = new Motd(this);
 
         loadConfigs();
         registerListeners();
@@ -167,5 +171,9 @@ public final class PixelMOTD extends Plugin {
 
     public CommandUtils getCmdUtils() {
         return cmdUtils;
+    }
+
+    public Motd getMotdUtils() {
+        return motdUtils;
     }
 }

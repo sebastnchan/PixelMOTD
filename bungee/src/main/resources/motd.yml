@@ -1,26 +1,84 @@
 normal:
   settings:
     icon: true
+    custom-protocol: true
+      name: "PixelMOTD"
+    hover:
+      toggle: true
+      message:
+        - '     &9&lPIXEL MOTD'
+        - '&7SpigotMC Plugin v%plugin_version%'
+        - ''
+        - '&b&lInformation:'
+        - '  &7Version: &f%plugin_version%'
+        - '  &7Spigot ID: &f37177'
+        - '  &7Discord: &fMrUniverse#2556'
+        - '  &7Online: &f%online%&7/&f%max%'
+        - '  &frigox.club/discord/dev'
+        - ''
   motds:
     first:
       1: "Ya no tamos en matenimiento"
       2: "papiiiiiiiiiiiiiiii"
       with-hex:
+        enable: true
         1: "Vamo vamo dale boca"
         2: "pipipi arriba arriba pipipi"
     another:
       1: "jejejeje"
       2: "----"
       with-hex:
+        enable: true
         1: "EMBOGUEEEEEEE"
         2: "..."
 whitelist:
   settings:
     icon: true
+    custom-protocol: true
+      name: "Whitelist PixelMOTD"
+    hover:
+      toggle: true
+      message:
+        - '     &9&lPIXEL MOTD'
+        - '&7SpigotMC Plugin v%plugin_version%'
+        - ''
+        - '&b&lInformation:'
+        - '  &7Version: &f%plugin_version%'
+        - '  &7Spigot ID: &f37177'
+        - '  &7Discord: &fMrUniverse#2556'
+        - '  &7Online: &f%online%&7/&f%max%'
+        - '  &frigox.club/discord/dev'
+        - ''
   motds:
     first:
       1: "First motd line"
       2: "Second motd line"
+      with-hex:
+        enable: true
+        1: "amanose che kp :pensive:"
+        2: "..."
     another:
       1: "DUKETO"
       2: "ESKERE"
+      with-hex:
+        enable: true
+        1: "ndirakueker pepa"
+        2: "..."
+#timer:
+#  settings:
+#    icon: true
+#  motds:
+#    first:
+#      1: "First motd line"
+#      2: "Second motd line"
+#      with-hex:
+#        enable: true
+#        1: "amanose che kp :pensive:"
+#        2: "..."
+#    another:
+#      1: "DUKETO"
+#      2: "ESKERE"
+#      with-hex:
+#        enable: true
+#        1: "ndirakueker pepa"
+#        2: "..."
