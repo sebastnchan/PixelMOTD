@@ -2,7 +2,7 @@ normal:
   settings:
     icon: true
     custom-protocol: true
-      name: "PixelMOTD"
+    custom-protocol-name: PixelMOTD
     hover:
       toggle: true
       message:
@@ -35,7 +35,7 @@ whitelist:
   settings:
     icon: true
     custom-protocol: true
-      name: "Whitelist PixelMOTD"
+    custom-protocol-name: "Whitelist PixelMOTD"
     hover:
       toggle: true
       message:

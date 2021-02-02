@@ -5,6 +5,7 @@ import club.rigox.bungee.commands.CommandUtils;
 import club.rigox.bungee.commands.PixelCommand;
 import club.rigox.bungee.commands.subcommands.WhitelistCommand;
 import club.rigox.bungee.enums.ConfigType;
+import club.rigox.bungee.listeners.MotdEvent;
 import club.rigox.bungee.listeners.WhitelistEvent;
 import club.rigox.bungee.utils.Converter;
 import club.rigox.bungee.utils.FileManager;
@@ -65,6 +66,7 @@ public final class PixelMOTD extends Plugin {
 
     private void registerListeners() {
         new WhitelistEvent(this);
+        new MotdEvent(this);
     }
 
     public void loadConfigs() {

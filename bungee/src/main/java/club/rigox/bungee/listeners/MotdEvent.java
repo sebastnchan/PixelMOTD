@@ -12,11 +12,26 @@ import net.md_5.bungee.api.plugin.Cancellable;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
+import static club.rigox.bungee.utils.Logger.debug;
+
 public class MotdEvent implements Listener {
     private final PixelMOTD plugin;
 
+    Favicon                 favicon = null;
+    ServerPing.Protocol     protocol;
+    ServerPing.Players      players;
+    ServerPing.PlayerInfo[] motdHover;
+
+    String line1, line2, motd, showMotd;
+
+    MotdType showMode;
+    ShowType showType;
+
+    boolean mHover;
+
     public MotdEvent(PixelMOTD plugin) {
         this.plugin = plugin;
+        plugin.getProxy().getPluginManager().registerListener(plugin, this);
     }
 
     @EventHandler
@@ -26,29 +41,15 @@ public class MotdEvent implements Listener {
         if (e instanceof Cancellable && ((Cancellable) e).isCancelled()) return;
         if (e.getResponse() == null) return;
 
-        // Server ping.
-        Favicon                 favicon = null;
-        ServerPing.Protocol     protocol;
-        ServerPing.Players      players;
-        ServerPing.PlayerInfo[] motdHover;
-
         ServerPing response          = e.getResponse();
         PendingConnection connection = e.getConnection();
 
-        // String & integers.
-        String line1, line2, motd, showMotd;
+        if (connection == null) return;
 
-        MotdType showMode;
-        ShowType showType;
-
-        boolean mHover;
+        boolean whitelistEnabled     = plugin.getPlayersConfig().getBoolean("whitelist.toggle");
 
         int max    = response.getPlayers().getMax();
         int online = response.getPlayers().getOnline();
-
-        boolean whitelistEnabled     = plugin.getPlayersConfig().getBoolean("whitelist-enabled");
-
-        if (connection == null) return;
 
         if (whitelistEnabled) {
             showMotd = plugin.getMotdUtils().getMotd(true);
@@ -58,6 +59,7 @@ public class MotdEvent implements Listener {
             showMode = MotdType.NORMAL_MOTD;
         }
 
+        debug(String.format("whitelistEnabled %s", whitelistEnabled));
         showType = ShowType.WITHOUT_HEX;
 
         if (e.getConnection().getVersion() >= 735) {
@@ -66,7 +68,9 @@ public class MotdEvent implements Listener {
             }
         }
 
-        // TODO HOVER
+        debug(String.format("showType: %s", showType));
+        debug(String.format("showMode: %s", showMode));
+
         // TODO ICON STATUS
         // TODO PLAYER STATUS
 

@@ -5,9 +5,7 @@ import club.rigox.bungee.enums.MotdType;
 import club.rigox.bungee.enums.ShowType;
 import net.md_5.bungee.api.ServerPing;
 
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -94,11 +92,11 @@ public class Motd {
 
     public String getCustomProtocol(MotdType motdType) {
         if (motdType == MotdType.NORMAL_MOTD) {
-            return plugin.getMotdConfig().getString("normal.settings.custom-protocol.name");
+            return plugin.getMotdConfig().getString("normal.settings.custom-protocol-name");
         }
 
         if (motdType == MotdType.WHITELIST_MOTD) {
-            return plugin.getMotdConfig().getString("normal.settings.custom-protocol.name");
+            return plugin.getMotdConfig().getString("whitelist.settings.custom-protocol-name");
         }
 
         return null;
