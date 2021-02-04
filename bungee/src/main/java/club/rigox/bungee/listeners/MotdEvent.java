@@ -12,6 +12,7 @@ import net.md_5.bungee.api.plugin.Cancellable;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
+import static club.rigox.bungee.utils.Logger.color;
 import static club.rigox.bungee.utils.Logger.debug;
 
 public class MotdEvent implements Listener {
@@ -59,7 +60,6 @@ public class MotdEvent implements Listener {
             showMode = MotdType.NORMAL_MOTD;
         }
 
-        debug(String.format("whitelistEnabled %s", whitelistEnabled));
         showType = ShowType.WITHOUT_HEX;
 
         if (e.getConnection().getVersion() >= 735) {
@@ -67,9 +67,6 @@ public class MotdEvent implements Listener {
                 showType = ShowType.HEX;
             }
         }
-
-        debug(String.format("showType: %s", showType));
-        debug(String.format("showMode: %s", showMode));
 
         // TODO ICON STATUS
         // TODO PLAYER STATUS
@@ -97,12 +94,12 @@ public class MotdEvent implements Listener {
         line1 = plugin.getMotdUtils().getFirstLine(showMode, showMotd, showType);
         line2 = plugin.getMotdUtils().getSecondLine(showMode, showMotd, showType);
 
-        motd = line1 + "\n" + line2;
+        motd = color(line1 + "\n" + line2);
 
         ServerPing result;
 
         if (showType == ShowType.HEX) {
-            result = new ServerPing(protocol, players, new TextComponent(motd), null);
+            result = new ServerPing(protocol, players, new TextComponent(plugin.getHexColors().applyColor(motd)), null);
         } else {
             result = new ServerPing(protocol, players, new TextComponent(TextComponent.fromLegacyText(motd)), null);
         }

@@ -18,19 +18,19 @@ normal:
         - ''
   motds:
     first:
-      1: "Ya no tamos en matenimiento"
-      2: "papiiiiiiiiiiiiiiii"
+      1: "&b&lPixelMOTD"
+      2: "&f&oThis motd only appear for 1.8 - 1.15"
       with-hex:
         enable: true
-        1: "Vamo vamo dale boca"
-        2: "pipipi arriba arriba pipipi"
+        1: "<#99ccff>PixelMOTD"
+        2: "&f&oThis motd only appear for 1.16+"
     another:
-      1: "jejejeje"
-      2: "----"
+      1: "&c&lPixelMOTD"
+      2: "&f&oThis motd only appear for 1.8 - 1.15"
       with-hex:
         enable: true
-        1: "EMBOGUEEEEEEE"
-        2: "..."
+        1: "<#99ccff>PixelMOTD"
+        2: "&f&oThis motd only appear for 1.16+"
 whitelist:
   settings:
     icon: true
@@ -51,19 +51,19 @@ whitelist:
         - ''
   motds:
     first:
-      1: "First motd line"
-      2: "Second motd line"
+      1: "&b&lPixelMOTD &7| &fWHITELIST"
+      2: "&f&oThis motd only appear for 1.8 - 1.15"
       with-hex:
         enable: true
-        1: "amanose che kp :pensive:"
-        2: "..."
+        1: "<#99ccff>PixelMOTD &7| &fWHITELIST"
+        2: "&f&oThis motd only appear for 1.16+"
     another:
-      1: "DUKETO"
-      2: "ESKERE"
+      1: "&c&lPixelMOTD &7| &fWHITELIST"
+      2: "&f&oThis motd only appear for 1.8 - 1.15"
       with-hex:
         enable: true
-        1: "ndirakueker pepa"
-        2: "..."
+        1: "<#99ccff>&c&lPixelMOTD &7| &fWHITELIST"
+        2: "&f&oThis motd only appear for 1.16+"
 #timer:
 #  settings:
 #    icon: true

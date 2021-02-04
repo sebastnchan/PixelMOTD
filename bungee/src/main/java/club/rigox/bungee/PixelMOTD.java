@@ -7,10 +7,7 @@ import club.rigox.bungee.commands.subcommands.WhitelistCommand;
 import club.rigox.bungee.enums.ConfigType;
 import club.rigox.bungee.listeners.MotdEvent;
 import club.rigox.bungee.listeners.WhitelistEvent;
-import club.rigox.bungee.utils.Converter;
-import club.rigox.bungee.utils.FileManager;
-import club.rigox.bungee.utils.Motd;
-import club.rigox.bungee.utils.Placeholders;
+import club.rigox.bungee.utils.*;
 import co.aikar.commands.BungeeCommandManager;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
@@ -29,6 +26,8 @@ public final class PixelMOTD extends Plugin {
     private CommandUtils cmdUtils;
 
     private Motd motdUtils;
+
+    private HexColors hexColors;
 
     public Configuration commandFile;
     public Configuration editFile;
@@ -50,6 +49,7 @@ public final class PixelMOTD extends Plugin {
         manager      = new FileManager(this);
         cmdUtils     = new CommandUtils(this);
         motdUtils    = new Motd(this);
+        hexColors    = new HexColors();
 
         loadConfigs();
         registerListeners();
@@ -177,5 +177,9 @@ public final class PixelMOTD extends Plugin {
 
     public Motd getMotdUtils() {
         return motdUtils;
+    }
+
+    public HexColors getHexColors() {
+        return hexColors;
     }
 }
