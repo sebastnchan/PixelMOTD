@@ -79,7 +79,7 @@ public class FileManager {
                     File motd = new File(plugin.getDataFolder(), "motd.yml");
 
                     ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.motdConfig, motd);
-                    plugin.playersConfig = ConfigurationProvider.getProvider(YamlConfiguration.class).load(motd);
+                    plugin.motdConfig = ConfigurationProvider.getProvider(YamlConfiguration.class).load(motd);
                     return;
 
                 case MESSAGES:
