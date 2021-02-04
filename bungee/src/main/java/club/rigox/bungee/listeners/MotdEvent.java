@@ -99,9 +99,11 @@ public class MotdEvent implements Listener {
         ServerPing result;
 
         if (showType == ShowType.HEX) {
-            result = new ServerPing(protocol, players, new TextComponent(plugin.getHexColors().applyColor(motd)), null);
+            debug("ShowType HEX");
+            result = new ServerPing(protocol, players, new TextComponent(plugin.getNewHexColor().formatToHex(motd)), null);
         } else {
-            result = new ServerPing(protocol, players, new TextComponent(TextComponent.fromLegacyText(motd)), null);
+            debug("ShowType WITHOUT_HEX");
+            result = new ServerPing(protocol, players, new TextComponent(TextComponent.fromLegacyText(color(motd))), null);
         }
 
         e.setResponse(result);
