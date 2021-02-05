@@ -27,10 +27,6 @@ public final class PixelMOTD extends Plugin {
 
     private Motd motdUtils;
 
-    private HexColors hexColors;
-
-    private NewHexColor newHexColor;
-
     public Configuration commandFile;
     public Configuration editFile;
     public Configuration modulesFile;
@@ -180,13 +176,5 @@ public final class PixelMOTD extends Plugin {
 
     public Motd getMotdUtils() {
         return motdUtils;
-    }
-
-    public HexColors getHexColors() {
-        return hexColors;
-    }
-
-    public NewHexColor getNewHexColor() {
-        return newHexColor;
     }
 }

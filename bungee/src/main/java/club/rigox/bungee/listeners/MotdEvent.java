@@ -100,7 +100,8 @@ public class MotdEvent implements Listener {
 
         if (showType == ShowType.HEX) {
             debug("ShowType HEX");
-            result = new ServerPing(protocol, players, new TextComponent(plugin.getNewHexColor().formatToHex(motd)), null);
+//            result = new ServerPing(protocol, players, new TextComponent(plugin.getHexColors().applyColor(motd)), null);
+            result = new ServerPing(protocol, players, new TextComponent(color(motd)), null);
         } else {
             debug("ShowType WITHOUT_HEX");
             result = new ServerPing(protocol, players, new TextComponent(TextComponent.fromLegacyText(color(motd))), null);
