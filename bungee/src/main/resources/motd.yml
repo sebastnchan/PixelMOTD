@@ -1,12 +1,38 @@
+#   _____ _          _ __  __  ____ _______ _____
+#   |  __ (_)        | |  \/  |/ __ \__   __|  __ \
+#   | |__) |__  _____| | \  / | |  | | | |  | |  | |
+#   |  ___/ \ \/ / _ \ | |\/| | |  | | | |  | |  | |
+#   | |   | |>  <  __/ | |  | | |__| | | |  | |__| |
+#   |_|   |_/_/\_\___|_|_|  |_|\____/  |_|  |_____/
+#
+#   Using version 10.0-BETA
+#   Original author: MrUniverse44
+#   Maintained by: sebastnchan
+#   Discord support on https://rigox.club/development
+#
 normal:
   settings:
+    # Use custom icon for Normal MOTDs
+    # Can set it on plugins/PixelMOTD/icons/normal.png
+    # MUST BE 64x64 icon.
     icon: true
+    # Custom protocol settings on player count.
     custom-protocol:
+      # Enable custom protocol.
       enable: true
-      change-protocol-version: true
+      # If you want to change protocol when a player tries
+      # to join on a incompatible version, keep it false.
+      # Instead will display protocol name always.
+      change-protocol-version: false
+      # Custom protocol name to set if enabled.
       name: PixelMOTD
+    # Custom hover.
+    # NOTE: Variables not supported right now.
     hover:
+      # Toggle hover feature.
       toggle: true
+      # List of string message to display
+      # on player count hover.
       message:
         - '     &9&lPIXEL MOTD'
         - '&7SpigotMC Plugin v%plugin_version%'
@@ -18,30 +44,70 @@ normal:
         - '  &7Online: &f%online%&7/&f%max%'
         - '  &frigox.club/discord/dev'
         - ''
+  #
+  # MOTD FEATURE
+  # You can add many motds as you want.
+  # But always should be in this format:
+  #
+  #  first: # <--- CHANGE MOTD NAME, don't repeat it
+  #    line-1: "message 1"
+  #    line-2: "message 2"
+  #    with-hex:
+  #      enable: true
+  #      line-1: "message 1"
+  #      line-2: "message 2"
+  #
   motds:
-    first:
-      line-1: "&b&lPixelMOTD"
-      line-2: "&f&oThis motd only appear for 1.8 - 1.15"
+    first: # <-- Avoid duplication names on this if you want to add more.
+      line-1: "&b&lPixelMOTD &7| &fUsing 1.8-1.15 display!"
+      line-2: "&fEnjoy our great Network!"
+      # ====================================================
+      # HEX COLORS SUPPORT MISSING AT THE MOMENT.
+      # ====================================================
+
+      # Here you can use hex colors, if you don't need this
+      # feature, you can disable this.
+      # Only shows on 1.16 this motd, even if it doesn't have HEX colors.
       with-hex:
         enable: true
-        line-1: "<#99ccff>PixelMOTD"
-        line-2: "&f&oThis motd only appear for 1.16+"
-    another:
-      line-1: "&c&lPixelMOTD"
-      line-2: "&f&oThis motd only appear for 1.8 - 1.15"
+        line-1: "&b&lPixelMOTD &7| &fUsing 1.16+ display!"
+        line-2: "&fEnjoy our great Network!"
+    another: # <-- Avoid duplication names on this if you want to add more.
+      line-1: "&c&lPixelMOTD &7| &fUsing 1.8-1.15 display!"
+      line-2: "&fThis is an default MoTD!"
+      # ====================================================
+      # HEX COLORS SUPPORT MISSING AT THE MOMENT.
+      # ====================================================
+
+      # Here you can use hex colors, if you don't need this
+      # feature, you can disable this.
+      # Only shows on 1.16 this motd, even if it doesn't have HEX colors.
       with-hex:
         enable: true
-        line-1: "<#99ccff>PixelMOTD"
-        line-2: "&f&oThis motd only appear for 1.16+"
+        line-1: "&c&lPixelMOTD &7| &fUsing 1.16+ display!"
+        line-2: "&fThis is an default MoTD!"
 whitelist:
+  # Use custom icon for Whitelist MOTDs
+  # Can set it on plugins/PixelMOTD/icons/whitelist.png
+  # MUST BE 64x64 icon.
   settings:
     icon: true
+    # Custom protocol settings on player count.
     custom-protocol:
+      # Enable custom protocol.
       enable: true
-      change-protocol-version: true
+      # If you want to change protocol when a player tries
+      # to join on a incompatible version, keep it false.
+      # Instead will display protocol name always.
+      change-protocol-version: false
+      # Custom protocol name to set if enabled.
       name: Whitelist PixelMOTD
+    # Custom hover.
+    # NOTE: Variables not supported right now.
     hover:
       toggle: true
+      # List of string message to display
+      # on player count hover.
       message:
         - '     &9&lPIXEL MOTD'
         - '&7SpigotMC Plugin v%plugin_version%'
@@ -53,36 +119,46 @@ whitelist:
         - '  &7Online: &f%online%&7/&f%max%'
         - '  &frigox.club/discord/dev'
         - ''
+  #
+  # MOTD FEATURE
+  # You can add many motds as you want.
+  # But always should be in this format:
+  #
+  #  first: # <--- CHANGE MOTD NAME, don't repeat it
+  #    line-1: "message 1"
+  #    line-2: "message 2"
+  #    with-hex:
+  #      enable: true
+  #      line-1: "message 1"
+  #      line-2: "message 2"
+  #
   motds:
     first:
-      line-1: "&b&lPixelMOTD &7| &fWHITELIST"
-      line-2: "&f&oThis motd only appear for 1.8 - 1.15"
+      line-1: "&c&lPixelMOTD &7| &fUsing 1.8 - 1.15 display!"
+      line-2: "&fWe're on maintenance, please come back later."
+      # ====================================================
+      # HEX COLORS SUPPORT MISSING AT THE MOMENT.
+      # ====================================================
+
+      # Here you can use hex colors, if you don't need this
+      # feature, you can disable this.
+      # Only shows on 1.16 this motd, even if it doesn't have HEX colors.
       with-hex:
         enable: true
-        line-1: "<#99ccff>PixelMOTD &7| &fWHITELIST"
-        line-2: "&f&oThis motd only appear for 1.16+"
+        line-1: "&c&lPixelMOTD &7| &fUsing 1.16+ display!"
+        line-2: "&fWe're on maintenance, please come back later."
+
     another:
-      line-1: "&c&lPixelMOTD &7| &fWHITELIST"
-      line-2: "&f&oThis motd only appear for 1.8 - 1.15"
+      line-1: "&b&lPixelMOTD &7| &fUsing 1.8 - 1.15 display!"
+      line-2:  "&fWorking hard to bring up new updates."
+      # ====================================================
+      # HEX COLORS SUPPORT MISSING AT THE MOMENT.
+      # ====================================================
+
+      # Here you can use hex colors, if you don't need this
+      # feature, you can disable this.
+      # Only shows on 1.16 this motd, even if it doesn't have HEX colors.
       with-hex:
         enable: true
-        line-1: "<#99ccff>&c&lPixelMOTD &7| &fWHITELIST"
-        line-2: "&f&oThis motd only appear for 1.16+"
-#timer:
-#  settings:
-#    icon: true
-#  motds:
-#    first:
-#      line-1: "First motd line"
-#      line-2: "Second motd line"
-#      with-hex:
-#        enable: true
-#        line-1: "amanose che kp :pensive:"
-#        line-2: "..."
-#    another:
-#      line-1: "DUKETO"
-#      line-2: "ESKERE"
-#      with-hex:
-#        enable: true
-#        line-1: "ndirakueker pepa"
-#        line-2: "..."
+        line-1: "&b&lPixelMOTD &7| &fUsing 1.16+ display!"
+        line-2: "&fWorking hard to bring up new updates."
