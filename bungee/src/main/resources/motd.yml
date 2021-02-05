@@ -59,7 +59,7 @@ normal:
   #
   motds:
     first: # <-- Avoid duplication names on this if you want to add more.
-      line-1: "&b&lPixelMOTD &7| &fUsing 1.8-1.15 display!"
+      line-1: "&b&lPixelMOTD &7| Using &d1.8-1.15 &7display!"
       line-2: "&fEnjoy our great Network!"
       # ====================================================
       # HEX COLORS SUPPORT MISSING AT THE MOMENT.
@@ -70,10 +70,10 @@ normal:
       # Only shows on 1.16 this motd, even if it doesn't have HEX colors.
       with-hex:
         enable: true
-        line-1: "&b&lPixelMOTD &7| &fUsing 1.16+ display!"
+        line-1: "&b&lPixelMOTD &7| Using &e1.16+ &7display!"
         line-2: "&fEnjoy our great Network!"
     another: # <-- Avoid duplication names on this if you want to add more.
-      line-1: "&c&lPixelMOTD &7| &fUsing 1.8-1.15 display!"
+      line-1: "&b&lPixelMOTD &7| Using &d1.8-1.15 &7display!"
       line-2: "&fThis is an default MoTD!"
       # ====================================================
       # HEX COLORS SUPPORT MISSING AT THE MOMENT.
@@ -84,7 +84,7 @@ normal:
       # Only shows on 1.16 this motd, even if it doesn't have HEX colors.
       with-hex:
         enable: true
-        line-1: "&c&lPixelMOTD &7| &fUsing 1.16+ display!"
+        line-1: "&c&lPixelMOTD &7| Using &e1.16+ &7display!"
         line-2: "&fThis is an default MoTD!"
 whitelist:
   # Use custom icon for Whitelist MOTDs
@@ -134,7 +134,7 @@ whitelist:
   #
   motds:
     first:
-      line-1: "&c&lPixelMOTD &7| &fUsing 1.8 - 1.15 display!"
+      line-1: "&b&lPixelMOTD &7| Using &d1.8-1.15 &7display!"
       line-2: "&fWe're on maintenance, please come back later."
       # ====================================================
       # HEX COLORS SUPPORT MISSING AT THE MOMENT.
@@ -145,11 +145,11 @@ whitelist:
       # Only shows on 1.16 this motd, even if it doesn't have HEX colors.
       with-hex:
         enable: true
-        line-1: "&c&lPixelMOTD &7| &fUsing 1.16+ display!"
+        line-1: "&c&lPixelMOTD &7| Using &e1.16+ &7display!"
         line-2: "&fWe're on maintenance, please come back later."
 
     another:
-      line-1: "&b&lPixelMOTD &7| &fUsing 1.8 - 1.15 display!"
+      line-1: "&b&lPixelMOTD &7| Using &d1.8-1.15 &7display!"
       line-2:  "&fWorking hard to bring up new updates."
       # ====================================================
       # HEX COLORS SUPPORT MISSING AT THE MOMENT.
@@ -160,5 +160,5 @@ whitelist:
       # Only shows on 1.16 this motd, even if it doesn't have HEX colors.
       with-hex:
         enable: true
-        line-1: "&b&lPixelMOTD &7| &fUsing 1.16+ display!"
+        line-1: "&c&lPixelMOTD &7| Using &e1.16+ &7display!"
         line-2: "&fWorking hard to bring up new updates."
