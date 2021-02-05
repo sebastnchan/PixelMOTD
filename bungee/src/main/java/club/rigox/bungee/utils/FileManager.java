@@ -131,13 +131,6 @@ public class FileManager {
                     plugin.normalMotdFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(normalMotd);
                     return;
 
-                case EDITABLE:
-                    File editable = new File(plugin.getDataFolder(), "edit.yml");
-
-                    ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.editFile, editable);
-                    plugin.editFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(editable);
-                    return;
-
                 default:
                     error("Something went wrong. Please notify it to the plugin author.");
             }

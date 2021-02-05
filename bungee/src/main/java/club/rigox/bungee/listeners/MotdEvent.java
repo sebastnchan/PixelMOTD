@@ -75,9 +75,13 @@ public class MotdEvent implements Listener {
             ServerPing.Protocol received = response.getVersion();
 
             received.setName(plugin.getMotdUtils().getCustomProtocol(showMode));
-            received.setProtocol(-1);
+
+            if (plugin.getMotdUtils().getProtocolVersion(showMode)) {
+                received.setProtocol(-1);
+            }
 
             protocol = received;
+
         } else {
             protocol = response.getVersion();
         }

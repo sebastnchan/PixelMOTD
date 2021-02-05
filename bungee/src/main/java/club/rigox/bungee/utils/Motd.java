@@ -44,15 +44,15 @@ public class Motd {
         switch (motdType) {
             case NORMAL_MOTD:
                 if (showType == ShowType.HEX) {
-                    return plugin.getMotdConfig().getString(String.format("normal.motds.%s.with-hex.1", motdName));
+                    return plugin.getMotdConfig().getString(String.format("normal.motds.%s.with-hex.line-1", motdName));
                 }
-                return plugin.getMotdConfig().getString(String.format("normal.motds.%s.1", motdName));
+                return plugin.getMotdConfig().getString(String.format("normal.motds.%s.line-1", motdName));
 
             case WHITELIST_MOTD:
                 if (showType == ShowType.HEX) {
-                    return plugin.getMotdConfig().getString(String.format("whitelist.motds.%s.with-hex.1", motdName));
+                    return plugin.getMotdConfig().getString(String.format("whitelist.motds.%s.with-hex.line-1", motdName));
                 }
-                return plugin.getMotdConfig().getString(String.format("whitelist.motds.%s.1", motdName));
+                return plugin.getMotdConfig().getString(String.format("whitelist.motds.%s.line-1", motdName));
 
             // TODO TIMER MOTD
         }
@@ -63,15 +63,15 @@ public class Motd {
         switch (motdType) {
             case NORMAL_MOTD:
                 if (showType == ShowType.HEX) {
-                    return plugin.getMotdConfig().getString(String.format("normal.motds.%s.with-hex.2", motdName));
+                    return plugin.getMotdConfig().getString(String.format("normal.motds.%s.with-hex.line-2", motdName));
                 }
-                return plugin.getMotdConfig().getString(String.format("normal.motds.%s.2", motdName));
+                return plugin.getMotdConfig().getString(String.format("normal.motds.%s.line-2", motdName));
 
             case WHITELIST_MOTD:
                 if (showType == ShowType.HEX) {
-                    return plugin.getMotdConfig().getString(String.format("whitelist.motds.%s.with-hex.2", motdName));
+                    return plugin.getMotdConfig().getString(String.format("whitelist.motds.%s.with-hex.line-2", motdName));
                 }
-                return plugin.getMotdConfig().getString(String.format("whitelist.motds.%s.2", motdName));
+                return plugin.getMotdConfig().getString(String.format("whitelist.motds.%s.line-2", motdName));
 
             // TODO TIMER MOTD
         }
@@ -80,11 +80,23 @@ public class Motd {
 
     public boolean isCustomProtocolEnabled(MotdType motdType) {
         if (motdType == MotdType.NORMAL_MOTD) {
-            return plugin.getMotdConfig().getBoolean("normal.settings.custom-protocol");
+            return plugin.getMotdConfig().getBoolean("normal.settings.custom-protocol.enable");
         }
 
         if (motdType == MotdType.WHITELIST_MOTD) {
-            return plugin.getMotdConfig().getBoolean("whitelist.settings.custom-protocol");
+            return plugin.getMotdConfig().getBoolean("whitelist.settings.custom-protocol.enable");
+        }
+
+        return false;
+    }
+
+    public boolean getProtocolVersion(MotdType motdType) {
+        if (motdType == MotdType.NORMAL_MOTD) {
+            return plugin.getMotdConfig().getBoolean("normal.settings.custom-protocol.change-protocol-version");
+        }
+
+        if (motdType == MotdType.WHITELIST_MOTD) {
+            return plugin.getMotdConfig().getBoolean("whitelist.settings.custom-protocol.change-protocol-version");
         }
 
         return false;

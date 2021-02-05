@@ -47,8 +47,6 @@ public final class PixelMOTD extends Plugin {
         manager      = new FileManager(this);
         cmdUtils     = new CommandUtils(this);
         motdUtils    = new Motd(this);
-        hexColors    = new HexColors();
-        newHexColor  = new NewHexColor();
 
         loadConfigs();
         registerListeners();
@@ -70,7 +68,6 @@ public final class PixelMOTD extends Plugin {
 
     public void loadConfigs() {
         commandFile         = manager.loadConfig("command");
-        editFile            = manager.loadConfig("edit");
         modulesFile         = manager.loadConfig("modules");
         normalMotdFile      = manager.loadConfig("normal-motd");
         settingsFile        = manager.loadConfig("settings");
@@ -85,7 +82,6 @@ public final class PixelMOTD extends Plugin {
     }
 
     public void reloadConfigs() {
-        manager.reloadConfig(ConfigType.EDITABLE);
         manager.reloadConfig(ConfigType.COMMAND);
         manager.reloadConfig(ConfigType.MODULES);
         manager.reloadConfig(ConfigType.NORMAL_MOTD);

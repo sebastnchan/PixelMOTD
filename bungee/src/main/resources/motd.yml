@@ -1,8 +1,10 @@
 normal:
   settings:
     icon: true
-    custom-protocol: true
-    custom-protocol-name: PixelMOTD
+    custom-protocol:
+      enable: true
+      change-protocol-version: true
+      name: PixelMOTD
     hover:
       toggle: true
       message:
@@ -18,24 +20,26 @@ normal:
         - ''
   motds:
     first:
-      1: "&b&lPixelMOTD"
-      2: "&f&oThis motd only appear for 1.8 - 1.15"
+      line-1: "&b&lPixelMOTD"
+      line-2: "&f&oThis motd only appear for 1.8 - 1.15"
       with-hex:
         enable: true
-        1: "<#99ccff>PixelMOTD"
-        2: "&f&oThis motd only appear for 1.16+"
+        line-1: "<#99ccff>PixelMOTD"
+        line-2: "&f&oThis motd only appear for 1.16+"
     another:
-      1: "&c&lPixelMOTD"
-      2: "&f&oThis motd only appear for 1.8 - 1.15"
+      line-1: "&c&lPixelMOTD"
+      line-2: "&f&oThis motd only appear for 1.8 - 1.15"
       with-hex:
         enable: true
-        1: "<#99ccff>PixelMOTD"
-        2: "&f&oThis motd only appear for 1.16+"
+        line-1: "<#99ccff>PixelMOTD"
+        line-2: "&f&oThis motd only appear for 1.16+"
 whitelist:
   settings:
     icon: true
-    custom-protocol: true
-    custom-protocol-name: "Whitelist PixelMOTD"
+    custom-protocol:
+      enable: true
+      change-protocol-version: true
+      name: Whitelist PixelMOTD
     hover:
       toggle: true
       message:
@@ -51,34 +55,34 @@ whitelist:
         - ''
   motds:
     first:
-      1: "&b&lPixelMOTD &7| &fWHITELIST"
-      2: "&f&oThis motd only appear for 1.8 - 1.15"
+      line-1: "&b&lPixelMOTD &7| &fWHITELIST"
+      line-2: "&f&oThis motd only appear for 1.8 - 1.15"
       with-hex:
         enable: true
-        1: "<#99ccff>PixelMOTD &7| &fWHITELIST"
-        2: "&f&oThis motd only appear for 1.16+"
+        line-1: "<#99ccff>PixelMOTD &7| &fWHITELIST"
+        line-2: "&f&oThis motd only appear for 1.16+"
     another:
-      1: "&c&lPixelMOTD &7| &fWHITELIST"
-      2: "&f&oThis motd only appear for 1.8 - 1.15"
+      line-1: "&c&lPixelMOTD &7| &fWHITELIST"
+      line-2: "&f&oThis motd only appear for 1.8 - 1.15"
       with-hex:
         enable: true
-        1: "<#99ccff>&c&lPixelMOTD &7| &fWHITELIST"
-        2: "&f&oThis motd only appear for 1.16+"
+        line-1: "<#99ccff>&c&lPixelMOTD &7| &fWHITELIST"
+        line-2: "&f&oThis motd only appear for 1.16+"
 #timer:
 #  settings:
 #    icon: true
 #  motds:
 #    first:
-#      1: "First motd line"
-#      2: "Second motd line"
+#      line-1: "First motd line"
+#      line-2: "Second motd line"
 #      with-hex:
 #        enable: true
-#        1: "amanose che kp :pensive:"
-#        2: "..."
+#        line-1: "amanose che kp :pensive:"
+#        line-2: "..."
 #    another:
-#      1: "DUKETO"
-#      2: "ESKERE"
+#      line-1: "DUKETO"
+#      line-2: "ESKERE"
 #      with-hex:
 #        enable: true
-#        1: "ndirakueker pepa"
-#        2: "..."
+#        line-1: "ndirakueker pepa"
+#        line-2: "..."
