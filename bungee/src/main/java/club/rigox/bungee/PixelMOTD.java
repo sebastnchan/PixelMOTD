@@ -67,12 +67,12 @@ public final class PixelMOTD extends Plugin {
     }
 
     public void loadConfigs() {
-        commandFile         = manager.loadConfig("command");
-        modulesFile         = manager.loadConfig("modules");
-        normalMotdFile      = manager.loadConfig("normal-motd");
-        settingsFile        = manager.loadConfig("settings");
-        timerMotdFile       = manager.loadConfig("timer-motd");
-        whitelistMotdFile   = manager.loadConfig("whitelist-motd");
+//        commandFile         = manager.loadConfig("command");
+//        modulesFile         = manager.loadConfig("modules");
+//        normalMotdFile      = manager.loadConfig("normal-motd");
+//        settingsFile        = manager.loadConfig("settings");
+//        timerMotdFile       = manager.loadConfig("timer-motd");
+//        whitelistMotdFile   = manager.loadConfig("whitelist-motd");
 
         messagesConfig      = manager.loadConfig("messages");
         playersConfig       = manager.loadConfig("players");
@@ -114,33 +114,33 @@ public final class PixelMOTD extends Plugin {
 
     }
 
-    public Configuration getEditableFile() {
-        return editFile;
-    }
+//    public Configuration getEditableFile() {
+//        return editFile;
+//    }
+//
+//    public Configuration getCommandFile() {
+//        return commandFile;
+//    }
+//
+//    public Configuration getModulesFile() {
+//        return modulesFile;
+//    }
+//
+//    public Configuration getNormalMotdFile() {
+//        return normalMotdFile;
+//    }
+//
+//    public Configuration getSettingsFile() {
+//        return settingsFile;
+//    }
+//
+//    public Configuration getTimerMotdFile() {
+//        return timerMotdFile;
+//    }
 
-    public Configuration getCommandFile() {
-        return commandFile;
-    }
-
-    public Configuration getModulesFile() {
-        return modulesFile;
-    }
-
-    public Configuration getNormalMotdFile() {
-        return normalMotdFile;
-    }
-
-    public Configuration getSettingsFile() {
-        return settingsFile;
-    }
-
-    public Configuration getTimerMotdFile() {
-        return timerMotdFile;
-    }
-
-    public Configuration getWhitelistMotdFile() {
-        return whitelistMotdFile;
-    }
+//    public Configuration getWhitelistMotdFile() {
+//        return whitelistMotdFile;
+//    }
 
     public Configuration getMessagesConfig() {
         return messagesConfig;

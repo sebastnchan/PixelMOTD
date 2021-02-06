@@ -46,6 +46,7 @@ public class Motd {
                 if (showType == ShowType.HEX) {
                     return plugin.getMotdConfig().getString(String.format("normal.motds.%s.with-hex.line-1", motdName));
                 }
+
                 return plugin.getMotdConfig().getString(String.format("normal.motds.%s.line-1", motdName));
 
             case WHITELIST_MOTD:
@@ -117,9 +118,7 @@ public class Motd {
     private ServerPing.PlayerInfo[] addHoverLine(ServerPing.PlayerInfo[] player, ServerPing.PlayerInfo info) {
         ServerPing.PlayerInfo[] hoverText = new ServerPing.PlayerInfo[player.length + 1];
 
-        for (int id = 0; id < player.length; id++) {
-            hoverText[id] = player[id];
-        }
+        System.arraycopy(player, 0, hoverText, 0, player.length);
 
         hoverText[player.length] = info;
         return hoverText;

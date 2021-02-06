@@ -89,48 +89,48 @@ public class FileManager {
                     plugin.messagesConfig = ConfigurationProvider.getProvider(YamlConfiguration.class).load(message);
                     return;
 
-                case COMMAND:
-                    File command = new File(plugin.getDataFolder(), "command.yml");
-
-                    ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.commandFile, command);
-                    plugin.commandFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(command);
-                    return;
-
-                case TIMER_MOTD:
-                    File timer = new File(plugin.getDataFolder(), "timer-motd.yml");
-
-                    ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.timerMotdFile, timer);
-                    plugin.timerMotdFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(timer);
-                    return;
-
-                case MODULES:
-                    File modules = new File(plugin.getDataFolder(), "modules.yml");
-
-                    ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.modulesFile, modules);
-                    plugin.modulesFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(modules);
-                    return;
-
-                case SETTINGS:
-                    File settings = new File(plugin.getDataFolder(), "settings.yml");
-
-                    ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.settingsFile, settings);
-                    plugin.settingsFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(settings);
-                    return;
-
-                case WHITELIST_MOTD:
-                    File whitelistMotd = new File(plugin.getDataFolder(), "whitelist-motd.yml");
-
-                    ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.whitelistMotdFile, whitelistMotd);
-                    plugin.whitelistMotdFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(whitelistMotd);
-                    return;
-
-                case NORMAL_MOTD:
-                    File normalMotd = new File(plugin.getDataFolder(), "normal-motd.yml");
-
-                    ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.normalMotdFile, normalMotd);
-                    plugin.normalMotdFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(normalMotd);
-                    return;
-
+//                case COMMAND:
+//                    File command = new File(plugin.getDataFolder(), "command.yml");
+//
+//                    ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.commandFile, command);
+//                    plugin.commandFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(command);
+//                    return;
+//
+//                case TIMER_MOTD:
+//                    File timer = new File(plugin.getDataFolder(), "timer-motd.yml");
+//
+//                    ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.timerMotdFile, timer);
+//                    plugin.timerMotdFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(timer);
+//                    return;
+//
+//                case MODULES:
+//                    File modules = new File(plugin.getDataFolder(), "modules.yml");
+//
+//                    ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.modulesFile, modules);
+//                    plugin.modulesFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(modules);
+//                    return;
+//
+//                case SETTINGS:
+//                    File settings = new File(plugin.getDataFolder(), "settings.yml");
+//
+//                    ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.settingsFile, settings);
+//                    plugin.settingsFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(settings);
+//                    return;
+//
+//                case WHITELIST_MOTD:
+//                    File whitelistMotd = new File(plugin.getDataFolder(), "whitelist-motd.yml");
+//
+//                    ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.whitelistMotdFile, whitelistMotd);
+//                    plugin.whitelistMotdFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(whitelistMotd);
+//                    return;
+//
+//                case NORMAL_MOTD:
+//                    File normalMotd = new File(plugin.getDataFolder(), "normal-motd.yml");
+//
+//                    ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.normalMotdFile, normalMotd);
+//                    plugin.normalMotdFile = ConfigurationProvider.getProvider(YamlConfiguration.class).load(normalMotd);
+//                    return;
+//
                 default:
                     error("Something went wrong. Please notify it to the plugin author.");
             }
