@@ -1,4 +1,0 @@
-name: PixelMOTD
-version: ${project.version}
-main: dev.mruniverse.pixelmotd.PixelMOTD
-api-version: 1.16
