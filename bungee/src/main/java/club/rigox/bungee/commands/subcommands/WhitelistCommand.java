@@ -14,7 +14,7 @@ import static club.rigox.bungee.utils.FileManager.getMessageString;
 import static club.rigox.bungee.utils.Logger.sendMessage;
 
 @CommandAlias("bpmotd")
-@CommandPermission("pixelmotd.whitelist.manage")
+@CommandPermission("pixelmotd.whitelist.manage pixelmotd.admin")
 public class WhitelistCommand extends BaseCommand {
     public PixelMOTD plugin;
 
