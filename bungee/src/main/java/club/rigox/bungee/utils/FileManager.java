@@ -75,20 +75,20 @@ public class FileManager {
 
                     ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.playersConfig, players);
                     plugin.playersConfig = ConfigurationProvider.getProvider(YamlConfiguration.class).load(players);
-                    return;
+                    break;
                 case MOTD:
                     File motd = new File(plugin.getDataFolder(), "motd.yml");
 
                     ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.motdConfig, motd);
                     plugin.motdConfig = ConfigurationProvider.getProvider(YamlConfiguration.class).load(motd);
-                    return;
+                    break;
 
                 case MESSAGES:
                     File message = new File(plugin.getDataFolder(), "messages.yml");
 
                     ConfigurationProvider.getProvider(YamlConfiguration.class).save(plugin.messagesConfig, message);
                     plugin.messagesConfig = ConfigurationProvider.getProvider(YamlConfiguration.class).load(message);
-                    return;
+                    break;
 
 //                case COMMAND:
 //                    File command = new File(plugin.getDataFolder(), "command.yml");

@@ -40,7 +40,7 @@ public class CommandUtils {
                 plugin.getManager().reloadConfig(ConfigType.PLAYERS);
 
                 debug("Editable was reloaded (UUID - Whitelist)");
-                return;
+                break;
 
             case WHITELIST_PLAYER:
                 List<String> whitelistPlayer = new ArrayList<>();
@@ -50,7 +50,7 @@ public class CommandUtils {
                 plugin.getManager().reloadConfig(ConfigType.PLAYERS);
 
                 debug("Editable was reloaded (Player - Whitelist)");
-                return;
+                break;
 
             case BLACKLIST_PLAYER:
                 List<String> blacklistPlayer = new ArrayList<>();
@@ -60,7 +60,7 @@ public class CommandUtils {
                 plugin.getManager().reloadConfig(ConfigType.PLAYERS);
 
                 debug("Editable was reloaded (Player - Blacklist)");
-                return;
+                break;
 
             case BLACKLIST_UUID:
                 List<String> blacklistUUID = new ArrayList<>();
@@ -70,7 +70,7 @@ public class CommandUtils {
                 plugin.getManager().reloadConfig(ConfigType.PLAYERS);
 
                 debug("Editable was reloaded (UUID - Blacklist)");
-                return;
+                break;
 
             default:
                 error("Something wrong happen. Please inform this to the author.");
@@ -100,7 +100,7 @@ public class CommandUtils {
 
                         player.disconnect(new TextComponent(color(whitelistReason
                                 .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor()))));
-                        return;
+                        break;
                     }
 
                 case WHITELIST_PLAYER:
@@ -111,7 +111,7 @@ public class CommandUtils {
 
                         player.disconnect(new TextComponent(color(whitelistReason
                                 .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor()))));
-                        return;
+                        break;
                     }
 
                 case BLACKLIST:
@@ -119,8 +119,11 @@ public class CommandUtils {
                         blacklistedPlayers.contains(player.toString())) {
 
                         player.disconnect(new TextComponent(color(blacklistReason)));
-                        return;
+                        break;
                     }
+
+                default:
+                    break;
             }
         }
 
