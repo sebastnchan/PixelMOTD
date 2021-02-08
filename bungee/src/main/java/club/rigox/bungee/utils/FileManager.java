@@ -11,7 +11,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 
-import static club.rigox.bungee.utils.Logger.*;
+import static club.rigox.bungee.utils.Logger.error;
+import static club.rigox.bungee.utils.Logger.warn;
 
 public class FileManager {
     private final PixelMOTD plugin;

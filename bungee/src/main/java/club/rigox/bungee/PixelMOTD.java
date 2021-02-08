@@ -1,13 +1,16 @@
 package club.rigox.bungee;
 
-import club.rigox.bungee.commands.subcommands.BlacklistCommand;
 import club.rigox.bungee.commands.CommandUtils;
 import club.rigox.bungee.commands.PixelCommand;
+import club.rigox.bungee.commands.subcommands.BlacklistCommand;
 import club.rigox.bungee.commands.subcommands.WhitelistCommand;
 import club.rigox.bungee.enums.ConfigType;
 import club.rigox.bungee.listeners.MotdEvent;
 import club.rigox.bungee.listeners.WhitelistEvent;
-import club.rigox.bungee.utils.*;
+import club.rigox.bungee.utils.Converter;
+import club.rigox.bungee.utils.FileManager;
+import club.rigox.bungee.utils.Motd;
+import club.rigox.bungee.utils.Placeholders;
 import co.aikar.commands.BungeeCommandManager;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
@@ -27,13 +30,13 @@ public final class PixelMOTD extends Plugin {
 
     private Motd motdUtils;
 
-    public Configuration commandFile;
-    public Configuration editFile;
-    public Configuration modulesFile;
-    public Configuration normalMotdFile;
-    public Configuration settingsFile;
-    public Configuration timerMotdFile;
-    public Configuration whitelistMotdFile;
+//    public Configuration commandFile;
+//    public Configuration editFile;
+//    public Configuration modulesFile;
+//    public Configuration normalMotdFile;
+//    public Configuration settingsFile;
+//    public Configuration timerMotdFile;
+//    public Configuration whitelistMotdFile;
 
     // NEW FILES
     public Configuration messagesConfig;
@@ -82,12 +85,12 @@ public final class PixelMOTD extends Plugin {
     }
 
     public void reloadConfigs() {
-        manager.reloadConfig(ConfigType.COMMAND);
-        manager.reloadConfig(ConfigType.MODULES);
-        manager.reloadConfig(ConfigType.NORMAL_MOTD);
-        manager.reloadConfig(ConfigType.SETTINGS);
-        manager.reloadConfig(ConfigType.TIMER_MOTD);
-        manager.reloadConfig(ConfigType.WHITELIST_MOTD);
+//        manager.reloadConfig(ConfigType.COMMAND);
+//        manager.reloadConfig(ConfigType.MODULES);
+//        manager.reloadConfig(ConfigType.NORMAL_MOTD);
+//        manager.reloadConfig(ConfigType.SETTINGS);
+//        manager.reloadConfig(ConfigType.TIMER_MOTD);
+//        manager.reloadConfig(ConfigType.WHITELIST_MOTD);
 
         manager.reloadConfig(ConfigType.MESSAGES);
         manager.reloadConfig(ConfigType.PLAYERS);
