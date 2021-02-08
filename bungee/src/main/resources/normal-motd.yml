@@ -27,7 +27,7 @@ normal:
         toggle: true
         line1: '&b&lPixelMOTD v%plugin_version%'
         line2: '&f&oThis motd only appear for 1.16+'
-      customOnlinePlayers:
+      cu  stomOnlinePlayers:
         toggle: false
         mode: HALF-ADD
         values:

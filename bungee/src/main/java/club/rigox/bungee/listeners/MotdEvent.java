@@ -60,6 +60,10 @@ public class MotdEvent implements Listener {
         // TODO ICON STATUS
         // TODO PLAYER STATUS
 
+        if (plugin.getMotdUtils().getIconStatus(showMode)) {
+
+        }
+
         ServerPing.Protocol protocol;
         if (plugin.getMotdUtils().isCustomProtocolEnabled(showMode)) {
             ServerPing.Protocol received = response.getVersion();

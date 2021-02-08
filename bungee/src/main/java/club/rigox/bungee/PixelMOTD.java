@@ -70,13 +70,6 @@ public final class PixelMOTD extends Plugin {
     }
 
     public void loadConfigs() {
-//        commandFile         = manager.loadConfig("command");
-//        modulesFile         = manager.loadConfig("modules");
-//        normalMotdFile      = manager.loadConfig("normal-motd");
-//        settingsFile        = manager.loadConfig("settings");
-//        timerMotdFile       = manager.loadConfig("timer-motd");
-//        whitelistMotdFile   = manager.loadConfig("whitelist-motd");
-
         messagesConfig      = manager.loadConfig("messages");
         playersConfig       = manager.loadConfig("players");
         motdConfig          = manager.loadConfig("motd");
@@ -85,16 +78,9 @@ public final class PixelMOTD extends Plugin {
     }
 
     public void reloadConfigs() {
-//        manager.reloadConfig(ConfigType.COMMAND);
-//        manager.reloadConfig(ConfigType.MODULES);
-//        manager.reloadConfig(ConfigType.NORMAL_MOTD);
-//        manager.reloadConfig(ConfigType.SETTINGS);
-//        manager.reloadConfig(ConfigType.TIMER_MOTD);
-//        manager.reloadConfig(ConfigType.WHITELIST_MOTD);
-
-        manager.reloadConfig(ConfigType.MESSAGES);
-        manager.reloadConfig(ConfigType.PLAYERS);
-        manager.reloadConfig(ConfigType.MOTD);
+        messagesConfig = manager.reloadConfig("messages", messagesConfig);
+        playersConfig  = manager.reloadConfig("players", playersConfig);
+        motdConfig     = manager.reloadConfig("motd", motdConfig);
     }
 
     public void registerCommands() {

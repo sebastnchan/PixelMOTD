@@ -157,4 +157,15 @@ public class Motd {
         }
         return false;
     }
+
+    public boolean getIconStatus(MotdType motdType) {
+        if (motdType == MotdType.NORMAL_MOTD) {
+            return plugin.getMotdConfig().getBoolean("normal.settings.icon");
+        }
+
+        if (motdType == MotdType.WHITELIST_MOTD) {
+            return plugin.getMotdConfig().getBoolean("whitelist.settings.icon");
+        }
+        return false;
+    }
 }

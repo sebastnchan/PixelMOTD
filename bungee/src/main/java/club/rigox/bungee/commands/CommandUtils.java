@@ -37,7 +37,7 @@ public class CommandUtils {
                 whitelistUuid.add(toAdd);
 
                 plugin.getPlayersConfig().set("whitelist.players-uuid", whitelistUuid);
-                plugin.getManager().reloadConfig(ConfigType.PLAYERS);
+                plugin.reloadConfigs();
 
                 debug("Editable was reloaded (UUID - Whitelist)");
                 break;
@@ -47,7 +47,7 @@ public class CommandUtils {
                 whitelistPlayer.add(toAdd);
 
                 plugin.getPlayersConfig().set("whitelist.players-name", whitelistPlayer);
-                plugin.getManager().reloadConfig(ConfigType.PLAYERS);
+                plugin.reloadConfigs();
 
                 debug("Editable was reloaded (Player - Whitelist)");
                 break;
@@ -57,7 +57,7 @@ public class CommandUtils {
                 blacklistPlayer.add(toAdd);
 
                 plugin.getPlayersConfig().set("blacklist.players-name", blacklistPlayer);
-                plugin.getManager().reloadConfig(ConfigType.PLAYERS);
+                plugin.reloadConfigs();
 
                 debug("Editable was reloaded (Player - Blacklist)");
                 break;
@@ -67,7 +67,7 @@ public class CommandUtils {
                 blacklistUUID.add(toAdd);
 
                 plugin.getPlayersConfig().set("blacklist.players-uuid", blacklistUUID);
-                plugin.getManager().reloadConfig(ConfigType.PLAYERS);
+                plugin.loadConfigs();
 
                 debug("Editable was reloaded (UUID - Blacklist)");
                 break;

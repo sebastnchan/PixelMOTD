@@ -55,7 +55,7 @@ public class BlacklistCommand extends BaseCommand {
             uuidList.add(player);
 
             plugin.getPlayersConfig().set("blacklist.players-uuid", uuidList);
-            plugin.getManager().reloadConfig(ConfigType.PLAYERS);
+            plugin.reloadConfigs();
 
             plugin.getCmdUtils().kickOnWhitelist(KickType.BLACKLIST);
 
@@ -79,7 +79,7 @@ public class BlacklistCommand extends BaseCommand {
         playerList.add(player);
 
         plugin.getPlayersConfig().set("blacklist.players-name", playerList);
-        plugin.getManager().reloadConfig(ConfigType.PLAYERS);
+        plugin.reloadConfigs();
 
         plugin.getCmdUtils().kickOnWhitelist(KickType.BLACKLIST);
 
@@ -101,7 +101,7 @@ public class BlacklistCommand extends BaseCommand {
             uuidList.remove(player);
 
             plugin.getPlayersConfig().set("blacklist.players-uuid", uuidList);
-            plugin.getManager().reloadConfig(ConfigType.PLAYERS);
+            plugin.reloadConfigs();
 
             sendMessage(sender, String.format(getMessageString("blacklist.uuid.removed"), player));
 
@@ -116,7 +116,7 @@ public class BlacklistCommand extends BaseCommand {
         playerList.remove(player);
 
         plugin.getPlayersConfig().set("blacklist.players-name", playerList);
-        plugin.getManager().reloadConfig(ConfigType.PLAYERS);
+        plugin.reloadConfigs();
 
         sendMessage(sender, String.format(getMessageString("blacklist.player.removed"), player));
     }
