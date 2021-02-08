@@ -16,7 +16,7 @@ import static club.rigox.bungee.utils.Logger.*;
 public class CommandUtils {
     private final PixelMOTD plugin;
 
-    static final String UUID_PATTERN = "([a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8})";
+    private static final String UUID_PATTERN = "([a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8})";
 
     public CommandUtils (PixelMOTD plugin) {
         this.plugin = plugin;

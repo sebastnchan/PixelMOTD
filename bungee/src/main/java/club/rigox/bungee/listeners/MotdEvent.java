@@ -18,17 +18,7 @@ import static club.rigox.bungee.utils.Logger.debug;
 public class MotdEvent implements Listener {
     private final PixelMOTD plugin;
 
-    Favicon                 favicon = null;
-    ServerPing.Protocol     protocol;
-    ServerPing.Players      players;
-    ServerPing.PlayerInfo[] motdHover;
-
-    String line1, line2, motd, showMotd;
-
-    MotdType showMode;
-    ShowType showType;
-
-    boolean mHover;
+    private Favicon favicon = null;
 
     public MotdEvent(PixelMOTD plugin) {
         this.plugin = plugin;
@@ -52,6 +42,8 @@ public class MotdEvent implements Listener {
         int max    = response.getPlayers().getMax();
         int online = response.getPlayers().getOnline();
 
+        String   showMotd;
+        MotdType showMode;
         if (whitelistEnabled) {
             showMotd = plugin.getMotdUtils().getMotd(true);
             showMode = MotdType.WHITELIST_MOTD;
@@ -60,17 +52,15 @@ public class MotdEvent implements Listener {
             showMode = MotdType.NORMAL_MOTD;
         }
 
-        showType = ShowType.WITHOUT_HEX;
+        ShowType showType = ShowType.WITHOUT_HEX;
 
-        if (e.getConnection().getVersion() >= 735) {
-            if (plugin.getMotdUtils().getHexStatus(showMode, showMotd)) {
-                showType = ShowType.HEX;
-            }
-        }
+        if (e.getConnection().getVersion() >= 735 && plugin.getMotdUtils().getHexStatus(showMode, showMotd))
+            showType = ShowType.HEX;
 
         // TODO ICON STATUS
         // TODO PLAYER STATUS
 
+        ServerPing.Protocol protocol;
         if (plugin.getMotdUtils().isCustomProtocolEnabled(showMode)) {
             ServerPing.Protocol received = response.getVersion();
 
@@ -86,19 +76,20 @@ public class MotdEvent implements Listener {
             protocol = response.getVersion();
         }
 
-        motdHover = plugin.getMotdUtils().getHover(showMode);
-        mHover    = plugin.getMotdUtils().isCustomHoverEnabled(showMode);
+        ServerPing.PlayerInfo[] motdHover = plugin.getMotdUtils().getHover(showMode);
+        boolean mHover = plugin.getMotdUtils().isCustomHoverEnabled(showMode);
 
+        ServerPing.Players players;
         if (mHover) {
             players = new ServerPing.Players(max, online, motdHover);
         } else {
             players = new ServerPing.Players(max, online, response.getPlayers().getSample());
         }
 
-        line1 = plugin.getMotdUtils().getFirstLine(showMode, showMotd, showType);
-        line2 = plugin.getMotdUtils().getSecondLine(showMode, showMotd, showType);
+        String line1 = plugin.getMotdUtils().getFirstLine(showMode, showMotd, showType);
+        String line2 = plugin.getMotdUtils().getSecondLine(showMode, showMotd, showType);
 
-        motd = color(line1 + "\n" + line2);
+        String motd = color(line1 + "\n" + line2);
 
         ServerPing result;
 

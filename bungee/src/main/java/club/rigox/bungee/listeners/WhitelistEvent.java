@@ -20,32 +20,6 @@ public class WhitelistEvent implements Listener {
     }
 
     @EventHandler
-    public void onLogin(LoginEvent e) {
-//        if (e.isCancelled()) return;
-//
-//        String connectionName        = e.getConnection().getName();
-//        String connectionUuid        = e.getConnection().getUniqueId().toString();
-//
-//        List<String> blacklistPlayer = plugin.getPlayersConfig().getStringList("blacklist.players-name");
-//        List<String> blacklistUuid   = plugin.getPlayersConfig().getStringList("blacklist.players-uuid");
-//        List<String> blacklistMsg    = plugin.getMessagesConfig().getStringList("blacklist.kick-message");
-//
-//        boolean blacklistToggle      = plugin.getPlayersConfig().getBoolean("blacklist.toggle");
-//
-//        if (blacklistToggle) {
-//            if (blacklistPlayer.contains(connectionName) || blacklistUuid.contains(connectionUuid)) {
-//                String kickReason = plugin.getConverter().fromListToString(blacklistMsg);
-//
-//                e.setCancelReason(new TextComponent(color(kickReason
-//                        .replace("%nick%", connectionName))
-//                        .replace("%type%", "Server")));
-//            }
-//        }
-
-        // TODO Block words in name
-    }
-
-    @EventHandler
     public void onPostLoginEvent(PostLoginEvent e) {
         String connectionName        = e.getPlayer().getName();
         String connectionUuid        = e.getPlayer().getUniqueId().toString();
@@ -62,15 +36,13 @@ public class WhitelistEvent implements Listener {
             return;
         }
 
-        if (whitelistToggle) {
-            if (!whitelistPlayer.contains(connectionName) && !whitelistUuid.contains(connectionUuid)) {
-                String kickReason = plugin.getConverter().fromListToString(whitelistMsg);
-                e.getPlayer().disconnect(
-                        new TextComponent(color(kickReason
-                                .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor())
-                                .replace("%type%","Server")))
-                );
-            }
+        if (whitelistToggle && !whitelistPlayer.contains(connectionName) && !whitelistUuid.contains(connectionUuid)) {
+            String kickReason = plugin.getConverter().fromListToString(whitelistMsg);
+            e.getPlayer().disconnect(
+                    new TextComponent(color(kickReason
+                            .replace("%whitelist_author%", plugin.getPlaceholders().getWhitelistAuthor())
+                            .replace("%type%","Server")))
+            );
         }
 
         List<String> blacklistPlayer = plugin.getPlayersConfig().getStringList("blacklist.players-name");
