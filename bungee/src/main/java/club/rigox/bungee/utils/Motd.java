@@ -6,11 +6,8 @@ import club.rigox.bungee.enums.ShowType;
 import net.md_5.bungee.api.ServerPing;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
-import static club.rigox.bungee.utils.Logger.debug;
 
 public class Motd {
     private final PixelMOTD plugin;
@@ -138,10 +135,8 @@ public class Motd {
             type = "whitelist";
         }
 
-        debug(plugin.getMotdConfig().getStringList(String.format("%s.motds.%s.hover.message", type, motdName)).toString());
         for (String line : plugin.getMotdConfig().getStringList(String.format("%s.motds.%s.hover.message", type, motdName))) {
             hoverToShow = addHoverLine(hoverToShow, new ServerPing.PlayerInfo((line.replace("&","§")), String.valueOf(ids)));
-            debug(Arrays.toString(hoverToShow));
             ids++;
         }
 

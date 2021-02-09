@@ -1,7 +1,6 @@
 package club.rigox.bungee.commands;
 
 import club.rigox.bungee.PixelMOTD;
-import club.rigox.bungee.enums.ConfigType;
 import club.rigox.bungee.enums.KickType;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;

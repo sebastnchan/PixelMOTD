@@ -9,7 +9,6 @@ import net.md_5.bungee.event.EventHandler;
 import java.util.List;
 
 import static club.rigox.bungee.utils.Logger.color;
-import static club.rigox.bungee.utils.Logger.debug;
 
 public class WhitelistEvent implements Listener {
     private final PixelMOTD plugin;

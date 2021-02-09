@@ -1,14 +1,9 @@
 package club.rigox.bungee.commands.subcommands;
 
 import club.rigox.bungee.PixelMOTD;
-import club.rigox.bungee.enums.ConfigType;
 import club.rigox.bungee.enums.KickType;
 import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.CommandAlias;
-import co.aikar.commands.annotation.CommandCompletion;
-import co.aikar.commands.annotation.CommandPermission;
-import co.aikar.commands.annotation.Subcommand;
-import co.aikar.commands.annotation.Single;
+import co.aikar.commands.annotation.*;
 import net.md_5.bungee.api.CommandSender;
 
 import java.util.List;

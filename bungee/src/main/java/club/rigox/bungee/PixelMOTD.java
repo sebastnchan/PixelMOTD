@@ -4,7 +4,6 @@ import club.rigox.bungee.commands.CommandUtils;
 import club.rigox.bungee.commands.PixelCommand;
 import club.rigox.bungee.commands.subcommands.BlacklistCommand;
 import club.rigox.bungee.commands.subcommands.WhitelistCommand;
-import club.rigox.bungee.enums.ConfigType;
 import club.rigox.bungee.listeners.MotdEvent;
 import club.rigox.bungee.listeners.WhitelistEvent;
 import club.rigox.bungee.utils.Converter;
