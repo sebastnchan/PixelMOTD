@@ -74,12 +74,13 @@ public final class PixelMOTD extends Plugin {
         messagesConfig      = manager.loadConfig("messages");
         dataConfig          = manager.loadConfig("data");
         motdConfig          = manager.loadConfig("motd");
+        config              = manager.loadConfig("config");
 
         debug("Configs has been loaded!");
     }
 
     public void saveConfigs() {
-        dataConfig  = manager.reloadConfig("players", dataConfig);
+        dataConfig  = manager.reloadConfig("data", dataConfig);
     }
 
     public void registerCommands() {

@@ -37,7 +37,7 @@ public class MotdEvent implements Listener {
 
         if (connection == null) return;
 
-        boolean whitelistEnabled     = plugin.getPlayersConfig().getBoolean("whitelist.toggle");
+        boolean whitelistEnabled     = plugin.getDataConfig().getBoolean("whitelist.toggle");
 
         int max    = response.getPlayers().getMax();
         int online = response.getPlayers().getOnline();

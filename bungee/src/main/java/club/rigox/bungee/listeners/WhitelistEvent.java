@@ -24,7 +24,7 @@ public class WhitelistEvent implements Listener {
         String connectionName        = e.getPlayer().getName();
         String connectionUuid        = e.getPlayer().getUniqueId().toString();
 
-        String bypassPermission      = plugin.getDataConfig().getString("whitelist.permision-bypass");
+        String bypassPermission      = plugin.getConfig().getString("whitelist.permision-bypass");
 
         List<String> whitelistPlayer = plugin.getDataConfig().getStringList("whitelist.players-name");
         List<String> whitelistUuid   = plugin.getDataConfig().getStringList("whitelist.players-uuid");
@@ -37,11 +37,6 @@ public class WhitelistEvent implements Listener {
         }
 
         if (whitelistToggle && !whitelistPlayer.contains(connectionName) && !whitelistUuid.contains(connectionUuid)) {
-            if (e.getPlayer().hasPermission(plugin.getConfig().getString("whitelist.permission-bypass"))) {
-                debug(e.getPlayer() + " joined with bypass permission of whitelist.");
-                return;
-            }
-
             String kickReason = plugin.getConverter().fromListToString(whitelistMsg);
             e.getPlayer().disconnect(
                     new TextComponent(color(kickReason

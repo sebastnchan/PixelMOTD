@@ -10,10 +10,10 @@ public class Placeholders {
     }
 
     public String getWhitelistAuthor() {
-        String author             = plugin.getPlayersConfig().getString("whitelist.author");
-        String customAuthor       = plugin.getPlayersConfig().getString("whitelist.custom-console-name.name");
+        String author             = plugin.getDataConfig().getString("whitelist.author");
+        String customAuthor       = plugin.getDataConfig().getString("whitelist.custom-console-name.name");
 
-        boolean customAuthorCheck = plugin.getPlayersConfig().getBoolean("whitelist.custom-console-name.toggle");
+        boolean customAuthorCheck = plugin.getDataConfig().getBoolean("whitelist.custom-console-name.toggle");
 
         if (!author.equalsIgnoreCase("CONSOLE"))
             return author;
