@@ -6,8 +6,11 @@ import club.rigox.bungee.enums.ShowType;
 import net.md_5.bungee.api.ServerPing;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+
+import static club.rigox.bungee.utils.Logger.debug;
 
 public class Motd {
     private final PixelMOTD plugin;
@@ -124,21 +127,21 @@ public class Motd {
         return hoverText;
     }
 
-    public ServerPing.PlayerInfo[] getHover(MotdType motdType) {
+    public ServerPing.PlayerInfo[] getHover(MotdType motdType, String motdName) {
         ServerPing.PlayerInfo[] hoverToShow = new ServerPing.PlayerInfo[0];
 
         int ids = 0;
 
-        String type;
-
-        type = "normal";
+        String type = "normal";
 
         if (motdType == MotdType.WHITELIST_MOTD) {
             type = "whitelist";
         }
 
-        for (String line : plugin.getMotdConfig().getStringList(type + ".settings.hover.message")) {
+        debug(plugin.getMotdConfig().getStringList(String.format("%s.motds.%s.hover.message", type, motdName)).toString());
+        for (String line : plugin.getMotdConfig().getStringList(String.format("%s.motds.%s.hover.message", type, motdName))) {
             hoverToShow = addHoverLine(hoverToShow, new ServerPing.PlayerInfo((line.replace("&","§")), String.valueOf(ids)));
+            debug(Arrays.toString(hoverToShow));
             ids++;
         }
 
@@ -146,16 +149,16 @@ public class Motd {
         return hoverToShow;
     }
 
-    public boolean isCustomHoverEnabled(MotdType motdType) {
+    public boolean isCustomHoverEnabled(MotdType motdType, String motdName) {
         switch (motdType) {
             case NORMAL_MOTD:
-                return plugin.getMotdConfig().getBoolean("normal.settings.hover.toggle");
+                return plugin.getMotdConfig().getBoolean(String.format("normal.motds.%s.hover.toggle", motdName));
             case WHITELIST_MOTD:
-                return plugin.getMotdConfig().getBoolean("whitelist.settings.hover.toggle");
+                return plugin.getMotdConfig().getBoolean(String.format("whitelist.motds.%s.hover.toggle", motdName));
             case TIMER_MOTD:
                 // TODO
         }
-        return false;
+        return true;
     }
 
     public boolean getIconStatus(MotdType motdType) {

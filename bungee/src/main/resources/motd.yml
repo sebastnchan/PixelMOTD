@@ -26,24 +26,6 @@ normal:
       change-protocol-version: false
       # Custom protocol name to set if enabled.
       name: PixelMOTD
-    # Custom hover.
-    # NOTE: Variables not supported right now.
-    hover:
-      # Toggle hover feature.
-      toggle: true
-      # List of string message to display
-      # on player count hover.
-      message:
-        - '     &9&lPIXEL MOTD'
-        - '&7SpigotMC Plugin v%plugin_version%'
-        - ''
-        - '&b&lInformation:'
-        - '  &7Version: &f%plugin_version%'
-        - '  &7Spigot ID: &f37177'
-        - '  &7Discord: &fMrUniverse#2556'
-        - '  &7Online: &f%online%&7/&f%max%'
-        - '  &frigox.club/discord/dev'
-        - ''
   #
   # MOTD FEATURE
   # You can add many motds as you want.
@@ -72,6 +54,19 @@ normal:
         enable: true
         line-1: "&b&lPixelMOTD &7| Using &e1.16+ &7display!"
         line-2: "&fEnjoy our great Network!"
+      # Custom hover PER MOTD feature.
+      # NOTE: Variables not supported right now.
+      hover:
+        toggle: true
+        # List of string message to display
+        # on player count hover.
+        message:
+          - "&b&lPIXEL MOTD &7| &fNormal mode"
+          - ""
+          - "&fFor plugin support, join to our Discord"
+          - "&brigox.club/discord/development"
+          - ""
+          - "&7Please leave a &e⭐⭐⭐⭐⭐ &7star review!"
     another: # <-- Avoid duplication names on this if you want to add more.
       line-1: "&b&lPixelMOTD &7| Using &d1.8-1.15 &7display!"
       line-2: "&fThis is an default MoTD!"
@@ -86,6 +81,19 @@ normal:
         enable: true
         line-1: "&c&lPixelMOTD &7| Using &e1.16+ &7display!"
         line-2: "&fThis is an default MoTD!"
+      # Custom hover PER MOTD feature.
+      # NOTE: Variables not supported right now.
+      hover:
+        toggle: true
+        # List of string message to display
+        # on player count hover.
+        message:
+          - "&c&lPIXEL MOTD &7| &fNormal mode"
+          - ""
+          - "&fFor plugin support, join to our Discord"
+          - "&brigox.club/discord/development"
+          - ""
+          - "&7Please leave a &e⭐⭐⭐⭐⭐ &7star review!"
 whitelist:
   # Use custom icon for Whitelist MOTDs
   # Can set it on plugins/PixelMOTD/icons/whitelist.png
@@ -102,23 +110,6 @@ whitelist:
       change-protocol-version: false
       # Custom protocol name to set if enabled.
       name: Whitelist PixelMOTD
-    # Custom hover.
-    # NOTE: Variables not supported right now.
-    hover:
-      toggle: true
-      # List of string message to display
-      # on player count hover.
-      message:
-        - '     &9&lPIXEL MOTD'
-        - '&7SpigotMC Plugin v%plugin_version%'
-        - ''
-        - '&b&lInformation:'
-        - '  &7Version: &f%plugin_version%'
-        - '  &7Spigot ID: &f37177'
-        - '  &7Discord: &fMrUniverse#2556'
-        - '  &7Online: &f%online%&7/&f%max%'
-        - '  &frigox.club/discord/dev'
-        - ''
   #
   # MOTD FEATURE
   # You can add many motds as you want.
@@ -147,7 +138,19 @@ whitelist:
         enable: true
         line-1: "&c&lPixelMOTD &7| Using &e1.16+ &7display!"
         line-2: "&fWe're on maintenance, please come back later."
-
+      # Custom hover PER MOTD feature.
+      # NOTE: Variables not supported right now.
+      hover:
+        toggle: true
+        # List of string message to display
+        # on player count hover.
+        message:
+          - "&b&lPIXEL MOTD &7| &fMaintenance mode"
+          - ""
+          - "&fFor plugin support, join to our Discord"
+          - "&brigox.club/discord/development"
+          - ""
+          - "&7Please leave a &e⭐⭐⭐⭐⭐ &7star review!"
     another:
       line-1: "&b&lPixelMOTD &7| Using &d1.8-1.15 &7display!"
       line-2:  "&fWorking hard to bring up new updates."
@@ -160,5 +163,18 @@ whitelist:
       # Only shows on 1.16 this motd, even if it doesn't have HEX colors.
       with-hex:
         enable: true
-        line-1: "&c&lPixelMOTD &7| Using &e1.16+ &7display!"
+        line-1: "&b&lPixelMOTD &7| Using &e1.16+ &7display!"
         line-2: "&fWorking hard to bring up new updates."
+      # Custom hover PER MOTD feature.
+      # NOTE: Variables not supported right now.
+      hover:
+        toggle: true
+        # List of string message to display
+        # on player count hover.
+        message:
+          - "&b&lPIXEL MOTD &7| &fMaintenance mode"
+          - ""
+          - "&fFor plugin support, join to our Discord"
+          - "&brigox.club/discord/development"
+          - ""
+          - "&7Please leave a &e⭐⭐⭐⭐⭐ &7star review!"

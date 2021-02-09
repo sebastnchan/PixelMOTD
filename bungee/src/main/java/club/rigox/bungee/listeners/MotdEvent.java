@@ -44,12 +44,13 @@ public class MotdEvent implements Listener {
 
         String   showMotd;
         MotdType showMode;
+
+        showMotd = plugin.getMotdUtils().getMotd(false);
+        showMode = MotdType.NORMAL_MOTD;
+
         if (whitelistEnabled) {
             showMotd = plugin.getMotdUtils().getMotd(true);
             showMode = MotdType.WHITELIST_MOTD;
-        } else {
-            showMotd = plugin.getMotdUtils().getMotd(false);
-            showMode = MotdType.NORMAL_MOTD;
         }
 
         ShowType showType = ShowType.WITHOUT_HEX;
@@ -61,10 +62,12 @@ public class MotdEvent implements Listener {
         // TODO PLAYER STATUS
 
         if (plugin.getMotdUtils().getIconStatus(showMode)) {
-
+            // TODO
         }
 
         ServerPing.Protocol protocol;
+        protocol = response.getVersion();
+
         if (plugin.getMotdUtils().isCustomProtocolEnabled(showMode)) {
             ServerPing.Protocol received = response.getVersion();
 
@@ -76,12 +79,10 @@ public class MotdEvent implements Listener {
 
             protocol = received;
 
-        } else {
-            protocol = response.getVersion();
         }
 
-        ServerPing.PlayerInfo[] motdHover = plugin.getMotdUtils().getHover(showMode);
-        boolean mHover = plugin.getMotdUtils().isCustomHoverEnabled(showMode);
+        ServerPing.PlayerInfo[] motdHover = plugin.getMotdUtils().getHover(showMode, showMotd);
+        boolean mHover = plugin.getMotdUtils().isCustomHoverEnabled(showMode, showMotd);
 
         ServerPing.Players players;
         if (mHover) {
