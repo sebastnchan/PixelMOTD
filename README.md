@@ -9,6 +9,7 @@ Features:
 * **whitelist** with custom icons on enable.
 * **blacklist** system to prevent certain players join.
 * lightweight **motd** module
+* Per motd **hover**
 
 ## To Do
 * Custom Favicons for normal and whitelist mode
@@ -16,6 +17,8 @@ Features:
 * Better reload system
 * Center MoTD text
 * Better optimizations
+* Caledar MoTD
+* Timer MoTD
  
 ## Wiki
 You can take a look [here](https://github.com/sebastnchan/PixelMOTD/wiki).
