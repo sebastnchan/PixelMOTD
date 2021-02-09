@@ -61,12 +61,14 @@ normal:
         # List of string message to display
         # on player count hover.
         message:
-          - "&b&lPIXEL MOTD &7| &fNormal mode"
+          - "&b&lPIXEL MOTD"
+          - "&7&oNormal Mode"
           - ""
-          - "&fFor plugin support, join to our Discord"
-          - "&brigox.club/discord/development"
+          - "&fDiscord support:"
+          - "&brigox.club/discord/dev"
           - ""
-          - "&7Please leave a &e⭐⭐⭐⭐⭐ &7star review!"
+          - "&7Please leave a &e⭐⭐⭐⭐⭐"
+          - "&7star review!"
     another: # <-- Avoid duplication names on this if you want to add more.
       line-1: "&b&lPixelMOTD &7| Using &d1.8-1.15 &7display!"
       line-2: "&fThis is an default MoTD!"
@@ -88,12 +90,14 @@ normal:
         # List of string message to display
         # on player count hover.
         message:
-          - "&c&lPIXEL MOTD &7| &fNormal mode"
+          - "&c&lPIXEL MOTD"
+          - "&7&oNormal Mode"
           - ""
-          - "&fFor plugin support, join to our Discord"
-          - "&brigox.club/discord/development"
+          - "&fDiscord support:"
+          - "&brigox.club/discord/dev"
           - ""
-          - "&7Please leave a &e⭐⭐⭐⭐⭐ &7star review!"
+          - "&7Please leave a &e⭐⭐⭐⭐⭐"
+          - "&7star review!"
 whitelist:
   # Use custom icon for Whitelist MOTDs
   # Can set it on plugins/PixelMOTD/icons/whitelist.png
@@ -145,12 +149,14 @@ whitelist:
         # List of string message to display
         # on player count hover.
         message:
-          - "&b&lPIXEL MOTD &7| &fMaintenance mode"
+          - "&c&lPIXEL MOTD"
+          - "&7&oWhitelist Mode"
           - ""
-          - "&fFor plugin support, join to our Discord"
-          - "&brigox.club/discord/development"
+          - "&fDiscord support:"
+          - "&brigox.club/discord/dev"
           - ""
-          - "&7Please leave a &e⭐⭐⭐⭐⭐ &7star review!"
+          - "&7Please leave a &e⭐⭐⭐⭐⭐"
+          - "&7star review!"
     another:
       line-1: "&b&lPixelMOTD &7| Using &d1.8-1.15 &7display!"
       line-2:  "&fWorking hard to bring up new updates."
@@ -172,9 +178,11 @@ whitelist:
         # List of string message to display
         # on player count hover.
         message:
-          - "&b&lPIXEL MOTD &7| &fMaintenance mode"
+          - "&b&lPIXEL MOTD"
+          - "&7&oWhitelist Mode"
           - ""
-          - "&fFor plugin support, join to our Discord"
-          - "&brigox.club/discord/development"
+          - "&fDiscord support:"
+          - "&brigox.club/discord/dev"
           - ""
-          - "&7Please leave a &e⭐⭐⭐⭐⭐ &7star review!"
+          - "&7Please leave a &e⭐⭐⭐⭐⭐"
+          - "&7star review!"
