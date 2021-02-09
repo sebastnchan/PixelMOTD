@@ -39,9 +39,10 @@ public final class PixelMOTD extends Plugin {
 //    public Configuration whitelistMotdFile;
 
     // NEW FILES
-    public Configuration messagesConfig;
-    public Configuration dataConfig;
-    public Configuration motdConfig;
+    private Configuration messagesConfig;
+    private Configuration dataConfig;
+    private Configuration motdConfig;
+    private Configuration config;
 
     @Override
     public void onEnable() {
@@ -101,40 +102,16 @@ public final class PixelMOTD extends Plugin {
 
     }
 
-//    public Configuration getEditableFile() {
-//        return editFile;
-//    }
-//
-//    public Configuration getCommandFile() {
-//        return commandFile;
-//    }
-//
-//    public Configuration getModulesFile() {
-//        return modulesFile;
-//    }
-//
-//    public Configuration getNormalMotdFile() {
-//        return normalMotdFile;
-//    }
-//
-//    public Configuration getSettingsFile() {
-//        return settingsFile;
-//    }
-//
-//    public Configuration getTimerMotdFile() {
-//        return timerMotdFile;
-//    }
-
-//    public Configuration getWhitelistMotdFile() {
-//        return whitelistMotdFile;
-//    }
-
     public Configuration getMessagesConfig() {
         return messagesConfig;
     }
 
     public Configuration getDataConfig() {
         return dataConfig;
+    }
+
+    public Configuration getConfig() {
+        return config;
     }
 
     public Configuration getMotdConfig() {

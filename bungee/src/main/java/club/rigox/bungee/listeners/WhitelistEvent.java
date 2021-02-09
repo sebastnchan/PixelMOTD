@@ -2,7 +2,6 @@ package club.rigox.bungee.listeners;
 
 import club.rigox.bungee.PixelMOTD;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.api.event.LoginEvent;
 import net.md_5.bungee.api.event.PostLoginEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
@@ -10,6 +9,7 @@ import net.md_5.bungee.event.EventHandler;
 import java.util.List;
 
 import static club.rigox.bungee.utils.Logger.color;
+import static club.rigox.bungee.utils.Logger.debug;
 
 public class WhitelistEvent implements Listener {
     private final PixelMOTD plugin;
@@ -24,19 +24,24 @@ public class WhitelistEvent implements Listener {
         String connectionName        = e.getPlayer().getName();
         String connectionUuid        = e.getPlayer().getUniqueId().toString();
 
-        String bypassPermission      = plugin.getPlayersConfig().getString("whitelist.permision-bypass");
+        String bypassPermission      = plugin.getDataConfig().getString("whitelist.permision-bypass");
 
-        List<String> whitelistPlayer = plugin.getPlayersConfig().getStringList("whitelist.players-name");
-        List<String> whitelistUuid   = plugin.getPlayersConfig().getStringList("whitelist.players-uuid");
+        List<String> whitelistPlayer = plugin.getDataConfig().getStringList("whitelist.players-name");
+        List<String> whitelistUuid   = plugin.getDataConfig().getStringList("whitelist.players-uuid");
         List<String> whitelistMsg    = plugin.getMessagesConfig().getStringList("whitelist.kick-message");
 
-        boolean whitelistToggle = plugin.getPlayersConfig().getBoolean("whitelist.toggle");
+        boolean whitelistToggle = plugin.getDataConfig().getBoolean("whitelist.toggle");
 
         if (e.getPlayer().hasPermission(bypassPermission)) {
             return;
         }
 
         if (whitelistToggle && !whitelistPlayer.contains(connectionName) && !whitelistUuid.contains(connectionUuid)) {
+            if (e.getPlayer().hasPermission(plugin.getConfig().getString("whitelist.permission-bypass"))) {
+                debug(e.getPlayer() + " joined with bypass permission of whitelist.");
+                return;
+            }
+
             String kickReason = plugin.getConverter().fromListToString(whitelistMsg);
             e.getPlayer().disconnect(
                     new TextComponent(color(kickReason
@@ -45,8 +50,8 @@ public class WhitelistEvent implements Listener {
             );
         }
 
-        List<String> blacklistPlayer = plugin.getPlayersConfig().getStringList("blacklist.players-name");
-        List<String> blacklistUuid   = plugin.getPlayersConfig().getStringList("blacklist.players-uuid");
+        List<String> blacklistPlayer = plugin.getDataConfig().getStringList("blacklist.players-name");
+        List<String> blacklistUuid   = plugin.getDataConfig().getStringList("blacklist.players-uuid");
         List<String> blacklistMsg    = plugin.getMessagesConfig().getStringList("blacklist.kick-message");
 
         if (blacklistPlayer.contains(connectionName) || blacklistUuid.contains(connectionUuid)) {

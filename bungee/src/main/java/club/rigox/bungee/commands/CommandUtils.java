@@ -36,7 +36,7 @@ public class CommandUtils {
                 List<String> whitelistUuid = new ArrayList<>();
                 whitelistUuid.add(toAdd);
 
-                plugin.getPlayersConfig().set("whitelist.players-uuid", whitelistUuid);
+                plugin.getDataConfig().set("whitelist.players-uuid", whitelistUuid);
                 plugin.saveConfigs();
 
                 debug("Editable was reloaded (UUID - Whitelist)");
@@ -46,7 +46,7 @@ public class CommandUtils {
                 List<String> whitelistPlayer = new ArrayList<>();
                 whitelistPlayer.add(toAdd);
 
-                plugin.getPlayersConfig().set("whitelist.players-name", whitelistPlayer);
+                plugin.getDataConfig().set("whitelist.players-name", whitelistPlayer);
                 plugin.saveConfigs();
 
                 debug("Editable was reloaded (Player - Whitelist)");
@@ -56,7 +56,7 @@ public class CommandUtils {
                 List<String> blacklistPlayer = new ArrayList<>();
                 blacklistPlayer.add(toAdd);
 
-                plugin.getPlayersConfig().set("blacklist.players-name", blacklistPlayer);
+                plugin.getDataConfig().set("blacklist.players-name", blacklistPlayer);
                 plugin.saveConfigs();
 
                 debug("Editable was reloaded (Player - Blacklist)");
@@ -66,7 +66,7 @@ public class CommandUtils {
                 List<String> blacklistUUID = new ArrayList<>();
                 blacklistUUID.add(toAdd);
 
-                plugin.getPlayersConfig().set("blacklist.players-uuid", blacklistUUID);
+                plugin.getDataConfig().set("blacklist.players-uuid", blacklistUUID);
                 plugin.loadConfigs();
 
                 debug("Editable was reloaded (UUID - Blacklist)");
@@ -81,11 +81,11 @@ public class CommandUtils {
         List<String> whitelistMsg       = plugin.getMessagesConfig().getStringList("whitelist.kick-message");
         List<String> blacklistMsg       = plugin.getMessagesConfig().getStringList("blacklist.kick-message");
 
-        List<String> whitelistedPlayers = plugin.getPlayersConfig().getStringList("whitelist.players-name");
-        List<String> whitelistedUuids   = plugin.getPlayersConfig().getStringList("whitelist.players-uuid");
+        List<String> whitelistedPlayers = plugin.getDataConfig().getStringList("whitelist.players-name");
+        List<String> whitelistedUuids   = plugin.getDataConfig().getStringList("whitelist.players-uuid");
 
-        List<String> blacklistedPlayers = plugin.getPlayersConfig().getStringList("blacklist.players-name");
-        List<String> blacklistedUuids   = plugin.getPlayersConfig().getStringList("blacklist.players-uuid");
+        List<String> blacklistedPlayers = plugin.getDataConfig().getStringList("blacklist.players-name");
+        List<String> blacklistedUuids   = plugin.getDataConfig().getStringList("blacklist.players-uuid");
 
         String whitelistReason               = plugin.getConverter().fromListToString(whitelistMsg);
         String blacklistReason               = plugin.getConverter().fromListToString(blacklistMsg);
