@@ -6,10 +6,7 @@ import club.rigox.bungee.commands.subcommands.BlacklistCommand;
 import club.rigox.bungee.commands.subcommands.WhitelistCommand;
 import club.rigox.bungee.listeners.MotdEvent;
 import club.rigox.bungee.listeners.WhitelistEvent;
-import club.rigox.bungee.utils.Converter;
-import club.rigox.bungee.utils.FileManager;
-import club.rigox.bungee.utils.Motd;
-import club.rigox.bungee.utils.Placeholders;
+import club.rigox.bungee.utils.*;
 import co.aikar.commands.BungeeCommandManager;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
@@ -30,13 +27,7 @@ public final class PixelMOTD extends Plugin {
 
     private Motd motdUtils;
 
-//    public Configuration commandFile;
-//    public Configuration editFile;
-//    public Configuration modulesFile;
-//    public Configuration normalMotdFile;
-//    public Configuration settingsFile;
-//    public Configuration timerMotdFile;
-//    public Configuration whitelistMotdFile;
+    private ServerIcon serverIcon;
 
     // NEW FILES
     private Configuration messagesConfig;
@@ -59,6 +50,7 @@ public final class PixelMOTD extends Plugin {
         manager      = new FileManager(this);
         cmdUtils     = new CommandUtils(this);
         motdUtils    = new Motd(this);
+        serverIcon   = new ServerIcon(this);
 
         loadConfigs();
         registerListeners();
@@ -75,7 +67,10 @@ public final class PixelMOTD extends Plugin {
 
     @Override
     public void onDisable() {
-
+        info("&8------------------------------------------------");
+        info("&7Plugin has been &cdisabled&7!");
+        info(String.format("&7Using &6%s &7version.", getDescription().getVersion()));
+        info("&8------------------------------------------------");
     }
 
     private void registerListeners() {

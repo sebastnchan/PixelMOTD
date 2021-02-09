@@ -12,6 +12,8 @@ import net.md_5.bungee.api.plugin.Cancellable;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
+import java.io.File;
+
 import static club.rigox.bungee.utils.Logger.*;
 
 public class MotdEvent implements Listener {
@@ -62,7 +64,7 @@ public class MotdEvent implements Listener {
         // TODO PLAYER STATUS
 
         if (plugin.getMotdUtils().getIconStatus(showMode)) {
-            // TODO
+            File[] icons;
         }
 
         ServerPing.Protocol protocol;
