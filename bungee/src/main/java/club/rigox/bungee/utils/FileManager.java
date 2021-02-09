@@ -29,7 +29,6 @@ public class FileManager {
         File configFile = new File(plugin.getDataFolder().getPath(), configName + ".yml");
 
         if (!configFile.exists()) {
-            plugin.getDataFolder().mkdirs();
             saveConfig(configName);
         }
 
@@ -66,11 +65,13 @@ public class FileManager {
     }
 
     public Configuration reloadConfig(String file, Configuration configuration) {
+
+        File path = new File(plugin.getDataFolder(), file + ".yml");
         try {
-            File path = new File(plugin.getDataFolder(), file + ".yml");
             ConfigurationProvider.getProvider(YamlConfiguration.class).save(configuration, path);
 
-            return ConfigurationProvider.getProvider(YamlConfiguration.class).load(path);
+            return ConfigurationProvider.getProvider(YamlConfiguration.class).load(
+                    new File(plugin.getDataFolder(), file + ".yml"));
         } catch (IOException e) {
             warn(String.format("A error occurred while copying the config %s.yml to the plugin data folder. Error: %s", file, e));
             e.printStackTrace();

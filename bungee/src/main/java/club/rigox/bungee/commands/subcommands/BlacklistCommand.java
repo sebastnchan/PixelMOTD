@@ -34,11 +34,11 @@ public class BlacklistCommand extends BaseCommand {
     @Subcommand("blacklist add")
     @CommandCompletion("@players")
     public void onBlacklistAdd(CommandSender sender, @Single String player) {
-        List<String> uuidList   = plugin.getPlayersConfig().getStringList("blacklist.players-uuid");
-        List<String> playerList = plugin.getPlayersConfig().getStringList("blacklist.players-name");
+        List<String> uuidList   = plugin.getDataConfig().getStringList("blacklist.players-uuid");
+        List<String> playerList = plugin.getDataConfig().getStringList("blacklist.players-name");
 
         if (isUuid(player)) {
-            if (plugin.getPlayersConfig().get("blacklist.players-uuid") == null) {
+            if (plugin.getDataConfig().get("blacklist.players-uuid") == null) {
 
                 plugin.getCmdUtils().initEditList(KickType.BLACKLIST_UUID, player);
                 plugin.getCmdUtils().kickOnWhitelist(KickType.BLACKLIST);
@@ -54,8 +54,8 @@ public class BlacklistCommand extends BaseCommand {
 
             uuidList.add(player);
 
-            plugin.getPlayersConfig().set("blacklist.players-uuid", uuidList);
-            plugin.reloadConfigs();
+            plugin.getDataConfig().set("blacklist.players-uuid", uuidList);
+            plugin.saveConfigs();
 
             plugin.getCmdUtils().kickOnWhitelist(KickType.BLACKLIST);
 
@@ -63,7 +63,7 @@ public class BlacklistCommand extends BaseCommand {
             return;
         }
 
-        if (plugin.getPlayersConfig().get("blacklist.players-name") == null) {
+        if (plugin.getDataConfig().get("blacklist.players-name") == null) {
             plugin.getCmdUtils().initEditList(KickType.BLACKLIST_PLAYER, player);
 
             plugin.getCmdUtils().kickOnWhitelist(KickType.BLACKLIST);
@@ -78,8 +78,8 @@ public class BlacklistCommand extends BaseCommand {
 
         playerList.add(player);
 
-        plugin.getPlayersConfig().set("blacklist.players-name", playerList);
-        plugin.reloadConfigs();
+        plugin.getDataConfig().set("blacklist.players-name", playerList);
+        plugin.saveConfigs();
 
         plugin.getCmdUtils().kickOnWhitelist(KickType.BLACKLIST);
 
@@ -89,8 +89,8 @@ public class BlacklistCommand extends BaseCommand {
     @Subcommand("blacklist remove")
     @CommandCompletion("@players")
     public void onBlacklistRemove(CommandSender sender, @Single String player) {
-        List<String> uuidList   = plugin.getPlayersConfig().getStringList("blacklist.players-uuid");
-        List<String> playerList = plugin.getPlayersConfig().getStringList("blacklist.players-name");
+        List<String> uuidList   = plugin.getDataConfig().getStringList("blacklist.players-uuid");
+        List<String> playerList = plugin.getDataConfig().getStringList("blacklist.players-name");
 
         if (isUuid(player)) {
             if (!uuidList.contains(player)) {
@@ -100,8 +100,8 @@ public class BlacklistCommand extends BaseCommand {
 
             uuidList.remove(player);
 
-            plugin.getPlayersConfig().set("blacklist.players-uuid", uuidList);
-            plugin.reloadConfigs();
+            plugin.getDataConfig().set("blacklist.players-uuid", uuidList);
+            plugin.saveConfigs();
 
             sendMessage(sender, String.format(getMessageString("blacklist.uuid.removed"), player));
 
@@ -115,8 +115,8 @@ public class BlacklistCommand extends BaseCommand {
 
         playerList.remove(player);
 
-        plugin.getPlayersConfig().set("blacklist.players-name", playerList);
-        plugin.reloadConfigs();
+        plugin.getDataConfig().set("blacklist.players-name", playerList);
+        plugin.saveConfigs();
 
         sendMessage(sender, String.format(getMessageString("blacklist.player.removed"), player));
     }

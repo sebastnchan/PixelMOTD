@@ -27,9 +27,7 @@ public class PixelCommand extends BaseCommand {
 
     @Subcommand("reload")
     public void onReload(CommandSender sender) {
-        plugin.reloadConfigs();
-
-        sendMessage(sender, "&aConfig has been reloaded!");
+        plugin.loadConfigs();
         sendMessage(sender, getMessageString("reloaded"));
     }
 }

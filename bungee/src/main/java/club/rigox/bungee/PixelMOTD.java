@@ -40,7 +40,7 @@ public final class PixelMOTD extends Plugin {
 
     // NEW FILES
     public Configuration messagesConfig;
-    public Configuration playersConfig;
+    public Configuration dataConfig;
     public Configuration motdConfig;
 
     @Override
@@ -71,16 +71,14 @@ public final class PixelMOTD extends Plugin {
 
     public void loadConfigs() {
         messagesConfig      = manager.loadConfig("messages");
-        playersConfig       = manager.loadConfig("players");
+        dataConfig          = manager.loadConfig("data");
         motdConfig          = manager.loadConfig("motd");
 
         debug("Configs has been loaded!");
     }
 
-    public void reloadConfigs() {
-        messagesConfig = manager.reloadConfig("messages", messagesConfig);
-        playersConfig  = manager.reloadConfig("players", playersConfig);
-        motdConfig     = manager.reloadConfig("motd", motdConfig);
+    public void saveConfigs() {
+        dataConfig  = manager.reloadConfig("players", dataConfig);
     }
 
     public void registerCommands() {
@@ -135,8 +133,8 @@ public final class PixelMOTD extends Plugin {
         return messagesConfig;
     }
 
-    public Configuration getPlayersConfig() {
-        return playersConfig;
+    public Configuration getDataConfig() {
+        return dataConfig;
     }
 
     public Configuration getMotdConfig() {
