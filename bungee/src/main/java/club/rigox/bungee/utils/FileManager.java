@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 
+import static club.rigox.bungee.utils.Logger.info;
 import static club.rigox.bungee.utils.Logger.warn;
 
 public class FileManager {
@@ -39,6 +40,8 @@ public class FileManager {
             warn(String.format("A error occurred while loading the settings file. Error: %s", e));
             e.printStackTrace();
         }
+
+        info(String.format("&7File &e%s.yml &7has been loaded", configName));
         return cnf;
     }
 

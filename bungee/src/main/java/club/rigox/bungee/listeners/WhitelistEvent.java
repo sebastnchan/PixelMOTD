@@ -9,6 +9,7 @@ import net.md_5.bungee.event.EventHandler;
 import java.util.List;
 
 import static club.rigox.bungee.utils.Logger.color;
+import static club.rigox.bungee.utils.Logger.info;
 
 public class WhitelistEvent implements Listener {
     private final PixelMOTD plugin;
@@ -16,6 +17,7 @@ public class WhitelistEvent implements Listener {
     public WhitelistEvent(PixelMOTD plugin) {
         this.plugin = plugin;
         plugin.getProxy().getPluginManager().registerListener(plugin, this);
+        info("&eWhitelist &7& &eblacklist &7listener loaded");
     }
 
     @EventHandler

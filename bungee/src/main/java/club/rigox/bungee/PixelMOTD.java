@@ -15,6 +15,7 @@ import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 
 import static club.rigox.bungee.utils.Logger.debug;
+import static club.rigox.bungee.utils.Logger.info;
 
 public final class PixelMOTD extends Plugin {
     public static PixelMOTD instance;
@@ -47,6 +48,14 @@ public final class PixelMOTD extends Plugin {
     public void onEnable() {
         instance     = this;
 
+        info("&8------------------------------------------------");
+        info("_____ _          _ __  __  ____ _______ _____");
+        info("|  __ (_)        | |  \\/  |/ __ \\__   __|  __ \\");
+        info("| |__) |__  _____| | \\  / | |  | | | |  | |  | |");
+        info("|  ___/ \\ \\/ / _ \\ | |\\/| | |  | | | |  | |  | |");
+        info("| |   | |>  <  __/ | |  | | |__| | | |  | |__| |");
+        info("|_|   |_/_/\\_\\___|_|_|  |_|\\____/  |_|  |_____/");
+        info("&8------------------------------------------------");
         manager      = new FileManager(this);
         cmdUtils     = new CommandUtils(this);
         motdUtils    = new Motd(this);
@@ -57,6 +66,11 @@ public final class PixelMOTD extends Plugin {
 
         converter    = new Converter();
         placeholders = new Placeholders(this);
+
+        info("&8------------------------------------------------");
+        info("&7Plugin has been &aenabled&7!");
+        info(String.format("&7Using &6%s &7version.", getDescription().getVersion()));
+        info("&8------------------------------------------------");
     }
 
     @Override
@@ -74,8 +88,6 @@ public final class PixelMOTD extends Plugin {
         dataConfig          = manager.loadConfig("data");
         motdConfig          = manager.loadConfig("motd");
         config              = manager.loadConfig("config");
-
-        debug("Configs has been loaded!");
     }
 
     public void saveConfigs() {

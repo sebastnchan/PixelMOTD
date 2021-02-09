@@ -12,8 +12,7 @@ import net.md_5.bungee.api.plugin.Cancellable;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
-import static club.rigox.bungee.utils.Logger.color;
-import static club.rigox.bungee.utils.Logger.debug;
+import static club.rigox.bungee.utils.Logger.*;
 
 public class MotdEvent implements Listener {
     private final PixelMOTD plugin;
@@ -23,6 +22,7 @@ public class MotdEvent implements Listener {
     public MotdEvent(PixelMOTD plugin) {
         this.plugin = plugin;
         plugin.getProxy().getPluginManager().registerListener(plugin, this);
+        info("&eMOTD &7listener loaded");
     }
 
     @EventHandler

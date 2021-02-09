@@ -36,6 +36,8 @@ public class Motd {
                 return plugin.getMotdConfig().getBoolean(String.format("whitelist.motds.%s.with-hex.enable", motdName));
 //          TODO  case TIMER_MOTD:
 //          TODO      return plugin.getMotdConfig().getBoolean(String.format("timer.motds.%s.with-hex.enable"));
+            default:
+                break;
         }
         return false;
     }
