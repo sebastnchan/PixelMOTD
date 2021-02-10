@@ -83,6 +83,8 @@ public final class PixelMOTD extends Plugin {
         dataConfig          = manager.loadConfig("data");
         motdConfig          = manager.loadConfig("motd");
         config              = manager.loadConfig("config");
+
+//        serverIcon.loadIcons();
     }
 
     public void saveConfigs() {
@@ -143,5 +145,9 @@ public final class PixelMOTD extends Plugin {
 
     public Motd getMotdUtils() {
         return motdUtils;
+    }
+
+    public ServerIcon getServerIcon() {
+        return serverIcon;
     }
 }

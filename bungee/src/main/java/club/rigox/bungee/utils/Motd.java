@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static club.rigox.bungee.utils.Logger.debug;
+
 public class Motd {
     private final PixelMOTD plugin;
 
@@ -160,6 +162,7 @@ public class Motd {
 
     public boolean getIconStatus(MotdType motdType) {
         if (motdType == MotdType.NORMAL_MOTD) {
+            debug(String.valueOf(plugin.getMotdConfig().getBoolean("normal.settings.icon")));
             return plugin.getMotdConfig().getBoolean("normal.settings.icon");
         }
 
