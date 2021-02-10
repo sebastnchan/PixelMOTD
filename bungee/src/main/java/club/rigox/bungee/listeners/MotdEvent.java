@@ -12,15 +12,6 @@ import net.md_5.bungee.api.plugin.Cancellable;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-
 import static club.rigox.bungee.utils.Logger.*;
 
 public class MotdEvent implements Listener {
@@ -50,65 +41,39 @@ public class MotdEvent implements Listener {
         int online = response.getPlayers().getOnline();
 
         String   showMotd;
-        MotdType showMode;
+        MotdType motdType;
 
         showMotd = plugin.getMotdUtils().getMotd(false);
-        showMode = MotdType.NORMAL_MOTD;
+        motdType = MotdType.NORMAL_MOTD;
 
         if (whitelistEnabled) {
             showMotd = plugin.getMotdUtils().getMotd(true);
-            showMode = MotdType.WHITELIST_MOTD;
+            motdType = MotdType.WHITELIST_MOTD;
         }
 
         ShowType showType = ShowType.WITHOUT_HEX;
 
-        if (e.getConnection().getVersion() >= 735 && plugin.getMotdUtils().getHexStatus(showMode, showMotd))
+        if (e.getConnection().getVersion() >= 735 && plugin.getMotdUtils().getHexStatus(motdType, showMotd))
             showType = ShowType.HEX;
 
         // TODO ICON STATUS
         // TODO PLAYER STATUS
 
         Favicon favicon = null;
-        if (plugin.getMotdUtils().getIconStatus(showMode)) {
+        if (plugin.getMotdUtils().getIconStatus(motdType)) {
             debug("Icon has been set!");
-            favicon = Favicon.create(plugin.getServerIcon().getIcon(showMode));
+            favicon = Favicon.create(plugin.getServerIcon().getIcon(motdType));
         }
-//        if (plugin.getMotdUtils().getIconStatus(showMode)) {
-//
-//            File[] icons = plugin.getServerIcon().getFile(showMode).listFiles();
-//            File[] icons = plugin.getServerIcon().getIcons(showMode).listFiles();
-//            List<File> validIcons = new ArrayList<>();
-//
-//            if (icons != null && icons.length != 0) {
-//                for (File image : icons) {
-//                    if (com.google.common.io.Files.getFileExtension(image.getPath()).equals("png")) {
-//                        validIcons.add(image);
-//                    }
-//                }
-//                if (validIcons.size() != 0) {
-//                    BufferedImage image = getImage(validIcons.get(new Random().nextInt(validIcons.size())));
-//                    if (image != null) {
-//                        favicon = Favicon.create(image);
-//                    } else {
-//                        favicon = response.getFaviconObject();
-//                    }
-//                } else {
-//                    favicon = response.getFaviconObject();
-//                }
-//            } else {
-//                favicon = response.getFaviconObject();
-//            }
-//        }
 
         ServerPing.Protocol protocol;
         protocol = response.getVersion();
 
-        if (plugin.getMotdUtils().isCustomProtocolEnabled(showMode)) {
+        if (plugin.getMotdUtils().isCustomProtocolEnabled(motdType)) {
             ServerPing.Protocol received = response.getVersion();
 
-            received.setName(plugin.getMotdUtils().getCustomProtocol(showMode));
+            received.setName(plugin.getMotdUtils().getCustomProtocol(motdType));
 
-            if (plugin.getMotdUtils().getProtocolVersion(showMode)) {
+            if (plugin.getMotdUtils().getProtocolVersion(motdType)) {
                 received.setProtocol(-1);
             }
 
@@ -116,41 +81,29 @@ public class MotdEvent implements Listener {
 
         }
 
-        ServerPing.PlayerInfo[] motdHover = plugin.getMotdUtils().getHover(showMode, showMotd);
-        boolean mHover = plugin.getMotdUtils().isCustomHoverEnabled(showMode, showMotd);
+        ServerPing.PlayerInfo[] hoverLines = plugin.getMotdUtils().getHover(motdType, showMotd);
+        boolean hoverEnabled = plugin.getMotdUtils().isCustomHoverEnabled(motdType, showMotd);
 
         ServerPing.Players players;
-        if (mHover) {
-            players = new ServerPing.Players(max, online, motdHover);
+        if (hoverEnabled) {
+            players = new ServerPing.Players(max, online, hoverLines);
         } else {
             players = new ServerPing.Players(max, online, response.getPlayers().getSample());
         }
 
-        String line1 = plugin.getMotdUtils().getFirstLine(showMode, showMotd, showType);
-        String line2 = plugin.getMotdUtils().getSecondLine(showMode, showMotd, showType);
+        String line1 = plugin.getMotdUtils().getFirstLine(motdType, showMotd, showType);
+        String line2 = plugin.getMotdUtils().getSecondLine(motdType, showMotd, showType);
 
         String motd = color(line1 + "\n" + line2);
 
         ServerPing result;
 
         if (showType == ShowType.HEX) {
-            debug("ShowType HEX");
             result = new ServerPing(protocol, players, new TextComponent(motd), favicon);
         } else {
-            debug("ShowType WITHOUT_HEX");
             result = new ServerPing(protocol, players, new TextComponent(TextComponent.fromLegacyText(motd)), favicon);
         }
 
         e.setResponse(result);
-    }
-
-    private BufferedImage getImage(File file) {
-        try {
-            return ImageIO.read(file);
-        } catch(IOException e) {
-            error(String.format("An error ocurred while reading favicon. Error: %s", e));
-            e.printStackTrace();
-        }
-        return null;
     }
 }

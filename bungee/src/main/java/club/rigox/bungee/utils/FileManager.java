@@ -47,7 +47,7 @@ public class FileManager {
 
     public void saveConfig(String configName) {
         File folderDir = plugin.getDataFolder();
-        File file = new File(plugin.getDataFolder(), configName + ".yml");
+        File file = new File(folderDir, configName + ".yml");
 
         if (!folderDir.exists()) {
             folderDir.mkdir();
@@ -61,10 +61,6 @@ public class FileManager {
                 e.printStackTrace();
             }
         }
-    }
-
-    public static String getMessageString(String path) {
-        return PixelMOTD.instance.getMessagesConfig().getString(path);
     }
 
     public Configuration reloadConfig(String file, Configuration configuration) {
@@ -81,5 +77,17 @@ public class FileManager {
         }
 
         return null;
+    }
+
+    public void createFolders(String path) {
+        File folderDir = new File(plugin.getDataFolder(), path);
+
+        if (!folderDir.exists()) {
+            folderDir.mkdir();
+        }
+    }
+
+    public static String getMessageString(String path) {
+        return PixelMOTD.instance.getMessagesConfig().getString(path);
     }
 }

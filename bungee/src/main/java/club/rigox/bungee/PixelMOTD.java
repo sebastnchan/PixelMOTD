@@ -84,6 +84,9 @@ public final class PixelMOTD extends Plugin {
         motdConfig          = manager.loadConfig("motd");
         config              = manager.loadConfig("config");
 
+        manager.createFolders("Normal-icons");
+        manager.createFolders("Whitelist-icons");
+
 //        serverIcon.loadIcons();
     }
 
