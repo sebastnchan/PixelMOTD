@@ -7,6 +7,10 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+
+import static club.rigox.bungee.utils.Logger.*;
 
 public class ServerIcon {
     private final PixelMOTD plugin;
@@ -18,18 +22,33 @@ public class ServerIcon {
         this.plugin = plugin;
     }
 
-    public BufferedImage getIcon(MotdType motdType) {
+    public BufferedImage getIcon(MotdType motdType, String icon) {
         BufferedImage favicon = null;
+        InputStream nullIcon  = plugin.getResourceAsStream("not-set.png");
+
+        plugin.createFolders();
 
         try {
-            if (motdType == MotdType.NORMAL_MOTD) {
-                favicon = ImageIO.read(new File(plugin.getDataFolder(), "normal.png"));
-            }
+            String directoryPrefix = "normal";
 
             if (motdType == MotdType.WHITELIST_MOTD) {
-                favicon = ImageIO.read(new File(plugin.getDataFolder(), "whitelist.png"));
+                directoryPrefix = "whitelist";
             }
+
+            File iconPath = new File(plugin.getDataFolder(), directoryPrefix + "-icons/" + icon);
+
+            if (!iconPath.exists()) {
+                warn(String.format("Favicon %s doesn't exists on %s-icons folder! Creating one...",
+                        icon,
+                        directoryPrefix));
+
+                Files.copy(nullIcon, iconPath.toPath());
+            }
+
+            favicon = ImageIO.read(iconPath);
+
         } catch (IOException e) {
+            error(String.format("Something weird happened while getting %s favicon. Error: %s", icon, e));
             e.printStackTrace();
         }
 

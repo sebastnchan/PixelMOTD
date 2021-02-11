@@ -12,10 +12,6 @@
 #
 normal:
   settings:
-    # Use custom icon for Normal MOTDs
-    # Can set it on plugins/PixelMOTD/icons/normal.png
-    # MUST BE 64x64 icon.
-    icon: true
     # Custom protocol settings on player count.
     custom-protocol:
       # Enable custom protocol.
@@ -69,6 +65,19 @@ normal:
           - ""
           - "&7Please leave a &e⭐⭐⭐⭐⭐"
           - "&7star review!"
+      # Use custom icon for Normal MOTDs
+      # Can set it on plugins/PixelMOTD/icons/normal.png
+      # MUST BE 64x64 icon.
+      custom-icon:
+        # Enable per-motd icon
+        enable: true
+        # If enabled, you should set here the file.png
+        # REMEMBER, this is a normal motd. Should be on
+        # the /plugins/PixelMOTD/normal-icon/(icon-name.png).
+        #
+        # Otherwise if enabled it will create a icon with a
+        # not set text.
+        name: "icon.png"
     another: # <-- Avoid duplication names on this if you want to add more.
       line-1: "&b&lPixelMOTD &7| Using &d1.8-1.15 &7display!"
       line-2: "&fThis is an default MoTD!"
@@ -98,6 +107,19 @@ normal:
           - ""
           - "&7Please leave a &e⭐⭐⭐⭐⭐"
           - "&7star review!"
+      # Use custom icon for Normal MOTDs
+      # Can set it on plugins/PixelMOTD/icons/normal.png
+      # MUST BE 64x64 icon.
+      custom-icon:
+        # Enable per-motd icon
+        enable: true
+        # If enabled, you should set here the file.png
+        # REMEMBER, this is a normal motd. Should be on
+        # the /plugins/PixelMOTD/normal-icon/(icon-name.png).
+        #
+        # Otherwise if enabled it will create a icon with a
+        # not set text.
+        name: "not-set.png"
 whitelist:
   # Use custom icon for Whitelist MOTDs
   # Can set it on plugins/PixelMOTD/icons/whitelist.png
@@ -157,6 +179,19 @@ whitelist:
           - ""
           - "&7Please leave a &e⭐⭐⭐⭐⭐"
           - "&7star review!"
+      # Use custom icon for Normal MOTDs
+      # Can set it on plugins/PixelMOTD/icons/normal.png
+      # MUST BE 64x64 icon.
+      custom-icon:
+        # Enable per-motd icon
+        enable: true
+        # If enabled, you should set here the file.png
+        # REMEMBER, this is a normal motd. Should be on
+        # the /plugins/PixelMOTD/whitelist-icon/(icon-name.png).
+        #
+        # Otherwise if enabled it will create a icon with a
+        # not set text.
+        name: "icon.png"
     another:
       line-1: "&b&lPixelMOTD &7| Using &d1.8-1.15 &7display!"
       line-2:  "&fWorking hard to bring up new updates."
@@ -186,3 +221,16 @@ whitelist:
           - ""
           - "&7Please leave a &e⭐⭐⭐⭐⭐"
           - "&7star review!"
+      # Use custom icon for Normal MOTDs
+      # Can set it on plugins/PixelMOTD/icons/normal.png
+      # MUST BE 64x64 icon.
+      custom-icon:
+        # Enable per-motd icon
+        enable: true
+        # If enabled, you should set here the file.png
+        # REMEMBER, this is a normal motd. Should be on
+        # the /plugins/PixelMOTD/whitelist-icon/(icon-name.png).
+        #
+        # Otherwise if enabled it will create a icon with a
+        # not set text.
+        name: "not-set.png"

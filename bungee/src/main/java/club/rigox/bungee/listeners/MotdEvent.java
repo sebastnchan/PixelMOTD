@@ -40,29 +40,32 @@ public class MotdEvent implements Listener {
         int max    = response.getPlayers().getMax();
         int online = response.getPlayers().getOnline();
 
-        String   showMotd;
+        String   motdName;
         MotdType motdType;
 
-        showMotd = plugin.getMotdUtils().getMotd(false);
+        motdName = plugin.getMotdUtils().getMotd(false);
         motdType = MotdType.NORMAL_MOTD;
 
         if (whitelistEnabled) {
-            showMotd = plugin.getMotdUtils().getMotd(true);
+            motdName = plugin.getMotdUtils().getMotd(true);
             motdType = MotdType.WHITELIST_MOTD;
         }
 
         ShowType showType = ShowType.WITHOUT_HEX;
 
-        if (e.getConnection().getVersion() >= 735 && plugin.getMotdUtils().getHexStatus(motdType, showMotd))
+        if (e.getConnection().getVersion() >= 735 && plugin.getMotdUtils().getHexStatus(motdType, motdName))
             showType = ShowType.HEX;
 
         // TODO ICON STATUS
         // TODO PLAYER STATUS
 
         Favicon favicon = null;
-        if (plugin.getMotdUtils().getIconStatus(motdType)) {
+
+        String iconPath = plugin.getMotdConfig().getString(String.format("normal.motds.%s.custom-icon.name", motdName));
+
+        if (plugin.getMotdUtils().getIconStatus(motdType, motdName)) {
             debug("Icon has been set!");
-            favicon = Favicon.create(plugin.getServerIcon().getIcon(motdType));
+            favicon = Favicon.create(plugin.getServerIcon().getIcon(motdType, iconPath));
         }
 
         ServerPing.Protocol protocol;
@@ -81,8 +84,8 @@ public class MotdEvent implements Listener {
 
         }
 
-        ServerPing.PlayerInfo[] hoverLines = plugin.getMotdUtils().getHover(motdType, showMotd);
-        boolean hoverEnabled = plugin.getMotdUtils().isCustomHoverEnabled(motdType, showMotd);
+        ServerPing.PlayerInfo[] hoverLines = plugin.getMotdUtils().getHover(motdType, motdName);
+        boolean hoverEnabled = plugin.getMotdUtils().isCustomHoverEnabled(motdType, motdName);
 
         ServerPing.Players players;
         if (hoverEnabled) {
@@ -91,8 +94,8 @@ public class MotdEvent implements Listener {
             players = new ServerPing.Players(max, online, response.getPlayers().getSample());
         }
 
-        String line1 = plugin.getMotdUtils().getFirstLine(motdType, showMotd, showType);
-        String line2 = plugin.getMotdUtils().getSecondLine(motdType, showMotd, showType);
+        String line1 = plugin.getMotdUtils().getFirstLine(motdType, motdName, showType);
+        String line2 = plugin.getMotdUtils().getSecondLine(motdType, motdName, showType);
 
         String motd = color(line1 + "\n" + line2);
 

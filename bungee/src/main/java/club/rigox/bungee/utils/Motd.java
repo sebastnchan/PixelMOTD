@@ -160,14 +160,14 @@ public class Motd {
         return true;
     }
 
-    public boolean getIconStatus(MotdType motdType) {
+    public boolean getIconStatus(MotdType motdType, String motdName) {
         if (motdType == MotdType.NORMAL_MOTD) {
-            debug(String.valueOf(plugin.getMotdConfig().getBoolean("normal.settings.icon")));
-            return plugin.getMotdConfig().getBoolean("normal.settings.icon");
+
+            return plugin.getMotdConfig().getBoolean(String.format("normal.motds.%s.custom-icon.enable", motdName));
         }
 
         if (motdType == MotdType.WHITELIST_MOTD) {
-            return plugin.getMotdConfig().getBoolean("whitelist.settings.icon");
+            return plugin.getMotdConfig().getBoolean(String.format("whitelist.motds.%s.custom-icon.enable", motdName));
         }
         return false;
     }
