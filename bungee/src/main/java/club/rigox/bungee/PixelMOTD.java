@@ -11,7 +11,6 @@ import co.aikar.commands.BungeeCommandManager;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 
-import static club.rigox.bungee.utils.Logger.debug;
 import static club.rigox.bungee.utils.Logger.info;
 
 public final class PixelMOTD extends Plugin {

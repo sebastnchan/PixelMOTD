@@ -4,14 +4,14 @@ import club.rigox.bungee.PixelMOTD;
 import club.rigox.bungee.enums.MotdType;
 
 import javax.imageio.ImageIO;
-import javax.swing.text.html.ImageView;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 
-import static club.rigox.bungee.utils.Logger.*;
+import static club.rigox.bungee.utils.Logger.error;
+import static club.rigox.bungee.utils.Logger.warn;
 
 public class ServerIcon {
     private final PixelMOTD plugin;

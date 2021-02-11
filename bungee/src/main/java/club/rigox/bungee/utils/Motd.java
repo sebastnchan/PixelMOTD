@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static club.rigox.bungee.utils.Logger.debug;
-
 public class Motd {
     private final PixelMOTD plugin;
 
