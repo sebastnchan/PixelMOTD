@@ -40,11 +40,8 @@ public class MotdEvent implements Listener {
         int max    = response.getPlayers().getMax();
         int online = response.getPlayers().getOnline();
 
-        String   motdName;
-        MotdType motdType;
-
-        motdName = plugin.getMotdUtils().getMotd(false);
-        motdType = MotdType.NORMAL_MOTD;
+        String motdName   = plugin.getMotdUtils().getMotd(false);
+        MotdType motdType = MotdType.NORMAL_MOTD;
 
         if (whitelistEnabled) {
             motdName = plugin.getMotdUtils().getMotd(true);
@@ -56,9 +53,6 @@ public class MotdEvent implements Listener {
         if (e.getConnection().getVersion() >= 735 && plugin.getMotdUtils().getHexStatus(motdType, motdName))
             showType = ShowType.HEX;
 
-        // TODO ICON STATUS
-        // TODO PLAYER STATUS
-
         Favicon favicon = null;
 
         String iconPath = plugin.getMotdConfig().getString(String.format("normal.motds.%s.custom-icon.name", motdName));
@@ -68,9 +62,7 @@ public class MotdEvent implements Listener {
             favicon = Favicon.create(plugin.getServerIcon().getIcon(motdType, iconPath));
         }
 
-        ServerPing.Protocol protocol;
-        protocol = response.getVersion();
-
+        ServerPing.Protocol protocol = response.getVersion();
         if (plugin.getMotdUtils().isCustomProtocolEnabled(motdType)) {
             ServerPing.Protocol received = response.getVersion();
 
@@ -81,7 +73,6 @@ public class MotdEvent implements Listener {
             }
 
             protocol = received;
-
         }
 
         ServerPing.PlayerInfo[] hoverLines = plugin.getMotdUtils().getHover(motdType, motdName);
