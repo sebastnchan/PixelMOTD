@@ -16,9 +16,6 @@ import static club.rigox.bungee.utils.Logger.warn;
 public class ServerIcon {
     private final PixelMOTD plugin;
 
-//    private File normalIcon;
-//    private File whitelistIcon;
-
     public ServerIcon(PixelMOTD plugin) {
         this.plugin = plugin;
     }

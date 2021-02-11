@@ -28,7 +28,6 @@ public final class PixelMOTD extends Plugin {
 
     private ServerIcon serverIcon;
 
-    // NEW FILES
     private Configuration messagesConfig;
     private Configuration dataConfig;
     private Configuration motdConfig;
@@ -137,10 +136,6 @@ public final class PixelMOTD extends Plugin {
 
     public Placeholders getPlaceholders() {
         return placeholders;
-    }
-
-    public FileManager getManager() {
-        return manager;
     }
 
     public CommandUtils getCmdUtils() {

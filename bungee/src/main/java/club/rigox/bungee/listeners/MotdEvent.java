@@ -23,17 +23,14 @@ public class MotdEvent implements Listener {
         info("&eMOTD &7listener loaded");
     }
 
-    @EventHandler
-    public void onProxyPingEvent(ProxyPingEvent e) {
+    @EventHandler(priority = 64)
+    public void onProxyPingEvent(final ProxyPingEvent e) {
+        final ServerPing response          = e.getResponse();
+        final PendingConnection connection = e.getConnection();
 
         // Verify for cancelled motd to prevent errors.
+        if (response == null || connection == null) return;
         if (e instanceof Cancellable && ((Cancellable) e).isCancelled()) return;
-        if (e.getResponse() == null) return;
-
-        ServerPing response          = e.getResponse();
-        PendingConnection connection = e.getConnection();
-
-        if (connection == null) return;
 
         boolean whitelistEnabled     = plugin.getDataConfig().getBoolean("whitelist.toggle");
 
