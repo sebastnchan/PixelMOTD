@@ -1,8 +1,0 @@
-name: PixelMOTD
-version: ${project.version}
-main: club.rigox.bukkit.PixelMOTD
-api-version: 1.15
-depend: [ ProtocolLib ]
-authors: [ MrUniverse44 ]
-description: MOTD plugin with RGB support and hover system.
-website: https://rigox.club
